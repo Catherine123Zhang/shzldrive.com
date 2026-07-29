@@ -60,6 +60,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </div>
 </section>
 
+<!-- Factory Gallery -->
+<section class="section factory-gallery">
+  <div class="container">
+    <h2 class="section-title">Our Factory</h2>
+    <div class="gallery-grid">
+      <img src="/assets/images/factory/assembly-line.jpg" alt="Motor assembly line" loading="lazy" />
+      <img src="/assets/images/factory/cnc-row.jpg" alt="CNC machining center" loading="lazy" />
+      <img src="/assets/images/factory/rd-test-bench.jpg" alt="R&D test bench" loading="lazy" />
+      <img src="/assets/images/factory/rotors-finished.jpg" alt="Finished motor rotors" loading="lazy" />
+      <img src="/assets/images/factory/controller-pcb.jpg" alt="Controller PCB production" loading="lazy" />
+      <img src="/assets/images/factory/warehouse.jpg" alt="Finished goods warehouse" loading="lazy" />
+    </div>
+  </div>
+</section>
+
 <!-- Certifications -->
 <section class="section cert-section">
   <div class="container">
@@ -159,7 +174,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
-.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.hero-inner { background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.85) 100%), url('/assets/images/factory/workshop-floor.jpg') center/cover; color: white; padding: 48px 0 56px; }
 .breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
 .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
 .hero-inner h1 { font-size: 36px; margin-bottom: 16px; }
@@ -265,9 +280,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .btn-lg { padding: 18px 36px; font-size: 16px; }
 
+/* Factory Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.gallery-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 @media (max-width: 768px) {
   .about-intro { grid-template-columns: 1fr; }
   .about-stats { grid-template-columns: 1fr 1fr; }
   .capability-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>

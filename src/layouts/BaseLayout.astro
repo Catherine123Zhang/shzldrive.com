@@ -27,7 +27,7 @@ const siteUrl = 'https://www.nbshzl-motor.com';
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="logo">
-        <strong>SHENGHE</strong> DRIVE
+        <img src="/assets/images/brand/logo.png" alt="SHENGHE DRIVE — BLDC Motor Manufacturer" class="logo-img" />
       </a>
       <nav class="main-nav">
         <a href="/heavy-duty-drives/">Heavy-Duty Mobility</a>
@@ -96,13 +96,15 @@ const siteUrl = 'https://www.nbshzl-motor.com';
       gap: 32px;
     }
     .logo {
-      font-size: 20px;
       text-decoration: none;
-      color: var(--brand-primary);
-      letter-spacing: 0.5px;
-      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
     }
-    .logo strong { font-weight: 800; }
+    .logo-img {
+      height: 36px;
+      width: auto;
+    }
     .main-nav {
       display: flex;
       gap: 24px;

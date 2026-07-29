@@ -6,31 +6,43 @@ const articles = [
     title: 'How to Size a BLDC Motor for AGV Applications',
     description: 'Step-by-step guide to calculating torque, speed and power requirements for automated guided vehicles. Includes payload, wheel diameter and gradient formulas.',
     slug: 'bldc-motor-sizing-agv',
+    image: '/assets/images/products/app-agv-amr.jpg',
+    imageAlt: 'AGV automated guided vehicle with BLDC motor',
   },
   {
     title: 'Motor Torque & Power Calculation Guide',
     description: 'Fundamental formulas for calculating motor torque, speed and power from mechanical load requirements. Practical examples for transport equipment.',
     slug: 'motor-torque-power-calculation',
+    image: '/assets/images/products/high-power-120.jpg',
+    imageAlt: 'High power BLDC motor for torque applications',
   },
   {
     title: 'Importing BLDC Motors from China: A Complete Guide',
     description: 'What to look for when sourcing brushless DC motors from Chinese manufacturers. Covers specifications, certifications, quality inspection and shipping.',
     slug: 'china-bldc-motor-import-guide',
+    image: '/assets/images/products/product-family.jpg',
+    imageAlt: 'BLDC motor product family lineup',
   },
   {
     title: 'BLDC Motor Price Guide: What Affects Cost?',
     description: 'Understanding the factors that determine BLDC motor pricing — power rating, gearbox type, IP rating, order volume and customization level.',
     slug: 'bldc-motor-price-guide',
+    image: '/assets/images/products/hero-motor-set.jpg',
+    imageAlt: 'BLDC motor and controller set',
   },
   {
     title: 'BLDC Motor Diagrams Explained: Wiring & Construction',
     description: 'Visual guide to brushless DC motor construction, wiring diagrams, Hall sensor connections and controller integration for common configurations.',
     slug: 'bldc-motor-diagram-guide',
+    image: '/assets/images/products/bldc-motor-controller-kit.png',
+    imageAlt: 'BLDC motor controller kit diagram',
   },
   {
     title: 'Custom OEM Motor Development: Process & Timeline',
     description: 'How to work with a motor manufacturer on custom OEM development — from initial specification through prototyping, testing and volume production.',
     slug: 'custom-oem-motor-development',
+    image: '/assets/images/products/customized-1.jpg',
+    imageAlt: 'Custom OEM motor development',
   },
 ];
 ---
@@ -57,10 +69,13 @@ const articles = [
     <div class="article-grid">
       {articles.map((article) => (
         <article class="article-card">
+          <img src={article.image} alt={article.imageAlt} class="blog-card-img" loading="lazy" />
+          <div class="article-body">
           <div class="article-category">Technical Guide</div>
           <h2 class="article-title">{article.title}</h2>
           <p class="article-desc">{article.description}</p>
           <a href={`/blog/${article.slug}/`} class="article-link">Read Article &rarr;</a>
+          </div>
         </article>
       ))}
     </div>
@@ -90,14 +105,29 @@ const articles = [
   gap: 24px;
 }
 
+.blog-card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
 .article-card {
   background: var(--brand-surface);
   border: 1px solid var(--brand-border);
   border-radius: 12px;
-  padding: 32px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   transition: all 0.2s;
+  overflow: hidden;
+}
+
+.article-body {
+  padding: 24px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .article-card:hover {
   border-color: var(--brand-accent);
