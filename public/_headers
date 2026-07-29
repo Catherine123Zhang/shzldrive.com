@@ -1,0 +1,56 @@
+# =============================================================================
+# Cloudflare Pages Custom Headers
+# nbshzl-motor.com (Shenghe Drive)
+# =============================================================================
+
+# All pages - Security headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-XSS-Protection: 1; mode=block
+  Content-Security-Policy: frame-ancestors 'self'
+
+# Static assets - Long cache (1 year, immutable for hashed assets)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images - Cache for 30 days
+/*.jpg
+  Cache-Control: public, max-age=2592000
+/*.jpeg
+  Cache-Control: public, max-age=2592000
+/*.png
+  Cache-Control: public, max-age=2592000
+/*.webp
+  Cache-Control: public, max-age=2592000
+/*.avif
+  Cache-Control: public, max-age=2592000
+/*.svg
+  Cache-Control: public, max-age=2592000
+/*.ico
+  Cache-Control: public, max-age=2592000
+
+# Fonts - Cache for 1 year
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS/JS - Cache for 1 year (Astro uses content hashes)
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML pages - Short cache, always revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Sitemap and robots
+/sitemap*.xml
+  Cache-Control: public, max-age=3600
+  Content-Type: application/xml
+/robots.txt
+  Cache-Control: public, max-age=3600

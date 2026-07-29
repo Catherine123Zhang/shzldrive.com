@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Prototype Drive Kit — Test Before You Commit"
+  description="Order a complete BLDC drive prototype kit: motor, gearbox, brake, controller, encoder, wiring and documentation. Ready for integration testing in your equipment."
+>
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> → Engineering → Prototype Drive Kit</p>
+    <h1>Prototype Drive Kit</h1>
+    <p class="hero-sub">Everything you need to test a complete BLDC drive system in your equipment — before committing to production volumes.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2>What's Included</h2>
+    <div class="grid-3">
+      <div class="kit-item"><span class="kit-icon">⚡</span><h3>BLDC Motor</h3><p>Selected for your payload and speed requirements. L-type or R-type geared, 15W–3kW range.</p></div>
+      <div class="kit-item"><span class="kit-icon">⚙️</span><h3>Precision Gearbox</h3><p>Matched gear ratio for your wheel diameter and target speed. Alloy or titanium gears available.</p></div>
+      <div class="kit-item"><span class="kit-icon">🔧</span><h3>Electromagnetic Brake</h3><p>24V spring-applied, power-off brake. Essential for sloped operation and parking safety.</p></div>
+      <div class="kit-item"><span class="kit-icon">🎛️</span><h3>Matched Controller</h3><p>Pre-configured for the motor. Dual-channel available for differential steering applications.</p></div>
+      <div class="kit-item"><span class="kit-icon">📡</span><h3>Encoder (Optional)</h3><p>1000 PPR incremental encoder for speed feedback, positioning, or closed-loop control.</p></div>
+      <div class="kit-item"><span class="kit-icon">🔌</span><h3>Wiring & Documentation</h3><p>Complete wiring harness, connection diagram, parameter settings guide, and dimensional drawings.</p></div>
+    </div>
+    <div class="kit-note">
+      <p><strong>Engineering Support Included:</strong> Our engineers assist with integration — motor mounting, controller parameter tuning, brake adjustment, and troubleshooting during your testing phase.</p>
+    </div>
+  </div>
+</section>
+<section class="section" style="background: var(--brand-surface);">
+  <div class="container">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step"><span class="step-num">1</span><h3>Submit Your Specs</h3><p>Fill out the <a href="/drive-selection/">Drive Selection form</a> with your payload, wheel size, speed and voltage.</p></div>
+      <div class="step"><span class="step-num">2</span><h3>Receive Recommendation</h3><p>Our engineers respond within 24 hours with a matched drive configuration and kit quotation.</p></div>
+      <div class="step"><span class="step-num">3</span><h3>Test in Your Equipment</h3><p>Integrate the prototype kit and validate performance. We support you remotely during testing.</p></div>
+      <div class="step"><span class="step-num">4</span><h3>Adjust & Scale</h3><p>Fine-tune parameters if needed, then move to production orders with confidence.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section cta-section">
+  <div class="container cta-inner">
+    <h2>Request a Prototype Kit Quote</h2>
+    <p>Tell us about your application and we'll configure the right kit for your testing.</p>
+    <a href="/drive-selection/" class="btn btn-primary btn-lg">Get Started →</a>
+  </div>
+</section>
+</BaseLayout>
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+.kit-item { background: white; border: 1px solid var(--brand-border); border-radius: 10px; padding: 28px; }
+.kit-icon { font-size: 28px; display: block; margin-bottom: 12px; }
+.kit-item h3 { font-size: 17px; margin-bottom: 8px; }
+.kit-item p { font-size: 14px; color: var(--brand-text-light); line-height: 1.5; }
+.kit-note { margin-top: 32px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 20px 24px; }
+.kit-note p { font-size: 14px; line-height: 1.6; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.step { text-align: center; }
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: var(--brand-accent); color: white; font-size: 20px; font-weight: 800; margin-bottom: 16px; }
+.step h3 { font-size: 16px; margin-bottom: 8px; }
+.step p { font-size: 13px; color: var(--brand-text-light); }
+.step a { color: var(--brand-accent); }
+.cta-section { background: var(--brand-primary); color: white; text-align: center; }
+.cta-inner h2 { font-size: 32px; margin-bottom: 12px; }
+.cta-inner p { color: rgba(255,255,255,0.7); margin-bottom: 28px; }
+.btn-lg { padding: 16px 32px; font-size: 16px; }
+@media (max-width: 768px) { .steps { grid-template-columns: 1fr 1fr; } }
+</style>

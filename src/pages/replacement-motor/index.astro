@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Replacement Motor Matching — Find a Compatible Drive"
+  description="Upload your old motor nameplate or specs. We match a replacement BLDC drive from our range. For equipment already operating with our motors worldwide."
+>
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> → Engineering → Replacement Motor</p>
+    <h1>Find a Replacement Motor</h1>
+    <p class="hero-sub">Many heavy-load machines operating worldwide already use our drive systems — exported through Chinese OEM equipment. If you need a replacement or upgrade, we can match it.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container form-layout">
+    <div class="form-main">
+      <form action="https://api.web3forms.com/submit" method="POST" class="drive-form" enctype="multipart/form-data">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+        <input type="hidden" name="subject" value="SHENGHE DRIVE — Replacement Motor Request" />
+        <div class="form-section">
+          <h3>Existing Motor Information</h3>
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Motor Nameplate Photo (if available)</label>
+              <div class="upload-area">
+                <p>📷 Upload a photo of the motor nameplate, overall motor, or dimensional sketch</p>
+                <input type="file" name="motor_photo" accept="image/*,.pdf" />
+              </div>
+            </div>
+            <div class="form-group"><label for="mv">Voltage</label><input type="text" name="motor_voltage" id="mv" placeholder="e.g. 48V" /></div>
+            <div class="form-group"><label for="mp">Power</label><input type="text" name="motor_power" id="mp" placeholder="e.g. 1.5kW" /></div>
+            <div class="form-group"><label for="ms">Speed (RPM)</label><input type="text" name="motor_speed" id="ms" placeholder="e.g. 3000 RPM" /></div>
+            <div class="form-group"><label for="md">Motor Diameter (mm)</label><input type="text" name="motor_diameter" id="md" placeholder="e.g. 120mm" /></div>
+            <div class="form-group"><label for="mb">Brand / Model (if known)</label><input type="text" name="motor_brand" id="mb" placeholder="e.g. SHENGHE BL120" /></div>
+            <div class="form-group"><label for="mi">Mounting / Installation</label><input type="text" name="motor_mounting" id="mi" placeholder="e.g. flange mount, foot mount" /></div>
+          </div>
+        </div>
+        <div class="form-section">
+          <h3>Equipment Information</h3>
+          <div class="form-grid">
+            <div class="form-group"><label for="et">Equipment Type</label><input type="text" name="equipment" id="et" placeholder="e.g. 30-ton machinery mover" /></div>
+            <div class="form-group"><label for="em">Equipment Manufacturer</label><input type="text" name="equip_mfr" id="em" placeholder="e.g. company name" /></div>
+            <div class="form-group full-width"><label for="ef">Failure / Issue Description</label><textarea name="failure_desc" id="ef" rows="3" placeholder="What happened? Motor burned out, gearbox noise, speed loss, etc."></textarea></div>
+            <div class="form-group"><label for="eq">Quantity Needed</label><input type="text" name="qty" id="eq" placeholder="e.g. 2 units" /></div>
+            <div class="form-group"><label for="eu">Urgency</label>
+              <select name="urgency" id="eu"><option value="Standard">Standard (1-2 weeks)</option><option value="Urgent">Urgent (need ASAP)</option><option value="Planning">Planning ahead</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <h3>Your Contact</h3>
+          <div class="form-grid">
+            <div class="form-group"><label for="rn">Name *</label><input type="text" name="name" id="rn" required /></div>
+            <div class="form-group"><label for="rc">Company</label><input type="text" name="company" id="rc" /></div>
+            <div class="form-group"><label for="re">Email *</label><input type="email" name="email" id="re" required /></div>
+            <div class="form-group"><label for="rp">WhatsApp / Phone</label><input type="text" name="phone" id="rp" /></div>
+            <div class="form-group"><label for="ry">Country *</label><input type="text" name="country" id="ry" required /></div>
+          </div>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary btn-lg">Find My Replacement →</button>
+          <p class="form-note">We'll match a compatible drive and respond within 24 hours.</p>
+        </div>
+      </form>
+    </div>
+    <aside class="form-sidebar">
+      <div class="sidebar-card">
+        <h4>Common Replacements</h4>
+        <ul>
+          <li>BL60 / BL80 / BL90 / BL104 / BL120 series</li>
+          <li>L-type & R-type geared motors</li>
+          <li>Controllers & brake modules</li>
+          <li>Complete drive assemblies</li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <h4>Already Know Your Model?</h4>
+        <p>If you can see "SHENGHE", "NBSHZL", or "盛合" on the nameplate, share the model number — we can match instantly.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+</BaseLayout>
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 640px; }
+.form-layout { display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start; }
+.form-section { margin-bottom: 32px; }
+.form-section h3 { font-size: 18px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--brand-accent); display: inline-block; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.full-width { grid-column: 1 / -1; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 14px; border: 1px solid var(--brand-border); border-radius: 6px; font-size: 14px; font-family: inherit; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brand-accent); outline: none; }
+.upload-area { border: 2px dashed var(--brand-border); border-radius: 8px; padding: 20px; text-align: center; background: var(--brand-surface); }
+.upload-area p { font-size: 14px; color: var(--brand-text-light); margin-bottom: 12px; }
+.form-submit { text-align: center; padding-top: 16px; }
+.form-note { font-size: 13px; color: var(--brand-text-light); margin-top: 10px; }
+.btn-lg { padding: 16px 32px; font-size: 16px; }
+.sidebar-card { background: var(--brand-surface); border: 1px solid var(--brand-border); border-radius: 10px; padding: 24px; margin-bottom: 16px; }
+.sidebar-card h4 { font-size: 15px; margin-bottom: 10px; }
+.sidebar-card ul { list-style: none; }
+.sidebar-card li { font-size: 13px; padding: 3px 0; }
+.sidebar-card li::before { content: '→ '; color: var(--brand-accent); }
+.sidebar-card p { font-size: 13px; color: var(--brand-text-light); line-height: 1.5; }
+@media (max-width: 768px) { .form-layout { grid-template-columns: 1fr; } .form-grid { grid-template-columns: 1fr; } }
+</style>

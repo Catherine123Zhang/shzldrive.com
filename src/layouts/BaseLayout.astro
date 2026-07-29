@@ -1,0 +1,151 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+const siteUrl = 'https://www.nbshzl-motor.com';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | SHENGHE DRIVE</title>
+  <meta name="description" content={description || 'Proven BLDC drive systems for heavy-duty mobile equipment — powering China-made machinery movers worldwide.'} />
+  <link rel="canonical" href={canonical || siteUrl} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style is:global>
+    @import '../styles/global.css';
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <strong>SHENGHE</strong> DRIVE
+      </a>
+      <nav class="main-nav">
+        <a href="/heavy-duty-drives/">Heavy-Duty Mobility</a>
+        <a href="/pv-cleaning-robot-drive/">Robotic Drives</a>
+        <a href="/products/">Products</a>
+        <a href="/drive-selection/">Engineering</a>
+        <a href="/blog/">Resources</a>
+        <a href="/about/">About</a>
+      </nav>
+      <a href="/drive-selection/" class="btn btn-primary header-cta">Get a Drive Recommendation</a>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>SHENGHE DRIVE</strong>
+        <p>Ningbo Shenghe Zhilian Motor Co., Ltd.</p>
+        <p>Ningbo, Zhejiang, China</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Solutions</h4>
+          <a href="/heavy-duty-drives/">Heavy-Duty Mobility</a>
+          <a href="/pv-cleaning-robot-drive/">PV Robot Drives</a>
+          <a href="/products/">All Products</a>
+        </div>
+        <div>
+          <h4>Engineering</h4>
+          <a href="/drive-selection/">Drive Selection</a>
+          <a href="/prototype-drive-kit/">Prototype Kit</a>
+          <a href="/replacement-motor/">Replacement Motor</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="/about/">About Us</a>
+          <a href="/blog/">Technical Articles</a>
+          <a href="/contact/">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 SHENGHE DRIVE. All rights reserved.</p>
+        <div class="footer-certs">ISO 9001 · CE/LVD · RoHS</div>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--brand-white);
+      border-bottom: 1px solid var(--brand-border);
+      padding: 16px 0;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .logo {
+      font-size: 20px;
+      text-decoration: none;
+      color: var(--brand-primary);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .logo strong { font-weight: 800; }
+    .main-nav {
+      display: flex;
+      gap: 24px;
+      flex: 1;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: var(--brand-text);
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .main-nav a:hover { color: var(--brand-accent); }
+    .header-cta { font-size: 13px; padding: 10px 20px; white-space: nowrap; }
+
+    .site-footer {
+      background: var(--brand-dark);
+      color: rgba(255,255,255,0.7);
+      padding: 64px 0 0;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+    }
+    .footer-brand strong { color: white; font-size: 18px; display: block; margin-bottom: 12px; }
+    .footer-links h4 { color: white; font-size: 14px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+    .footer-links a { display: block; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; margin-bottom: 8px; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 20px 0;
+    }
+    .footer-bottom .container { display: flex; justify-content: space-between; font-size: 13px; }
+    .footer-certs { color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 768px) {
+      .header-inner { flex-wrap: wrap; }
+      .main-nav { order: 3; width: 100%; overflow-x: auto; }
+      .header-cta { order: 2; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</body>
+</html>

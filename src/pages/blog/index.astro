@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const articles = [
+  {
+    title: 'How to Size a BLDC Motor for AGV Applications',
+    description: 'Step-by-step guide to calculating torque, speed and power requirements for automated guided vehicles. Includes payload, wheel diameter and gradient formulas.',
+    slug: 'bldc-motor-sizing-agv',
+  },
+  {
+    title: 'Motor Torque & Power Calculation Guide',
+    description: 'Fundamental formulas for calculating motor torque, speed and power from mechanical load requirements. Practical examples for transport equipment.',
+    slug: 'motor-torque-power-calculation',
+  },
+  {
+    title: 'Importing BLDC Motors from China: A Complete Guide',
+    description: 'What to look for when sourcing brushless DC motors from Chinese manufacturers. Covers specifications, certifications, quality inspection and shipping.',
+    slug: 'china-bldc-motor-import-guide',
+  },
+  {
+    title: 'BLDC Motor Price Guide: What Affects Cost?',
+    description: 'Understanding the factors that determine BLDC motor pricing — power rating, gearbox type, IP rating, order volume and customization level.',
+    slug: 'bldc-motor-price-guide',
+  },
+  {
+    title: 'BLDC Motor Diagrams Explained: Wiring & Construction',
+    description: 'Visual guide to brushless DC motor construction, wiring diagrams, Hall sensor connections and controller integration for common configurations.',
+    slug: 'bldc-motor-diagram-guide',
+  },
+  {
+    title: 'Custom OEM Motor Development: Process & Timeline',
+    description: 'How to work with a motor manufacturer on custom OEM development — from initial specification through prototyping, testing and volume production.',
+    slug: 'custom-oem-motor-development',
+  },
+];
+---
+
+<BaseLayout
+  title="Technical Resources & Guides — BLDC Motor Knowledge Base"
+  description="Technical articles and guides on BLDC motor sizing, torque calculation, AGV motor selection, China sourcing, pricing and custom OEM development from SHENGHE DRIVE engineers."
+  canonical="https://www.nbshzl-motor.com/blog/"
+>
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; Resources</p>
+    <h1>Technical Resources & Guides</h1>
+    <p class="hero-sub">
+      Engineering articles, motor selection guides and practical knowledge
+      from our BLDC drive system engineers.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="article-grid">
+      {articles.map((article) => (
+        <article class="article-card">
+          <div class="article-category">Technical Guide</div>
+          <h2 class="article-title">{article.title}</h2>
+          <p class="article-desc">{article.description}</p>
+          <a href={`/blog/${article.slug}/`} class="article-link">Read Article &rarr;</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="container cta-inner">
+    <h2>Have a Technical Question?</h2>
+    <p>Our engineers can help with motor selection, torque calculations and drive system design for your specific application.</p>
+    <a href="/drive-selection/" class="btn btn-primary btn-lg">Get a Drive Recommendation &rarr;</a>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.article-card {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+}
+.article-card:hover {
+  border-color: var(--brand-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.article-category {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--brand-accent);
+  margin-bottom: 12px;
+}
+
+.article-title {
+  font-size: 18px;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  color: var(--brand-text);
+}
+
+.article-desc {
+  font-size: 14px;
+  color: var(--brand-text-light);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.article-link {
+  color: var(--brand-accent);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+}
+.article-link:hover { text-decoration: underline; }
+
+.section-title { font-size: 32px; text-align: center; margin-bottom: 12px; }
+.section-desc { text-align: center; color: var(--brand-text-light); margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; }
+.cta-section { background: var(--brand-primary); color: white; text-align: center; }
+.cta-inner h2 { font-size: 32px; margin-bottom: 12px; }
+.cta-inner p { color: rgba(255,255,255,0.7); margin-bottom: 32px; font-size: 17px; }
+.btn-lg { padding: 18px 36px; font-size: 16px; }
+
+@media (max-width: 768px) {
+  .article-grid { grid-template-columns: 1fr; }
+}
+</style>

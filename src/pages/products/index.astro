@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const categories = [
+  {
+    name: 'L-Type Geared Motors',
+    specs: '60–120mm flange, 30–2000W',
+    description: 'Right-angle geared BLDC motors with worm or helical gear reduction. Compact L-shaped profile for space-constrained drive wheels and transport trolleys.',
+    features: ['Worm & helical gear options', 'High gear ratios up to 200:1', 'Integrated electromagnetic brake', 'IP54 / IP65 protection'],
+  },
+  {
+    name: 'R-Type Geared Motors',
+    specs: '90–104mm flange, 120–750W',
+    description: 'Inline (coaxial) geared BLDC motors for applications requiring a straight shaft output. Ideal for conveyor drives, rotary platforms and compact AGV wheel modules.',
+    features: ['Coaxial gear reduction', 'Low noise helical gears', 'Compact inline profile', 'Optional encoder feedback'],
+  },
+  {
+    name: 'Cylindrical BLDC Motors',
+    specs: '60–130mm diameter, 30–2000W',
+    description: 'Standard cylindrical brushless DC motors without integrated gearbox. Pair with external gear reducers or use direct-drive for fan, pump and spindle applications.',
+    features: ['Hall sensor commutation', '12V–220V winding options', 'High efficiency > 85%', 'Long life > 20,000 hours'],
+  },
+  {
+    name: 'High-Power Motors',
+    specs: '750–3000W, 48–72V',
+    description: 'High-torque BLDC motors for heavy-duty machinery movers, large AGVs and industrial transport equipment. Dual-motor configurations available for 40–60+ ton payloads.',
+    features: ['Up to 3kW continuous', '48V / 72V systems', 'Forced air or liquid cooling', 'Heavy-duty bearing design'],
+  },
+  {
+    name: 'Planetary Gear Motors',
+    specs: '42–90mm, 15–750W',
+    description: 'Precision planetary gearbox integrated with BLDC motors. High torque density in a compact package for robotics, automated guided vehicles and precision positioning.',
+    features: ['Planetary gear reduction', 'Low backlash options', 'High torque density', 'Quiet operation'],
+  },
+  {
+    name: 'Controllers & Drivers',
+    specs: '12–72V, up to 80A',
+    description: 'BLDC motor controllers with FOC and trapezoidal drive modes. Standalone drivers and integrated controller boards for single and dual motor systems.',
+    features: ['FOC / trapezoidal modes', 'CAN / RS485 / analog control', 'Regenerative braking', 'Dual motor synchronization'],
+  },
+  {
+    name: 'Accessories',
+    specs: 'Brakes, Encoders, Connectors',
+    description: 'Electromagnetic brakes, incremental encoders, IP-rated connectors and wiring harnesses. Complete your drive system with matched accessories from a single source.',
+    features: ['Spring-applied fail-safe brakes', '1000-line incremental encoders', 'IP67 circular connectors', 'Pre-wired harness kits'],
+  },
+];
+---
+
+<BaseLayout
+  title="BLDC Motor Products — 15W to 3000W Drive Systems"
+  description="Browse SHENGHE DRIVE BLDC motor product categories: L-type and R-type geared motors, cylindrical motors, high-power drives, planetary gear motors, controllers and accessories. 15W–3000W, 12–220V."
+  canonical="https://www.nbshzl-motor.com/products/"
+>
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; Products</p>
+    <h1>BLDC Motor Products</h1>
+    <p class="hero-sub">
+      Complete brushless DC drive systems from 15W to 3,000W, 12–220V.
+      Motors, gearboxes, controllers and accessories — all from a single manufacturer.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="product-grid">
+      {categories.map((cat) => (
+        <div class="product-card">
+          <div class="product-card-header">
+            <h2>{cat.name}</h2>
+            <span class="product-specs">{cat.specs}</span>
+          </div>
+          <p class="product-desc">{cat.description}</p>
+          <ul class="product-features">
+            {cat.features.map((f) => <li>{f}</li>)}
+          </ul>
+          <a href="/drive-selection/" class="product-cta">Get a Recommendation &rarr;</a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section power-range-section">
+  <div class="container">
+    <h2 class="section-title">Full Power Range Overview</h2>
+    <p class="section-desc">From compact 15W planetary gear motors to heavy-duty 3kW drive systems — one manufacturer, one engineering team, one point of contact.</p>
+    <div class="range-bar">
+      <div class="range-segment range-light">
+        <span class="range-label">15–120W</span>
+        <span class="range-app">Robotics, Gates, Small Conveyors</span>
+      </div>
+      <div class="range-segment range-mid">
+        <span class="range-label">120–750W</span>
+        <span class="range-app">AGVs, PV Robots, Transfer Carts</span>
+      </div>
+      <div class="range-segment range-heavy">
+        <span class="range-label">750–3000W</span>
+        <span class="range-app">Machinery Movers, Heavy Transport</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="container cta-inner">
+    <h2>Not Sure Which Motor You Need?</h2>
+    <p>Tell us your application requirements. Our engineers will recommend the right motor, gearbox and controller combination.</p>
+    <a href="/drive-selection/" class="btn btn-primary btn-lg">Get a Drive Recommendation &rarr;</a>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.product-card {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+}
+.product-card:hover {
+  border-color: var(--brand-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.product-card-header {
+  margin-bottom: 12px;
+}
+.product-card h2 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.product-specs {
+  font-size: 13px;
+  color: var(--brand-accent);
+  font-weight: 600;
+}
+.product-desc {
+  font-size: 14px;
+  color: var(--brand-text-light);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.product-features {
+  list-style: none;
+  margin-bottom: 20px;
+  flex: 1;
+}
+.product-features li {
+  font-size: 13px;
+  padding: 3px 0;
+  color: var(--brand-text);
+}
+.product-features li::before {
+  content: '\2192 ';
+  color: var(--brand-accent);
+  font-weight: 600;
+}
+.product-cta {
+  color: var(--brand-accent);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+}
+.product-cta:hover { text-decoration: underline; }
+
+/* Power Range Bar */
+.power-range-section { background: var(--brand-surface); }
+.range-bar {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 4px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.range-segment {
+  padding: 24px 20px;
+  text-align: center;
+}
+.range-light { background: #e0f2fe; }
+.range-mid { background: #bbf7d0; }
+.range-heavy { background: #fef3c7; }
+.range-label {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--brand-primary);
+  margin-bottom: 4px;
+}
+.range-app {
+  font-size: 13px;
+  color: var(--brand-text-light);
+}
+
+.section-title { font-size: 32px; text-align: center; margin-bottom: 12px; }
+.section-desc { text-align: center; color: var(--brand-text-light); margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; }
+.cta-section { background: var(--brand-primary); color: white; text-align: center; }
+.cta-inner h2 { font-size: 32px; margin-bottom: 12px; }
+.cta-inner p { color: rgba(255,255,255,0.7); margin-bottom: 32px; font-size: 17px; }
+.btn-lg { padding: 18px 36px; font-size: 16px; }
+
+@media (max-width: 768px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .range-bar { grid-template-columns: 1fr; }
+}
+</style>

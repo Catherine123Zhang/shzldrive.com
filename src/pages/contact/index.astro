@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact SHENGHE DRIVE — Get in Touch"
+  description="Contact Ningbo Shenghe Zhilian Motor Co., Ltd. for BLDC motor inquiries, drive selection support and quotation requests. WhatsApp, email or contact form."
+  canonical="https://www.nbshzl-motor.com/contact/"
+>
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; Contact</p>
+    <h1>Contact Us</h1>
+    <p class="hero-sub">
+      Get in touch for motor inquiries, drive selection support or quotation requests.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-layout">
+    <div class="contact-form-wrap">
+      <h2>Send Us a Message</h2>
+      <p class="form-intro">Describe your application or inquiry and we'll respond within 24 hours.</p>
+
+      <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+        <input type="hidden" name="subject" value="SHENGHE DRIVE — Contact Form Inquiry" />
+        <input type="hidden" name="from_name" value="SHENGHE DRIVE Website" />
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" name="name" id="name" required placeholder="Full name" />
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" name="company" id="company" placeholder="Company name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" name="email" id="email" required placeholder="your@company.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="text" name="phone" id="phone" placeholder="+1 234 567 8900" />
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" name="country" id="country" placeholder="e.g. Germany" />
+          </div>
+          <div class="form-group">
+            <label for="inquiry">Inquiry Type</label>
+            <select name="inquiry_type" id="inquiry">
+              <option value="">Select</option>
+              <option value="Product inquiry">Product inquiry</option>
+              <option value="Quotation request">Quotation request</option>
+              <option value="Technical support">Technical support</option>
+              <option value="OEM / custom development">OEM / custom development</option>
+              <option value="Replacement motor">Replacement motor</option>
+              <option value="Distributor inquiry">Distributor inquiry</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group full-width">
+            <label for="message">Message *</label>
+            <textarea name="message" id="message" rows="5" required placeholder="Describe your application, required motor specifications, or any questions you have."></textarea>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary btn-lg">Send Message &rarr;</button>
+        </div>
+      </form>
+    </div>
+
+    <aside class="contact-sidebar">
+      <div class="sidebar-card">
+        <h4>Contact Information</h4>
+        <div class="contact-item">
+          <span class="contact-label">WhatsApp</span>
+          <a href="https://wa.me/8618268661068">+86 182 6866 1068</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a href="mailto:sales@nbshzl-motor.com">sales@nbshzl-motor.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Address</span>
+          <span>Ningbo, Zhejiang, China</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Website</span>
+          <a href="https://www.nbshzl-motor.com">www.nbshzl-motor.com</a>
+        </div>
+      </div>
+
+      <div class="sidebar-card sidebar-cta-card">
+        <h4>Need a Drive Recommendation?</h4>
+        <p>For technical drive selection — share your payload, speed, voltage and wheel diameter for an engineered recommendation.</p>
+        <a href="/drive-selection/" class="btn btn-primary">Get a Drive Recommendation &rarr;</a>
+      </div>
+
+      <div class="sidebar-card">
+        <h4>Response Time</h4>
+        <p>Our engineering team typically responds within 24 hours on business days. For urgent inquiries, please contact us directly via WhatsApp.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: start;
+}
+
+.contact-form-wrap h2 { font-size: 24px; margin-bottom: 8px; }
+.form-intro { font-size: 15px; color: var(--brand-text-light); margin-bottom: 28px; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.full-width { grid-column: 1 / -1; }
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--brand-text);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--brand-border);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background: white;
+  transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--brand-accent);
+  outline: none;
+}
+.form-submit { margin-top: 20px; }
+.btn-lg { padding: 18px 36px; font-size: 16px; }
+
+/* Sidebar */
+.sidebar-card {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.sidebar-card h4 { font-size: 16px; margin-bottom: 16px; }
+.sidebar-card p { font-size: 14px; color: var(--brand-text-light); line-height: 1.6; margin-bottom: 12px; }
+.sidebar-card a:not(.btn) { color: var(--brand-accent); text-decoration: none; }
+.sidebar-card a:not(.btn):hover { text-decoration: underline; }
+
+.contact-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--brand-border);
+}
+.contact-item:last-child { border-bottom: none; }
+.contact-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--brand-text-light);
+  margin-bottom: 4px;
+}
+.contact-item a,
+.contact-item span:not(.contact-label) {
+  font-size: 14px;
+  color: var(--brand-text);
+}
+
+.sidebar-cta-card {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border-color: var(--brand-accent);
+}
+.sidebar-cta-card .btn { width: 100%; justify-content: center; font-size: 13px; padding: 12px 20px; }
+
+@media (max-width: 768px) {
+  .contact-layout { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+</style>

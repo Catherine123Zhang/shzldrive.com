@@ -1,0 +1,88 @@
+/* SHENGHE DRIVE — Design System */
+:root {
+  --brand-primary: #1a1a2e;    /* Deep navy */
+  --brand-accent: #16a34a;     /* Industrial green */
+  --brand-accent-light: #22c55e;
+  --brand-surface: #f8fafc;
+  --brand-text: #1e293b;
+  --brand-text-light: #64748b;
+  --brand-white: #ffffff;
+  --brand-border: #e2e8f0;
+  --brand-dark: #0f172a;
+  
+  --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  --max-width: 1200px;
+  --section-pad: 80px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--brand-text);
+  background: var(--brand-white);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: var(--section-pad) 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--brand-accent);
+  color: var(--brand-white);
+}
+.btn-primary:hover { background: var(--brand-accent-light); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--brand-white);
+  border: 2px solid rgba(255,255,255,0.5);
+}
+.btn-outline:hover { border-color: var(--brand-white); background: rgba(255,255,255,0.1); }
+
+.btn-dark {
+  background: var(--brand-primary);
+  color: var(--brand-white);
+}
+
+/* Grid */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  :root { --section-pad: 48px; }
+}

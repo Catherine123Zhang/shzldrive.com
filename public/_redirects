@@ -1,0 +1,295 @@
+# =============================================================================
+# 301 Redirect Map: nbshzl-motor.com (old) -> nbshzl-motor.com (new Astro site)
+# Cloudflare Pages _redirects format
+# Total old pages: 252 HTML files
+# Generated: 2026-07-29
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 1. SPECIFIC APPLICATION PAGES (before wildcard rules)
+# -----------------------------------------------------------------------------
+
+# Electric Tank Carrier -> Heavy Duty Drives
+/electric-tank-carrier/ /heavy-duty-drives/ 301
+
+# AGV Motor -> Heavy Duty Drives
+/bldc-motor-for-agv/ /heavy-duty-drives/ 301
+
+# Solar Panel Cleaning Robot -> PV Cleaning Robot Drive
+/brushless-motor-for-solar-panel-cleaning-robot/ /pv-cleaning-robot-drive/ 301
+
+# Conveyor Motor -> Products
+/bldc-motor-for-conveyor/ /products/ 301
+
+# Automatic Door Motor -> Products
+/bldc-motor-for-automatic-door/ /products/ 301
+
+# Agriculture Motor -> Products
+/brushless-motor-for-agriculture/ /products/ 301
+
+# Remaining specific bldc-motor-for-* pages -> Products
+/bldc-motor-for-antenna/ /products/ 301
+/bldc-motor-for-drone/ /products/ 301
+/bldc-motor-for-e-rickshaw/ /products/ 301
+/bldc-motor-for-electric-vehicle/ /products/ 301
+/bldc-motor-for-elevator/ /products/ 301
+/bldc-motor-for-fitness-equipment/ /products/ 301
+/bldc-motor-for-food-processing/ /products/ 301
+/bldc-motor-for-irrigation/ /products/ 301
+/bldc-motor-for-lawn-mower/ /products/ 301
+/bldc-motor-for-packaging-machine/ /products/ 301
+/bldc-motor-for-printing-machine/ /products/ 301
+/bldc-motor-for-pump/ /products/ 301
+/bldc-motor-for-stage-equipment/ /products/ 301
+/bldc-motor-for-textile-machine/ /products/ 301
+/bldc-motor-for-vending-machine/ /products/ 301
+/bldc-motor-for-wheelchair/ /products/ 301
+
+# Remaining specific brushless-motor-for-* pages -> Products
+/brushless-motor-for-3d-printer/ /products/ 301
+/brushless-motor-for-air-purifier/ /products/ 301
+/brushless-motor-for-car-wash/ /products/ 301
+/brushless-motor-for-cnc-machine/ /products/ 301
+/brushless-motor-for-compressor/ /products/ 301
+/brushless-motor-for-e-scooter/ /products/ 301
+/brushless-motor-for-electric-boat/ /products/ 301
+/brushless-motor-for-golf-cart/ /products/ 301
+/brushless-motor-for-hvac/ /products/ 301
+/brushless-motor-for-medical-equipment/ /products/ 301
+/brushless-motor-for-robotics/ /products/ 301
+/brushless-motor-for-solar-tracker/ /products/ 301
+/brushless-motor-for-warehouse/ /products/ 301
+/brushless-motor-for-welding/ /products/ 301
+/brushless-motor-for-woodworking/ /products/ 301
+
+# Wildcard catch-all for any remaining /bldc-motor-for-* and /brushless-motor-for-*
+/bldc-motor-for-* /products/ 301
+/brushless-motor-for-* /products/ 301
+
+# -----------------------------------------------------------------------------
+# 2. PRODUCT CATEGORY PAGES -> /products/
+# -----------------------------------------------------------------------------
+
+# BLDC Motor category pages
+/bldc-motor/ /products/ 301
+/bldc-gear-motor/ /products/ 301
+/bldc-planetary-gear-motor/ /products/ 301
+/bldc-motor-controller/ /products/ 301
+/bldc-servo-motor/ /products/ 301
+/bldc-motor-with-encoder/ /products/ 301
+/bldc-motor-wholesale/ /products/ 301
+/bldc-motor-factory/ /products/ 301
+/brushless-dc-motor/ /products/ 301
+/brushless-gearbox/ /products/ 301
+/brushless-reduction-motor/ /products/ 301
+/geared-bldc-motor/ /products/ 301
+/custom-bldc-motor/ /products/ 301
+/oem-bldc-motor/ /products/ 301
+/odm-bldc-motor/ /products/ 301
+/large-bldc-motor/ /products/ 301
+/small-bldc-motor/ /products/ 301
+/high-torque-bldc-motor/ /products/ 301
+/high-speed-brushless-dc-motor/ /products/ 301
+/industrial-brushless-motor/ /products/ 301
+/industrial-automation-motor/ /products/ 301
+
+# DC Gear Motor category pages
+/dc-gear-motor/ /products/ 301
+/dc-planetary-gear-motor/ /products/ 301
+/dc-worm-gear-motor/ /products/ 301
+/worm-gear-motor/ /products/ 301
+/planetary-gear-motor/ /products/ 301
+/epicyclic-gear-motor/ /products/ 301
+/right-angle-dc-gear-motor/ /products/ 301
+/high-torque-gear-motor/ /products/ 301
+
+# E-rickshaw motor pages
+/48v-e-rickshaw-motor/ /products/ 301
+/e-rickshaw-motor-controller-kit/ /products/ 301
+
+# Electric tug motor
+/electric-tug-motor/ /products/ 301
+
+# Old /products/ subdirectories
+/products/bldc-motor/ /products/ 301
+/products/gear-motor/ /products/ 301
+/products/motor-controller/ /products/ 301
+
+# -----------------------------------------------------------------------------
+# 3. VOLTAGE/WATTAGE SPECIFIC PRODUCT PAGES -> /products/
+# -----------------------------------------------------------------------------
+
+# 12V motors
+/12v-100w-bldc-motor/ /products/ 301
+/12v-bldc-gear-motor/ /products/ 301
+/12v-bldc-planetary-gear-motor/ /products/ 301
+/12v-bldc-worm-gear-motor/ /products/ 301
+/12v-brushless-dc-motor/ /products/ 301
+/12v-dc-gear-motor/ /products/ 301
+
+# 24V motors
+/24v-100w-bldc-motor/ /products/ 301
+/24v-200w-bldc-motor/ /products/ 301
+/24v-400w-bldc-motor/ /products/ 301
+/24v-bldc-gear-motor/ /products/ 301
+/24v-bldc-geared-motor/ /products/ 301
+/24v-bldc-motor-controller/ /products/ 301
+/24v-bldc-planetary-gear-motor/ /products/ 301
+/24v-bldc-worm-gear-motor/ /products/ 301
+/24v-brushless-dc-motor/ /products/ 301
+
+# 36V motors
+/36v-bldc-gear-motor/ /products/ 301
+/36v-bldc-motor-controller/ /products/ 301
+/36v-brushless-dc-motor/ /products/ 301
+
+# 48V motors
+/48v-1000w-bldc-gear-motor/ /products/ 301
+/48v-1000w-bldc-motor/ /products/ 301
+/48v-120w-bldc-gear-motor/ /products/ 301
+/48v-1500w-bldc-motor/ /products/ 301
+/48v-2000w-bldc-gear-motor/ /products/ 301
+/48v-200w-bldc-motor/ /products/ 301
+/48v-400w-bldc-gear-motor/ /products/ 301
+/48v-400w-bldc-motor/ /products/ 301
+/48v-500w-bldc-motor/ /products/ 301
+/48v-750w-bldc-motor/ /products/ 301
+/48v-bldc-gear-motor/ /products/ 301
+/48v-bldc-geared-motor/ /products/ 301
+/48v-bldc-motor-controller/ /products/ 301
+/48v-bldc-planetary-gear-motor/ /products/ 301
+/48v-bldc-worm-gear-motor/ /products/ 301
+/48v-brushless-dc-motor/ /products/ 301
+
+# 60V motors
+/60v-bldc-gear-motor/ /products/ 301
+/60v-brushless-dc-motor/ /products/ 301
+
+# 72V motors
+/72v-1000w-bldc-motor/ /products/ 301
+/72v-1500w-bldc-motor/ /products/ 301
+/72v-2000w-bldc-motor/ /products/ 301
+/72v-3000w-bldc-motor/ /products/ 301
+/72v-bldc-gear-motor/ /products/ 301
+/72v-bldc-motor-controller/ /products/ 301
+/72v-brushless-dc-motor/ /products/ 301
+
+# 110V motors
+/110v-brushless-dc-motor/ /products/ 301
+
+# Wattage-only pages
+/50w-brushless-dc-motor/ /products/ 301
+/100w-brushless-dc-motor/ /products/ 301
+/150w-brushless-dc-motor/ /products/ 301
+/200w-brushless-dc-motor/ /products/ 301
+/300w-brushless-dc-motor/ /products/ 301
+/400w-brushless-dc-motor/ /products/ 301
+/500w-brushless-dc-motor/ /products/ 301
+/600w-brushless-dc-motor/ /products/ 301
+/750w-brushless-dc-motor/ /products/ 301
+/800w-brushless-dc-motor/ /products/ 301
+/1000w-brushless-dc-motor/ /products/ 301
+/1500w-brushless-dc-motor/ /products/ 301
+/2000w-brushless-dc-motor/ /products/ 301
+/3000w-brushless-dc-motor/ /products/ 301
+
+# 3-phase motor
+/3-phase-brushless-dc-motor/ /products/ 301
+
+# -----------------------------------------------------------------------------
+# 4. MANUFACTURER/SUPPLIER PAGES -> /about/
+# -----------------------------------------------------------------------------
+
+/bldc-motor-manufacturer/ /about/ 301
+/bldc-motor-manufacturer-china/ /about/ 301
+/brushless-dc-motor-manufacturer/ /about/ 301
+/brushless-dc-motor-supplier/ /about/ 301
+/china-bldc-motor-supplier/ /about/ 301
+/dc-gear-motor-manufacturer/ /about/ 301
+/gear-motor-manufacturer/ /about/ 301
+/engineering-team/ /about/ 301
+
+# -----------------------------------------------------------------------------
+# 5. AGV PAGES -> /heavy-duty-drives/
+# -----------------------------------------------------------------------------
+
+/agv-battery-replacement/ /heavy-duty-drives/ 301
+/agv-drive-system/ /heavy-duty-drives/ 301
+/agv-manufacturer-china/ /heavy-duty-drives/ 301
+/agv-tractor/ /heavy-duty-drives/ 301
+/heavy-duty-agv/ /heavy-duty-drives/ 301
+/heavy-load-agv/ /heavy-duty-drives/ 301
+
+# -----------------------------------------------------------------------------
+# 6. OLD .html EXTENSION PAGES
+# -----------------------------------------------------------------------------
+
+/products.html /products/ 301
+/applications.html /products/ 301
+/industries.html /products/ 301
+/about.html /about/ 301
+/contact.html /contact/ 301
+/blog.html /blog/ 301
+/factory-capability.html /about/ 301
+/who-we-serve.html /about/ 301
+
+# -----------------------------------------------------------------------------
+# 7. AUDIENCE LANDING PAGES -> /drive-selection/
+# -----------------------------------------------------------------------------
+
+/for-procurement-teams/ /drive-selection/ 301
+/for-oem-engineers/ /drive-selection/ 301
+/for-system-integrators/ /drive-selection/ 301
+
+# -----------------------------------------------------------------------------
+# 8. BLOG PAGES -> /blog/
+# -----------------------------------------------------------------------------
+
+# Blog index (directory-based)
+/blog/ /blog/ 301
+
+# Individual blog posts (wildcard catch-all)
+/blog/* /blog/ 301
+
+# -----------------------------------------------------------------------------
+# 9. DASHBOARD (internal page)
+# -----------------------------------------------------------------------------
+
+/dashboard/ / 301
+
+# -----------------------------------------------------------------------------
+# 10. MULTI-LANGUAGE PAGES -> / (homepage)
+# Old site had: zh-cn, de, tr, es, ar, pt, hi, ko
+# New site does not have these language versions yet
+# -----------------------------------------------------------------------------
+
+# Chinese (zh-cn)
+/zh-cn/about.html / 301
+/zh-cn/contact.html / 301
+/zh-cn/products.html / 301
+/zh-cn/blog/* / 301
+/zh-cn/* / 301
+
+# German (de)
+/de/blog/* / 301
+/de/* / 301
+
+# Turkish (tr)
+/tr/blog/* / 301
+/tr/* / 301
+
+# Spanish (es)
+/es/blog/* / 301
+/es/* / 301
+
+# Arabic (ar)
+/ar/* / 301
+
+# Portuguese (pt)
+/pt/* / 301
+
+# Hindi (hi)
+/hi/* / 301
+
+# Korean (ko)
+/ko/* / 301

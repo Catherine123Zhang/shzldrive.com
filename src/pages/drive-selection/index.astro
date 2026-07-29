@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Drive Selection — Get a Drive Recommendation"
+  description="Tell us your equipment specifications — payload, wheel diameter, speed, gradient, voltage. Our engineers recommend a matched BLDC drive configuration within 24 hours."
+  canonical="https://www.nbshzl-motor.com/drive-selection/"
+>
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> → Engineering → Drive Selection</p>
+    <h1>Get a Drive Recommendation</h1>
+    <p class="hero-sub">
+      Share your equipment parameters. Our engineers will recommend a matched motor, gearbox,
+      brake and controller configuration — backed by thousands of real-world installations.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container form-layout">
+    <div class="form-main">
+      <form action="https://api.web3forms.com/submit" method="POST" class="drive-form">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+        <input type="hidden" name="subject" value="SHENGHE DRIVE — Drive Selection Request" />
+        <input type="hidden" name="from_name" value="SHENGHE DRIVE Website" />
+
+        <div class="form-section">
+          <h3>Equipment Specifications</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="payload">Payload / Load Capacity *</label>
+              <select name="payload" id="payload" required>
+                <option value="">Select payload range</option>
+                <option value="1-5 tons">1–5 tons</option>
+                <option value="5-10 tons">5–10 tons</option>
+                <option value="10-20 tons">10–20 tons</option>
+                <option value="20-40 tons">20–40 tons</option>
+                <option value="40-60 tons">40–60 tons</option>
+                <option value="60+ tons">60+ tons</option>
+                <option value="Other">Other (specify below)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="wheel">Wheel Diameter (mm)</label>
+              <input type="text" name="wheel_diameter" id="wheel" placeholder="e.g. 200mm" />
+            </div>
+            <div class="form-group">
+              <label for="speed">Target Travel Speed</label>
+              <input type="text" name="target_speed" id="speed" placeholder="e.g. 20m/min or 0.3m/s" />
+            </div>
+            <div class="form-group">
+              <label for="gradient">Max Gradient / Slope</label>
+              <input type="text" name="gradient" id="gradient" placeholder="e.g. 3° or 5%" />
+            </div>
+            <div class="form-group">
+              <label for="voltage">Battery Voltage *</label>
+              <select name="voltage" id="voltage" required>
+                <option value="">Select voltage</option>
+                <option value="24V">24V</option>
+                <option value="36V">36V</option>
+                <option value="48V">48V</option>
+                <option value="72V">72V</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="motors">Number of Drive Motors</label>
+              <select name="motor_count" id="motors">
+                <option value="">Select</option>
+                <option value="1">1 motor</option>
+                <option value="2">2 motors (dual drive)</option>
+                <option value="4">4 motors</option>
+                <option value="Not sure">Not sure — recommend</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="hours">Daily Operating Hours</label>
+              <input type="text" name="daily_hours" id="hours" placeholder="e.g. 8 hours" />
+            </div>
+            <div class="form-group">
+              <label for="ip">Protection / IP Rating</label>
+              <select name="ip_rating" id="ip">
+                <option value="">Select</option>
+                <option value="IP40">IP40 (indoor standard)</option>
+                <option value="IP54">IP54 (dust/splash)</option>
+                <option value="IP65">IP65 (waterproof)</option>
+                <option value="IP67">IP67 (submersible)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Equipment Type</h3>
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label for="equipment">What type of equipment? *</label>
+              <select name="equipment_type" id="equipment" required>
+                <option value="">Select equipment type</option>
+                <option value="Powered machinery mover">Powered machinery mover</option>
+                <option value="Transport trolley / transfer cart">Transport trolley / transfer cart</option>
+                <option value="Heavy-duty AGV">Heavy-duty AGV</option>
+                <option value="Tracked carrier">Tracked carrier</option>
+                <option value="Die/mold transfer cart">Die / mold transfer cart</option>
+                <option value="PV cleaning robot">PV cleaning robot</option>
+                <option value="Mobile robot">Mobile robot</option>
+                <option value="Conveyor system">Conveyor system</option>
+                <option value="Other">Other (describe below)</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label for="details">Additional Details</label>
+              <textarea name="details" id="details" rows="4" placeholder="Working environment, special requirements, existing motor specs to replace, annual volume, etc."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Your Contact Information</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Your Name *</label>
+              <input type="text" name="name" id="name" required placeholder="Full name" />
+            </div>
+            <div class="form-group">
+              <label for="company">Company *</label>
+              <input type="text" name="company" id="company" required placeholder="Company name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" name="email" id="email" required placeholder="your@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone / WhatsApp</label>
+              <input type="text" name="phone" id="phone" placeholder="+1 234 567 8900" />
+            </div>
+            <div class="form-group">
+              <label for="country">Country *</label>
+              <input type="text" name="country" id="country" required placeholder="e.g. Germany" />
+            </div>
+            <div class="form-group">
+              <label for="volume">Estimated Annual Volume</label>
+              <select name="volume" id="volume">
+                <option value="">Select</option>
+                <option value="Prototype / sample">Prototype / sample</option>
+                <option value="10-50 units/year">10–50 units/year</option>
+                <option value="50-200 units/year">50–200 units/year</option>
+                <option value="200-1000 units/year">200–1,000 units/year</option>
+                <option value="1000+ units/year">1,000+ units/year</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary btn-lg">Get a Drive Recommendation →</button>
+          <p class="form-note">Our engineers typically respond within 24 hours with a recommended drive configuration.</p>
+        </div>
+      </form>
+    </div>
+
+    <aside class="form-sidebar">
+      <div class="sidebar-card">
+        <h4>What You'll Receive</h4>
+        <ul>
+          <li>Recommended motor model & power</li>
+          <li>Gearbox type & gear ratio</li>
+          <li>Output torque & speed calculation</li>
+          <li>Controller specification</li>
+          <li>Brake recommendation</li>
+          <li>Dimensional drawing</li>
+          <li>Prototype kit pricing & lead time</li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <h4>Prefer to Talk?</h4>
+        <p>WhatsApp: <a href="https://wa.me/8618268661068">+86 182 6866 1068</a></p>
+        <p>Email: <a href="mailto:sales@nbshzl-motor.com">sales@nbshzl-motor.com</a></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+
+.form-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: start; }
+.form-section { margin-bottom: 36px; }
+.form-section h3 { font-size: 18px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--brand-accent); display: inline-block; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.full-width { grid-column: 1 / -1; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--brand-text); }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 10px 14px; border: 1px solid var(--brand-border); border-radius: 6px;
+  font-size: 14px; font-family: inherit; background: white; transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brand-accent); outline: none; }
+.form-submit { text-align: center; padding-top: 16px; }
+.form-note { font-size: 13px; color: var(--brand-text-light); margin-top: 12px; }
+
+.sidebar-card { background: var(--brand-surface); border: 1px solid var(--brand-border); border-radius: 10px; padding: 24px; margin-bottom: 20px; }
+.sidebar-card h4 { font-size: 16px; margin-bottom: 12px; }
+.sidebar-card ul { list-style: none; }
+.sidebar-card li { font-size: 14px; padding: 4px 0; color: var(--brand-text); }
+.sidebar-card li::before { content: '✓ '; color: var(--brand-accent); font-weight: 700; }
+.sidebar-card p { font-size: 14px; margin-bottom: 4px; }
+.sidebar-card a { color: var(--brand-accent); }
+
+@media (max-width: 768px) {
+  .form-layout { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+</style>
