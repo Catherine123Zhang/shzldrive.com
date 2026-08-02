@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { heavyDutyPage } from '../../../i18n/content/secondary-pages';
+import type { Locale } from '../../../i18n/translations';
+
+const locale: Locale = 'id';
+const p = heavyDutyPage[locale];
+const alternates = [
+  { locale: 'en', path: '/heavy-duty-drives/' },
+  { locale: 'es', path: '/es/heavy-duty-drives/' },
+  { locale: 'pt', path: '/pt/heavy-duty-drives/' },
+  { locale: 'fr', path: '/fr/heavy-duty-drives/' },
+  { locale: 'ar', path: '/ar/heavy-duty-drives/' },
+  { locale: 'ru', path: '/ru/heavy-duty-drives/' },
+  { locale: 'vi', path: '/vi/heavy-duty-drives/' },
+  { locale: 'id', path: '/id/heavy-duty-drives/' },
+];
+---
+
+<BaseLayout
+  title={p.title}
+  description={p.description}
+  locale="id"
+  alternates={alternates}
+>
+
+<section class="hero-inner">
+  <div class="hero-bg" style="background-image: url('/assets/images/products/agv/electric-tank-carrier-hero-1.jpg')"></div>
+  <div class="container">
+    <p class="breadcrumb"><a href="/id/">{p.breadcrumbHome}</a> &rarr; {p.breadcrumbHeavy}</p>
+    <h1>{p.h1}</h1>
+    <p class="hero-sub">{p.heroSub}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>{p.whyTitle}</h2>
+    <div class="grid-3">
+      <div class="value-card">
+        <h3>{p.whyProvenTitle}</h3>
+        <p>{p.whyProvenDesc}</p>
+      </div>
+      <div class="value-card">
+        <h3>{p.whyCompleteTitle}</h3>
+        <p>{p.whyCompleteDesc}</p>
+      </div>
+      <div class="value-card">
+        <h3>{p.whyRapidTitle}</h3>
+        <p>{p.whyRapidDesc}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tonnage-detail">
+  <div class="container">
+    <h2>{p.configTitle}</h2>
+
+    <div class="payload-card">
+      <div class="payload-header">
+        <span class="payload-range">{p.payload5Title}</span>
+        <span class="payload-type">{p.payload5Type}</span>
+      </div>
+      <div class="payload-specs">
+        <div><strong>Motors:</strong> 2 × 400–500W BLDC</div>
+        <div><strong>Gear Ratio:</strong> 50:1</div>
+        <div><strong>Voltage:</strong> 48V</div>
+        <div><strong>Gearbox:</strong> 90mm L-type or R-type</div>
+        <div><strong>Brake:</strong> 24V electromagnetic (optional)</div>
+        <div><strong>Controller:</strong> Dual-channel, matched</div>
+      </div>
+      <p class="payload-note">{p.payload5Note}</p>
+    </div>
+
+    <div class="payload-card">
+      <div class="payload-header">
+        <span class="payload-range">{p.payload10Title}</span>
+        <span class="payload-type">{p.payload10Type}</span>
+      </div>
+      <div class="payload-specs">
+        <div><strong>Motors:</strong> 2 × 750W BLDC</div>
+        <div><strong>Gear Ratio:</strong> 75:1</div>
+        <div><strong>Voltage:</strong> 48V</div>
+        <div><strong>Gearbox:</strong> 104mm L-type, alloy gear</div>
+        <div><strong>Brake:</strong> 24V electromagnetic (standard)</div>
+        <div><strong>Controller:</strong> Dual-channel with ramp control</div>
+      </div>
+      <p class="payload-note">{p.payload10Note}</p>
+    </div>
+
+    <div class="payload-card payload-featured">
+      <div class="payload-header">
+        <span class="payload-range">{p.payload20Title}</span>
+        <span class="payload-type">{p.payload20Type}</span>
+        <span class="payload-badge">{p.payload20Badge}</span>
+      </div>
+      <div class="payload-specs">
+        <div><strong>Motors:</strong> 2 × 1.5kW BLDC</div>
+        <div><strong>Gear Ratio:</strong> 100:1</div>
+        <div><strong>Voltage:</strong> 48V</div>
+        <div><strong>Gearbox:</strong> 120mm L-type, high-torque</div>
+        <div><strong>Brake:</strong> 24V electromagnetic (standard)</div>
+        <div><strong>Controller:</strong> Dual-channel, current limiting, regenerative</div>
+        <div><strong>Encoder:</strong> 1000 PPR incremental (optional)</div>
+      </div>
+      <p class="payload-note">{p.payload20Note}</p>
+    </div>
+
+    <div class="payload-card">
+      <div class="payload-header">
+        <span class="payload-range">{p.payload40Title}</span>
+        <span class="payload-type">{p.payload40Type}</span>
+      </div>
+      <div class="payload-specs">
+        <div><strong>Motors:</strong> 2 × 2kW or 2 × 3kW BLDC</div>
+        <div><strong>Gear Ratio:</strong> 100:1</div>
+        <div><strong>Voltage:</strong> 48–72V</div>
+        <div><strong>Gearbox:</strong> 120mm L-type, reinforced</div>
+        <div><strong>Brake:</strong> Dual electromagnetic + parking</div>
+        <div><strong>Controller:</strong> High-current dual-channel, 150A rating</div>
+        <div><strong>Tandem:</strong> Two units paired for 100–120T capacity</div>
+      </div>
+      <p class="payload-note">{p.payload40Note}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section equipment-types">
+  <div class="container">
+    <h2>{p.equipTitle}</h2>
+    <div class="grid-3">
+      <div class="equip-card">
+        <img src="/assets/images/products/agv/electric-tank-carrier-hero-2.jpg" alt="Powered machinery mover" class="equip-img" />
+        <h3>{p.equipMoverTitle}</h3>
+        <p>{p.equipMoverDesc}</p>
+      </div>
+      <div class="equip-card">
+        <img src="/assets/images/products/agv/tank-carrier-turntable-top.jpg" alt="Die and mold transfer cart" class="equip-img" />
+        <h3>{p.equipDieTitle}</h3>
+        <p>{p.equipDieDesc}</p>
+      </div>
+      <div class="equip-card">
+        <img src="/assets/images/products/app-agv-amr.jpg" alt="Heavy-duty AGV" class="equip-img" />
+        <h3>{p.equipAgvTitle}</h3>
+        <p>{p.equipAgvDesc}</p>
+      </div>
+      <div class="equip-card">
+        <img src="/assets/images/products/agv/tank-carrier-front-view.jpg" alt="Battery transport trolley" class="equip-img" />
+        <h3>{p.equipTrolleyTitle}</h3>
+        <p>{p.equipTrolleyDesc}</p>
+      </div>
+      <div class="equip-card">
+        <img src="/assets/images/products/app-agriculture-crawler.jpg" alt="Tracked carrier" class="equip-img" />
+        <h3>{p.equipTrackedTitle}</h3>
+        <p>{p.equipTrackedDesc}</p>
+      </div>
+      <div class="equip-card">
+        <img src="/assets/images/products/agv/tank-carrier-drive-wheels.jpg" alt="Electric machine skate" class="equip-img" />
+        <h3>{p.equipSkateTitle}</h3>
+        <p>{p.equipSkateDesc}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="container cta-inner">
+    <h2>{p.ctaTitle}</h2>
+    <p>{p.ctaDesc}</p>
+    <div class="cta-actions">
+      <a href="/id/drive-selection/" class="btn btn-primary btn-lg">{p.ctaBtn} &rarr;</a>
+      <a href="https://wa.me/8618268661068?text=Hi%2C%20I%20need%20a%20heavy-duty%20BLDC%20drive%20system." class="btn btn-wa-lg" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="/id/prototype-drive-kit/" class="btn btn-outline-dark">{p.ctaPrototype}</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.hero-inner {
+  position: relative;
+  overflow: hidden;
+  background: var(--brand-dark);
+  color: white;
+  padding: 48px 0 56px;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+}
+.hero-inner .container {
+  position: relative;
+  z-index: 1;
+}
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.hero-inner h1 { font-size: 40px; margin-bottom: 16px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 640px; }
+
+.value-card {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 10px;
+  padding: 28px;
+}
+.value-card h3 { font-size: 18px; margin-bottom: 10px; color: var(--brand-primary); }
+.value-card p { font-size: 14px; color: var(--brand-text-light); line-height: 1.6; }
+
+.tonnage-detail { background: var(--brand-surface); }
+
+.payload-card {
+  background: white;
+  border: 1px solid var(--brand-border);
+  border-radius: 10px;
+  padding: 32px;
+  margin-bottom: 20px;
+}
+.payload-featured { border: 2px solid var(--brand-accent); }
+.payload-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+.payload-range { font-size: 28px; font-weight: 800; color: var(--brand-primary); }
+.payload-type { font-size: 15px; color: var(--brand-text-light); }
+.payload-badge {
+  background: var(--brand-accent);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.payload-specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 8px 24px;
+  margin-bottom: 16px;
+}
+.payload-specs div { font-size: 14px; padding: 4px 0; }
+.payload-note { font-size: 13px; color: var(--brand-text-light); font-style: italic; border-top: 1px solid var(--brand-border); padding-top: 12px; }
+
+.equip-img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
+.equip-card {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 10px;
+  padding: 28px;
+}
+.equip-card h3 { font-size: 16px; margin-bottom: 8px; }
+.equip-card p { font-size: 14px; color: var(--brand-text-light); line-height: 1.5; }
+
+.cta-section { background: var(--brand-primary); color: white; text-align: center; }
+.cta-inner h2 { font-size: 32px; margin-bottom: 12px; }
+.cta-inner p { color: rgba(255,255,255,0.7); margin-bottom: 28px; font-size: 17px; }
+.cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-wa-lg {
+  background: #25D366; color: white; display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 28px; border-radius: 6px; font-weight: 600; font-size: 15px; text-decoration: none;
+}
+.btn-wa-lg:hover { background: #1ebe57; }
+.btn-outline-dark { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); }
+.btn-outline-dark:hover { border-color: white; }
+.btn-lg { padding: 16px 32px; font-size: 16px; }
+</style>

@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { prototypeKitPage } from '../../../i18n/content/secondary-pages';
+import type { Locale } from '../../../i18n/translations';
+
+const locale: Locale = 'pt';
+const p = prototypeKitPage[locale];
+const alternates = [
+  { locale: 'en', path: '/prototype-drive-kit/' },
+  { locale: 'es', path: '/es/prototype-drive-kit/' },
+  { locale: 'pt', path: '/pt/prototype-drive-kit/' },
+  { locale: 'fr', path: '/fr/prototype-drive-kit/' },
+  { locale: 'ar', path: '/ar/prototype-drive-kit/' },
+  { locale: 'ru', path: '/ru/prototype-drive-kit/' },
+  { locale: 'vi', path: '/vi/prototype-drive-kit/' },
+  { locale: 'id', path: '/id/prototype-drive-kit/' },
+];
+---
+
+<BaseLayout
+  title={p.title}
+  description={p.description}
+  locale="pt"
+  alternates={alternates}
+>
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/pt/">{p.breadcrumbHome}</a> &rarr; {p.breadcrumbEng} &rarr; {p.breadcrumbKit}</p>
+    <h1>{p.h1}</h1>
+    <p class="hero-sub">{p.heroSub}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>{p.includedTitle}</h2>
+    <div class="grid-3">
+      <div class="kit-item"><span class="kit-icon">⚡</span><h3>{p.kitMotorTitle}</h3><p>{p.kitMotorDesc}</p></div>
+      <div class="kit-item"><span class="kit-icon">⚙️</span><h3>{p.kitGearboxTitle}</h3><p>{p.kitGearboxDesc}</p></div>
+      <div class="kit-item"><span class="kit-icon">🔧</span><h3>{p.kitBrakeTitle}</h3><p>{p.kitBrakeDesc}</p></div>
+      <div class="kit-item"><span class="kit-icon">🎛️</span><h3>{p.kitControllerTitle}</h3><p>{p.kitControllerDesc}</p></div>
+      <div class="kit-item"><span class="kit-icon">📡</span><h3>{p.kitEncoderTitle}</h3><p>{p.kitEncoderDesc}</p></div>
+      <div class="kit-item"><span class="kit-icon">🔌</span><h3>{p.kitWiringTitle}</h3><p>{p.kitWiringDesc}</p></div>
+    </div>
+    <div class="kit-note">
+      <p><strong>{p.kitNote}</strong></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--brand-surface);">
+  <div class="container">
+    <h2>{p.howTitle}</h2>
+    <div class="steps">
+      <div class="step"><span class="step-num">1</span><h3>{p.step1Title}</h3><p>{p.step1Desc}</p></div>
+      <div class="step"><span class="step-num">2</span><h3>{p.step2Title}</h3><p>{p.step2Desc}</p></div>
+      <div class="step"><span class="step-num">3</span><h3>{p.step3Title}</h3><p>{p.step3Desc}</p></div>
+      <div class="step"><span class="step-num">4</span><h3>{p.step4Title}</h3><p>{p.step4Desc}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="container cta-inner">
+    <h2>{p.ctaTitle}</h2>
+    <p>{p.ctaDesc}</p>
+    <a href="/pt/drive-selection/" class="btn btn-primary btn-lg">{p.ctaBtn} &rarr;</a>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+.kit-item { background: white; border: 1px solid var(--brand-border); border-radius: 10px; padding: 28px; }
+.kit-icon { font-size: 28px; display: block; margin-bottom: 12px; }
+.kit-item h3 { font-size: 17px; margin-bottom: 8px; }
+.kit-item p { font-size: 14px; color: var(--brand-text-light); line-height: 1.5; }
+.kit-note { margin-top: 32px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 20px 24px; }
+.kit-note p { font-size: 14px; line-height: 1.6; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.step { text-align: center; }
+.step-num { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: var(--brand-accent); color: white; font-size: 20px; font-weight: 800; margin-bottom: 16px; }
+.step h3 { font-size: 16px; margin-bottom: 8px; }
+.step p { font-size: 13px; color: var(--brand-text-light); }
+.step a { color: var(--brand-accent); }
+.cta-section { background: var(--brand-primary); color: white; text-align: center; }
+.cta-inner h2 { font-size: 32px; margin-bottom: 12px; }
+.cta-inner p { color: rgba(255,255,255,0.7); margin-bottom: 28px; }
+.btn-lg { padding: 16px 32px; font-size: 16px; }
+@media (max-width: 768px) { .steps { grid-template-columns: 1fr 1fr; } }
+</style>

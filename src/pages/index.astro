@@ -4,25 +4,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Proven BLDC Drive Systems for Heavy-Duty Mobile Equipment"
-  description="SHENGHE DRIVE — BLDC motor, gearbox and controller systems for powered machinery movers, heavy-duty AGVs and transport trolleys. Widely adopted by China's leading heavy-load equipment manufacturers."
+  description="盛合智联 Drive — BLDC motor, gearbox and controller systems for powered machinery movers, heavy-duty AGVs and transport trolleys. Widely adopted by China's leading heavy-load equipment manufacturers."
 >
 
 <!-- HERO -->
 <section class="hero">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="/assets/video/factory-hero-loop.mp4" type="video/mp4" />
-  </video>
-  <div class="hero-overlay"></div>
+  <div class="hero-bg"></div>
   <div class="container hero-content">
-    <p class="hero-badge">SHENGHE DRIVE</p>
-    <h1>The Drive Behind China's Leading<br/>Powered Machinery Movers</h1>
-    <p class="hero-sub">
-      High-torque BLDC motor, gearbox and controller systems for battery-powered
-      machinery movers, transport trolleys and heavy-duty AGVs.
-    </p>
-    <div class="hero-actions">
-      <a href="/drive-selection/" class="btn btn-primary">Discuss Your Application</a>
-      <a href="/replacement-motor/" class="btn btn-outline">Find a Replacement Motor</a>
+    <div class="hero-text">
+      <p class="hero-badge">盛合智联 Drive</p>
+      <h1>The Drive Behind China's Leading<br/>Powered Machinery Movers</h1>
+      <p class="hero-sub">
+        High-torque BLDC motor, gearbox and controller systems for battery-powered
+        machinery movers, transport trolleys and heavy-duty AGVs. 15W–3,000W.
+      </p>
+      <div class="hero-actions">
+        <a href="/drive-selection/" class="btn btn-primary">Get a Quote</a>
+        <a href="https://wa.me/8618268661068?text=Hi%2C%20I%20need%20a%20BLDC%20motor%20for%20my%20project." class="btn btn-wa-hero" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+        <a href="/replacement-motor/" class="btn btn-outline">Find a Replacement Motor</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="/assets/images/products/hero-motor-set.png" alt="盛合智联 BLDC motor and controller system" class="hero-motor-img" />
     </div>
   </div>
 </section>
@@ -73,7 +79,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <li>Die & mold transfer carts</li>
           <li>Tracked carriers</li>
         </ul>
-        <span class="app-cta">Explore Drive Configurations →</span>
+        <span class="app-cta">Explore Drive Configurations &rarr;</span>
       </a>
 
       <!-- SECONDARY: Robotic Drives -->
@@ -87,7 +93,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <li>IP65 outdoor rated</li>
           <li>CAN / RS485 control</li>
         </ul>
-        <span class="app-cta">Learn More →</span>
+        <span class="app-cta">Learn More &rarr;</span>
       </a>
 
       <!-- TERTIARY: Industrial -->
@@ -101,7 +107,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <li>Rotary platforms</li>
           <li>Packaging machinery</li>
         </ul>
-        <span class="app-cta">Browse Products →</span>
+        <span class="app-cta">Browse Products &rarr;</span>
       </a>
     </div>
   </div>
@@ -186,12 +192,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 </section>
 
-<!-- CTA SECTION -->
+<!-- CONTACT CTA WITH QR -->
 <section class="section cta-section">
   <div class="container cta-inner">
     <h2>Tell Us About Your Application</h2>
     <p>Share your equipment specifications. Our engineers will recommend a drive configuration within 24 hours.</p>
-    <a href="/drive-selection/" class="btn btn-primary btn-lg">Get a Drive Recommendation →</a>
+    <div class="cta-multi">
+      <a href="/drive-selection/" class="btn btn-primary btn-lg">Get a Drive Recommendation &rarr;</a>
+      <a href="https://wa.me/8618268661068?text=Hi%2C%20I%20need%20a%20BLDC%20motor%20quote." class="btn btn-wa-lg" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp: +86 182 6866 1068
+      </a>
+    </div>
   </div>
 </section>
 
@@ -201,26 +213,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 /* Hero */
 .hero {
   position: relative;
-  min-height: 560px;
+  min-height: 520px;
   display: flex;
   align-items: center;
   background: var(--brand-dark);
   color: white;
   overflow: hidden;
 }
-.hero-video {
+.hero-bg {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
 }
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.7) 100%);
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 48px;
+  align-items: center;
 }
-.hero-content { position: relative; z-index: 1; max-width: 720px; }
+.hero-text { max-width: 640px; }
 .hero-badge {
   display: inline-block;
   font-size: 12px;
@@ -230,9 +243,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   color: var(--brand-accent-light);
   margin-bottom: 20px;
 }
-.hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
-.hero-sub { font-size: 18px; color: rgba(255,255,255,0.75); margin-bottom: 32px; max-width: 560px; }
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero h1 { font-size: 44px; font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.75); margin-bottom: 32px; max-width: 520px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-wa-hero {
+  background: #25D366;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-wa-hero:hover { background: #1ebe57; }
+.hero-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-motor-img {
+  max-width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4));
+}
 
 /* Proof Bar */
 .proof-bar { background: var(--brand-surface); padding: 48px 0 40px; }
@@ -311,11 +349,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 /* CTA Section */
 .cta-section { background: var(--brand-primary); color: white; text-align: center; }
 .cta-inner h2 { font-size: 32px; margin-bottom: 12px; }
-.cta-inner p { color: rgba(255,255,255,0.7); margin-bottom: 32px; font-size: 17px; }
+.cta-inner p { color: rgba(255,255,255,0.7); margin-bottom: 28px; font-size: 17px; }
+.cta-multi { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
 .btn-lg { padding: 18px 36px; font-size: 16px; }
+.btn-wa-lg {
+  background: #25D366;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 32px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-wa-lg:hover { background: #1ebe57; }
+.cta-qr-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 8px;
+}
+.cta-qr-img { width: 80px; height: 80px; object-fit: contain; border-radius: 6px; border: 2px solid rgba(255,255,255,0.2); }
+.cta-qr-text { font-size: 13px; color: rgba(255,255,255,0.5); }
 
 @media (max-width: 768px) {
-  .hero h1 { font-size: 32px; }
+  .hero h1 { font-size: 30px; }
+  .hero-content { grid-template-columns: 1fr; }
+  .hero-img-wrap { display: none; }
   .proof-inner { flex-wrap: wrap; gap: 32px; }
   .app-grid { grid-template-columns: 1fr; }
 }

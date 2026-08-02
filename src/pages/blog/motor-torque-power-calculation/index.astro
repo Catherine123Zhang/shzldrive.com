@@ -1,0 +1,375 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the formula for motor torque?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Motor torque T (N.m) = 9.55 x P / n, where P is power in watts and n is speed in RPM. For example, a 500W motor at 3,000 RPM produces T = 9.55 x 500 / 3000 = 1.59 N.m at the motor shaft. After a 30:1 gear reducer (assuming 85% efficiency), the output torque becomes 1.59 x 30 x 0.85 = 40.5 N.m."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert between motor power in watts and horsepower?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1 horsepower (HP) = 746 watts. So a 750W BLDC motor is approximately 1 HP, and a 1,500W motor is approximately 2 HP. In metric specifications, kW is standard: 1 kW = 1.34 HP. Our motor range covers 15W (0.02 HP) to 3,000W (4 HP)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between rated torque and peak torque?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rated (continuous) torque is the torque the motor can deliver indefinitely without overheating. Peak torque is 2-3x the rated torque and can only be sustained for short periods (typically 10-30 seconds) before thermal limits are reached. For sizing, use rated torque for your continuous operating point and peak torque only for transient loads like acceleration or slope climbing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does gear ratio affect torque and speed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A gear reducer multiplies torque and reduces speed by the gear ratio. A 30:1 ratio means the output torque is 30x the motor torque (minus gearbox losses, typically 5-15% per stage), and the output speed is 1/30th of the motor speed. For example, a motor at 3,000 RPM with 1.59 N.m through a 30:1 reducer gives approximately 100 RPM at 40.5 N.m (at 85% efficiency)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate the power needed to move a load on wheels?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Power (W) = Force (N) x Velocity (m/s) / Efficiency. The force includes rolling resistance (mass x g x Crr), gradient force (mass x g x sin(angle)), and acceleration force (mass x acceleration). For a 2,000 kg load on flat concrete at 1 m/s with 75% drivetrain efficiency: P = (2000 x 9.81 x 0.02 x 1.0) / 0.75 = 523W."
+      }
+    }
+  ]
+});
+
+const articleSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Motor Torque & Power Calculation Guide",
+  "description": "Fundamental formulas for calculating motor torque, speed and power from mechanical load requirements. Practical examples for transport equipment.",
+  "author": {
+    "@type": "Organization",
+    "name": "Ningbo Shenghe Zhilian Motor Co., Ltd."
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shenghe Zhilian Drive",
+    "url": "https://shzldrive.com"
+  },
+  "datePublished": "2026-07-10",
+  "dateModified": "2026-08-01"
+});
+---
+
+<BaseLayout
+  title="Motor Torque & Power Calculation Guide"
+  description="Fundamental formulas for calculating BLDC motor torque, speed and power from mechanical load requirements. Practical worked examples for transport equipment, AGVs and industrial drives."
+  canonical="https://shzldrive.com/blog/motor-torque-power-calculation/"
+>
+
+<script type="application/ld+json" set:html={faqSchema} />
+<script type="application/ld+json" set:html={articleSchema} />
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/blog/">Resources</a> &rarr; Torque & Power Calculation</p>
+    <h1>Motor Torque & Power Calculation Guide</h1>
+    <p class="hero-sub">
+      The essential formulas every equipment designer needs for motor selection — with worked examples from real transport applications.
+    </p>
+  </div>
+</section>
+
+<article class="section">
+  <div class="container article-content">
+
+    <p class="article-lead">
+      Torque, speed and power are the three pillars of motor selection. Understanding how they relate to each other — and how to derive them from your mechanical load — is the difference between a motor that runs reliably for years and one that burns out in the first month. This guide covers the fundamental calculations our engineers use daily when specifying BLDC drive systems for transport equipment, AGVs and industrial machinery.
+    </p>
+
+    <h2>The Three Fundamental Relationships</h2>
+
+    <p>
+      Every electric motor obeys three core equations. These apply to all motor types — BLDC, AC induction, stepper — but we will use BLDC-specific values for our examples.
+    </p>
+
+    <h3>1. Torque-Power-Speed Relationship</h3>
+    <p>
+      <strong>P = T x omega</strong>, where P is power in watts, T is torque in N.m, and omega is angular velocity in rad/s. Since most datasheets use RPM rather than rad/s, the practical form is:
+    </p>
+    <p>
+      <strong>T (N.m) = 9.55 x P (W) / n (RPM)</strong>
+    </p>
+    <p>
+      This is the single most important formula in motor selection. It tells you: for a given power, increasing speed decreases torque, and vice versa. A 500W motor at 3,000 RPM produces 1.59 N.m. The same 500W motor at 1,500 RPM produces 3.18 N.m — twice the torque at half the speed.
+    </p>
+
+    <img src="/assets/images/products/high-power-120.jpg" alt="High-power 120mm BLDC motor for torque-intensive applications" class="article-img" loading="lazy" />
+
+    <h3>2. Linear Force to Rotational Torque</h3>
+    <p>
+      For wheeled equipment, you need to convert linear force at the ground contact into rotational torque at the wheel shaft:
+    </p>
+    <p>
+      <strong>T<sub>wheel</sub> (N.m) = F (N) x r (m)</strong>
+    </p>
+    <p>
+      Where F is the total traction force and r is the wheel radius. With a 200mm diameter wheel (r = 0.1 m) and 500 N total force: T<sub>wheel</sub> = 500 x 0.1 = <strong>50 N.m</strong>.
+    </p>
+
+    <h3>3. Linear Speed to Rotational Speed</h3>
+    <p>
+      <strong>n<sub>wheel</sub> (RPM) = (v x 60) / (pi x D)</strong>
+    </p>
+    <p>
+      Where v is linear velocity in m/s and D is the wheel diameter in meters. At 1.0 m/s with a 200mm wheel: n = (1.0 x 60) / (3.14159 x 0.2) = <strong>95.5 RPM</strong>.
+    </p>
+
+    <h2>Calculating Load Forces</h2>
+
+    <p>
+      The total force your motor must overcome depends on what resistance the load presents. For transport equipment (trolleys, AGVs, machinery movers), there are four force components:
+    </p>
+
+    <div class="spec-table-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Force Component</th>
+            <th>Formula</th>
+            <th>Typical Values</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rolling Resistance</td>
+            <td>F = M x g x C<sub>rr</sub></td>
+            <td>C<sub>rr</sub> = 0.01-0.04 (wheel/floor dependent)</td>
+          </tr>
+          <tr>
+            <td>Gradient</td>
+            <td>F = M x g x sin(theta)</td>
+            <td>5% grade = 490 N per 1,000 kg</td>
+          </tr>
+          <tr>
+            <td>Acceleration</td>
+            <td>F = M x a</td>
+            <td>a = 0.3-1.0 m/s<sup>2</sup> typical</td>
+          </tr>
+          <tr>
+            <td>Wind / External</td>
+            <td>Application-specific</td>
+            <td>Usually negligible indoors</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <img src="/assets/images/products/bldc-l-type-gear-motor.jpg" alt="L-type geared BLDC motor with worm gear reducer" class="article-img" loading="lazy" />
+
+    <h2>Worked Example: Battery-Powered Machinery Mover</h2>
+
+    <p>
+      Let's size a drive motor for a powered machinery mover — one of the most common applications for our BLDC drive systems.
+    </p>
+
+    <p><strong>Requirements:</strong></p>
+    <ul>
+      <li>Maximum load: 5,000 kg (machine weight on castors transferred to mover)</li>
+      <li>Mover chassis weight: 300 kg</li>
+      <li>Travel speed: 0.5 m/s (walking pace)</li>
+      <li>Drive wheel diameter: 250mm</li>
+      <li>Maximum gradient: 3% (workshop ramp)</li>
+      <li>Floor surface: Smooth epoxy concrete</li>
+    </ul>
+
+    <p><strong>Step 1 — Forces:</strong></p>
+    <ul>
+      <li>Rolling resistance: 5,300 kg x 9.81 x 0.015 = <strong>780 N</strong></li>
+      <li>Gradient (3%): 5,300 x 9.81 x 0.03 = <strong>1,559 N</strong></li>
+      <li>Acceleration (0.3 m/s<sup>2</sup>): 5,300 x 0.3 = <strong>1,590 N</strong></li>
+    </ul>
+
+    <p><strong>Step 2 — Torque at each wheel (dual-drive):</strong></p>
+    <ul>
+      <li>Continuous (flat): 780 / 2 x 0.125 = <strong>48.75 N.m per wheel</strong></li>
+      <li>Peak (slope + accel): (780 + 1,559 + 1,590) / 2 x 0.125 = <strong>245.6 N.m per wheel</strong></li>
+    </ul>
+
+    <p><strong>Step 3 — Wheel speed:</strong></p>
+    <p>n = (0.5 x 60) / (pi x 0.25) = <strong>38.2 RPM</strong></p>
+
+    <p><strong>Step 4 — Motor power (per motor, 75% efficiency):</strong></p>
+    <ul>
+      <li>Continuous: (780 / 2 x 0.5) / 0.75 = <strong>260 W</strong></li>
+      <li>Peak: (3,929 / 2 x 0.5) / 0.75 = <strong>1,310 W</strong></li>
+    </ul>
+
+    <p>
+      <strong>Selection:</strong> Two BL-120 L-type geared motors at 750W rated power, 48V, with 80:1 worm gear ratio. The worm gear provides self-locking for slope holding, and the 750W rating allows 2x peak (1,500W) for short-duration slope and acceleration loads. Add a 24V electromagnetic brake (15 N.m) for fail-safe parking.
+    </p>
+
+    <img src="/assets/images/products/electric-tank-carrier.jpg" alt="Electric tank carrier powered by high-power BLDC motors" class="article-img" loading="lazy" />
+
+    <h2>Gearbox Efficiency: The Hidden Factor</h2>
+
+    <p>
+      Gearbox efficiency is often overlooked but it significantly impacts motor sizing. Here are typical efficiency ranges for the gear types we manufacture:
+    </p>
+
+    <div class="spec-table-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Gear Type</th>
+            <th>Efficiency per Stage</th>
+            <th>Typical Ratios</th>
+            <th>Self-Locking?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Helical (R-type)</td>
+            <td>92-96%</td>
+            <td>3:1 to 100:1</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Worm gear (L-type)</td>
+            <td>40-85% (ratio dependent)</td>
+            <td>10:1 to 100:1</td>
+            <td>Yes (above ~30:1)</td>
+          </tr>
+          <tr>
+            <td>Planetary</td>
+            <td>90-95%</td>
+            <td>3:1 to 512:1 (multi-stage)</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Note that worm gear efficiency varies dramatically with ratio. At 10:1, efficiency can be 80-85%. At 60:1, it drops to 50-60%. This is the trade-off for self-locking capability — the worm gear's inherent friction that prevents back-driving is the same friction that reduces forward efficiency. For high-efficiency applications, use helical or planetary gears with an external brake.
+    </p>
+
+    <h2>Thermal Considerations</h2>
+
+    <p>
+      Motor power rating is ultimately a thermal limit, not an electromagnetic one. A BLDC motor can produce far more torque than its nameplate rating — but only for a short time before the winding temperature exceeds the insulation class limit (typically 130C for Class B insulation).
+    </p>
+
+    <p>
+      Key thermal rules for motor selection:
+    </p>
+
+    <ul>
+      <li><strong>Continuous duty (S1):</strong> Motor operates at rated load indefinitely. Size for this if the load is constant (e.g., conveyor drive).</li>
+      <li><strong>Intermittent duty (S2/S3):</strong> Motor operates in on/off cycles. Typical for AGVs and movers — 2 minutes run, 1 minute stop. You can use a smaller motor for intermittent duty because the off-period allows cooling.</li>
+      <li><strong>Peak overload:</strong> 2-3x rated torque for 10-30 seconds. Acceptable for startup, acceleration and short slope climbing. Our controllers have thermal protection to cut power before the motor overheats.</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>What is the formula for motor torque?</h3>
+        <p>Motor torque T (N.m) = 9.55 x P (W) / n (RPM). For example, a 500W motor at 3,000 RPM produces T = 9.55 x 500 / 3,000 = 1.59 N.m at the motor shaft. After a 30:1 gear reducer (assuming 85% efficiency), the output torque becomes 1.59 x 30 x 0.85 = 40.5 N.m.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I convert between motor power in watts and horsepower?</h3>
+        <p>1 horsepower (HP) = 746 watts. So a 750W BLDC motor is approximately 1 HP, and a 1,500W motor is approximately 2 HP. In metric specifications, kW is standard: 1 kW = 1.34 HP. Our motor range covers 15W (0.02 HP) to 3,000W (4 HP).</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the difference between rated torque and peak torque?</h3>
+        <p>Rated (continuous) torque is the torque the motor can deliver indefinitely without overheating. Peak torque is 2-3x the rated torque and can only be sustained for short periods (typically 10-30 seconds) before thermal limits are reached. For sizing, use rated torque for your continuous operating point and peak torque only for transient loads like acceleration or slope climbing.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does gear ratio affect torque and speed?</h3>
+        <p>A gear reducer multiplies torque and reduces speed by the gear ratio. A 30:1 ratio means the output torque is 30x the motor torque (minus gearbox losses, typically 5-15% per stage), and the output speed is 1/30th of the motor speed. For example, a motor at 3,000 RPM with 1.59 N.m through a 30:1 reducer gives approximately 100 RPM at 40.5 N.m (at 85% efficiency).</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I calculate the power needed to move a load on wheels?</h3>
+        <p>Power (W) = Force (N) x Velocity (m/s) / Efficiency. The force includes rolling resistance (mass x g x Crr), gradient force (mass x g x sin(angle)), and acceleration force (mass x acceleration). For a 2,000 kg load on flat concrete at 1 m/s with 75% drivetrain efficiency: P = (2,000 x 9.81 x 0.02 x 1.0) / 0.75 = 523W.</p>
+      </div>
+    </div>
+
+    <div class="article-cta">
+      <h2>Need Help With Your Torque Calculation?</h2>
+      <p>Share your load requirements — weight, speed, wheel size and environment — and our engineers will run the calculations and recommend a matched drive system.</p>
+      <div class="article-cta-actions">
+        <a href="/drive-selection/" class="btn btn-primary btn-lg">Get a Drive Recommendation &rarr;</a>
+        <a href="/contact/" class="btn btn-outline-dark">Contact Engineering &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; max-width: 800px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+
+.article-content { max-width: 780px; margin: 0 auto; }
+.article-lead { font-size: 18px; line-height: 1.8; color: var(--brand-text); margin-bottom: 40px; border-left: 3px solid var(--brand-accent); padding-left: 20px; }
+
+.article-content h2 { font-size: 26px; margin-top: 48px; margin-bottom: 16px; color: var(--brand-text); }
+.article-content h3 { font-size: 20px; margin-top: 28px; margin-bottom: 10px; color: var(--brand-text); }
+.article-content p { font-size: 16px; line-height: 1.8; color: var(--brand-text-light); margin-bottom: 16px; }
+.article-content ul { margin-bottom: 20px; padding-left: 24px; }
+.article-content li { font-size: 16px; line-height: 1.8; color: var(--brand-text-light); margin-bottom: 8px; }
+.article-content li strong { color: var(--brand-text); }
+
+.article-img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 32px 0;
+  border: 1px solid var(--brand-border);
+}
+
+.spec-table-wrap { overflow-x: auto; margin: 24px 0 32px; }
+.spec-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.spec-table th { background: var(--brand-dark); color: white; padding: 12px 16px; text-align: left; font-weight: 600; white-space: nowrap; }
+.spec-table td { padding: 12px 16px; border-bottom: 1px solid var(--brand-border); color: var(--brand-text-light); }
+.spec-table tr:nth-child(even) td { background: var(--brand-surface); }
+
+.faq-list { margin-top: 24px; }
+.faq-item { border: 1px solid var(--brand-border); border-radius: 10px; padding: 24px 28px; margin-bottom: 16px; background: var(--brand-surface); }
+.faq-item h3 { font-size: 17px; margin-bottom: 10px; color: var(--brand-text); margin-top: 0; }
+.faq-item p { font-size: 15px; line-height: 1.7; color: var(--brand-text-light); margin-bottom: 0; }
+
+.article-cta {
+  margin-top: 56px;
+  padding: 40px;
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  text-align: center;
+}
+.article-cta h2 { font-size: 24px; margin-top: 0; margin-bottom: 12px; }
+.article-cta p { font-size: 16px; color: var(--brand-text-light); margin-bottom: 24px; }
+.article-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-lg { padding: 18px 36px; font-size: 16px; }
+.btn-outline-dark { background: transparent; color: var(--brand-text); border: 2px solid var(--brand-border); padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.2s; }
+.btn-outline-dark:hover { border-color: var(--brand-accent); color: var(--brand-accent); }
+
+@media (max-width: 768px) {
+  .hero-inner h1 { font-size: 28px; }
+  .article-content h2 { font-size: 22px; }
+  .article-cta { padding: 28px 20px; }
+  .article-cta-actions { flex-direction: column; align-items: center; }
+}
+</style>

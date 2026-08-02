@@ -1,0 +1,358 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What power rating do I need for an AGV carrying 1,000 kg?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a 1,000 kg payload AGV on flat ground at 1 m/s with 200mm wheels, you typically need around 200–400W per drive motor. If your AGV must climb gradients (e.g. 5%), add approximately 490W per degree of incline per ton of gross vehicle weight. A dual-motor 400W configuration is a common starting point for this payload class."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate the required wheel torque for an AGV?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wheel torque (N.m) = Total Traction Force (N) x Wheel Radius (m). Total traction force includes rolling resistance (mass x g x rolling coefficient), gradient force (mass x g x sin(angle)), and acceleration force (mass x desired acceleration). For a 1,500 kg gross weight AGV with 200mm wheels on flat concrete, expect roughly 15–25 N.m per wheel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use an L-type or R-type geared motor for AGVs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "R-type (inline coaxial) geared motors are preferred for compact AGV wheel modules because the motor axis aligns with the wheel shaft, saving lateral space. L-type (right-angle) motors are better when vertical space is limited but lateral space is available — common in powered trolleys and machinery movers. Both types are available in 120W–750W for AGV applications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What gear ratio is recommended for AGV drive motors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most AGVs operate at 0.5–2.0 m/s, which translates to 30–200 RPM at the wheel depending on wheel diameter. With motor speeds of 2,000–3,000 RPM, gear ratios of 10:1 to 50:1 are typical. Higher ratios (30:1–50:1) suit heavy-payload AGVs requiring more torque, while lower ratios (10:1–20:1) work for faster, lighter AGVs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do AGV motors need electromagnetic brakes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, for most industrial AGVs electromagnetic brakes are essential. Spring-applied, power-off brakes provide fail-safe stopping if power is lost — critical for safety in factory environments. Our 24V electromagnetic brakes deliver 2–40 N.m holding torque and engage automatically on power loss. They are required if the AGV handles slopes or operates near personnel."
+      }
+    }
+  ]
+});
+
+const articleSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Size a BLDC Motor for AGV Applications",
+  "description": "Step-by-step guide to calculating torque, speed and power requirements for automated guided vehicles. Includes payload, wheel diameter and gradient formulas.",
+  "author": {
+    "@type": "Organization",
+    "name": "Ningbo Shenghe Zhilian Motor Co., Ltd."
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shenghe Zhilian Drive",
+    "url": "https://shzldrive.com"
+  },
+  "datePublished": "2026-07-15",
+  "dateModified": "2026-08-01"
+});
+---
+
+<BaseLayout
+  title="How to Size a BLDC Motor for AGV Applications"
+  description="Step-by-step guide to calculating torque, speed and power requirements for AGV BLDC motors. Includes payload formulas, wheel diameter selection and gradient calculations from Shenghe Zhilian engineers."
+  canonical="https://shzldrive.com/blog/bldc-motor-sizing-agv/"
+>
+
+<script type="application/ld+json" set:html={faqSchema} />
+<script type="application/ld+json" set:html={articleSchema} />
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/blog/">Resources</a> &rarr; AGV Motor Sizing</p>
+    <h1>How to Size a BLDC Motor for AGV Applications</h1>
+    <p class="hero-sub">
+      A practical engineering guide to selecting the right motor power, torque and gear ratio for automated guided vehicles.
+    </p>
+  </div>
+</section>
+
+<article class="section">
+  <div class="container article-content">
+
+    <p class="article-lead">
+      Selecting the right BLDC motor for an automated guided vehicle (AGV) is not guesswork — it is an engineering calculation based on payload, speed, wheel diameter, floor surface and gradient. Get it wrong, and you end up with a motor that overheats under load or an oversized system that wastes cost and space. This guide walks through the exact sizing process our engineers use when specifying drive systems for AGV manufacturers.
+    </p>
+
+    <h2>Step 1: Define Your Operating Parameters</h2>
+
+    <p>
+      Before touching a motor datasheet, you need four numbers from your AGV specification:
+    </p>
+
+    <ul>
+      <li><strong>Gross vehicle weight (GVW)</strong> — AGV chassis weight + maximum payload. For example, a 200 kg chassis carrying 1,000 kg payload = 1,200 kg GVW.</li>
+      <li><strong>Travel speed</strong> — Typical AGV speeds range from 0.5 m/s (warehouse pick) to 2.0 m/s (long-corridor transport). Most industrial AGVs target 1.0–1.5 m/s.</li>
+      <li><strong>Wheel diameter</strong> — Common AGV drive wheels are 150mm, 200mm or 250mm. Larger wheels reduce required motor speed but increase torque demand.</li>
+      <li><strong>Maximum gradient</strong> — If the AGV crosses ramps or dock levelers, you need the slope angle. A 5% grade is roughly 3 degrees; a 10% grade is about 5.7 degrees.</li>
+    </ul>
+
+    <img src="/assets/images/products/app-agv-amr.jpg" alt="AGV with BLDC drive motor in warehouse application" class="article-img" loading="lazy" />
+
+    <h2>Step 2: Calculate Traction Forces</h2>
+
+    <p>
+      The total force your motor must deliver at the wheel is the sum of three components:
+    </p>
+
+    <h3>Rolling Resistance</h3>
+    <p>
+      F<sub>roll</sub> = M x g x C<sub>rr</sub>, where M is the GVW in kg, g = 9.81 m/s<sup>2</sup>, and C<sub>rr</sub> is the rolling resistance coefficient. For polyurethane wheels on smooth concrete, C<sub>rr</sub> is approximately 0.01–0.02. For rubber wheels on rough concrete, use 0.02–0.04.
+    </p>
+    <p>
+      <strong>Example:</strong> 1,200 kg GVW with polyurethane wheels on smooth concrete: F<sub>roll</sub> = 1,200 x 9.81 x 0.015 = <strong>176.6 N</strong>.
+    </p>
+
+    <h3>Gradient Force</h3>
+    <p>
+      F<sub>grade</sub> = M x g x sin(theta). For a 5% gradient (theta approximately 2.86 degrees): F<sub>grade</sub> = 1,200 x 9.81 x 0.05 = <strong>588.6 N</strong>. This is often the dominant force — on a 5% slope, the gradient force is more than 3x the rolling resistance.
+    </p>
+
+    <h3>Acceleration Force</h3>
+    <p>
+      F<sub>accel</sub> = M x a. Typical AGV acceleration is 0.3–0.5 m/s<sup>2</sup>. For 1,200 kg at 0.5 m/s<sup>2</sup>: F<sub>accel</sub> = <strong>600 N</strong>. Note that acceleration force is transient — it only applies during speed ramp-up, not continuous operation.
+    </p>
+
+    <p>
+      <strong>Total continuous force (flat ground):</strong> 176.6 N. <strong>Total peak force (5% slope + acceleration):</strong> 176.6 + 588.6 + 600 = <strong>1,365 N</strong>.
+    </p>
+
+    <img src="/assets/images/products/bl-104-1.jpg" alt="R-type geared BLDC motor for AGV wheel module" class="article-img" loading="lazy" />
+
+    <h2>Step 3: Convert to Wheel Torque and Motor Speed</h2>
+
+    <p>
+      With a 200mm wheel (radius = 0.1 m):
+    </p>
+
+    <ul>
+      <li><strong>Continuous wheel torque:</strong> 176.6 N x 0.1 m = <strong>17.7 N.m</strong> (split across two drive wheels = 8.85 N.m each)</li>
+      <li><strong>Peak wheel torque:</strong> 1,365 N x 0.1 m = <strong>136.5 N.m</strong> (68.25 N.m per wheel)</li>
+      <li><strong>Wheel RPM at 1.0 m/s:</strong> (1.0 x 60) / (pi x 0.2) = <strong>95.5 RPM</strong></li>
+    </ul>
+
+    <p>
+      For a motor with a rated speed of 3,000 RPM, the required gear ratio is 3,000 / 95.5 = approximately <strong>31:1</strong>. Our R-type geared motors offer ratios from 10:1 to 100:1, so a 30:1 helical gear is the natural match.
+    </p>
+
+    <h2>Step 4: Calculate Motor Power</h2>
+
+    <p>
+      Motor power = Torque x Angular velocity, but the practical formula for AGV sizing is:
+    </p>
+
+    <p>
+      <strong>P = (F<sub>total</sub> x v) / eta</strong>, where eta is the overall drivetrain efficiency (motor x gearbox x controller, typically 0.70–0.80 for a geared BLDC system).
+    </p>
+
+    <ul>
+      <li><strong>Continuous power (flat):</strong> (176.6 x 1.0) / 0.75 = <strong>235 W</strong> per AGV (118 W per motor)</li>
+      <li><strong>Peak power (slope + accel):</strong> (1,365 x 1.0) / 0.75 = <strong>1,820 W</strong> per AGV (910 W per motor)</li>
+    </ul>
+
+    <p>
+      For this 1,200 kg AGV, a dual-motor configuration with two 400W rated motors (each capable of 2x peak for 30 seconds) would handle both continuous flat-ground operation and short-duration slope climbing. Our BL-104 R-type 400W motor with 30:1 gear ratio is a common selection for this payload class.
+    </p>
+
+    <img src="/assets/images/products/app-agv-production-line.jpg" alt="AGV production line with BLDC drive systems" class="article-img" loading="lazy" />
+
+    <h2>Step 5: Select the Right Motor Configuration</h2>
+
+    <p>
+      Based on the calculation results, here is how our motor range maps to typical AGV payload classes:
+    </p>
+
+    <div class="spec-table-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>AGV Payload</th>
+            <th>GVW (est.)</th>
+            <th>Motor Power (each)</th>
+            <th>Recommended Model</th>
+            <th>Gear Ratio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>200–500 kg</td>
+            <td>300–700 kg</td>
+            <td>120–200W</td>
+            <td>BL-90 R-type</td>
+            <td>15:1–25:1</td>
+          </tr>
+          <tr>
+            <td>500–1,500 kg</td>
+            <td>700–2,000 kg</td>
+            <td>200–500W</td>
+            <td>BL-104 R-type</td>
+            <td>20:1–40:1</td>
+          </tr>
+          <tr>
+            <td>1,500–5,000 kg</td>
+            <td>2,000–6,000 kg</td>
+            <td>400–750W</td>
+            <td>BL-104 / BL-120 L-type</td>
+            <td>30:1–60:1</td>
+          </tr>
+          <tr>
+            <td>5,000–20,000 kg</td>
+            <td>6,000–22,000 kg</td>
+            <td>750–1,500W</td>
+            <td>BL-120 L-type</td>
+            <td>40:1–80:1</td>
+          </tr>
+          <tr>
+            <td>20,000–60,000 kg</td>
+            <td>22,000–65,000 kg</td>
+            <td>1,500–3,000W</td>
+            <td>BL-130 High-Power (dual)</td>
+            <td>60:1–100:1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Step 6: Don't Forget the Brakes and Controller</h2>
+
+    <p>
+      A properly sized motor is only part of the system. For AGV applications, you also need:
+    </p>
+
+    <ul>
+      <li><strong>Electromagnetic brake</strong> — 24V spring-applied, power-off fail-safe. Essential for slope-holding and emergency stop. Our brakes deliver 2–40 N.m holding torque depending on the motor frame size.</li>
+      <li><strong>Encoder</strong> — 1,000 PPR incremental encoder for closed-loop speed control and odometry. Required by most AGV navigation systems (SLAM, QR code, magnetic tape).</li>
+      <li><strong>Dual-channel controller</strong> — Drives both motors with differential speed for steering. Our 48V controllers support CAN bus communication for integration with AGV control systems, with regenerative braking to extend battery life.</li>
+    </ul>
+
+    <img src="/assets/images/products/bldc-controller-48v.jpg" alt="BLDC motor controller 48V for AGV dual-motor system" class="article-img" loading="lazy" />
+
+    <h2>Common Sizing Mistakes to Avoid</h2>
+
+    <p>
+      From our experience supplying AGV manufacturers across China, these are the most frequent errors:
+    </p>
+
+    <ul>
+      <li><strong>Ignoring gradient entirely.</strong> Many AGVs cross ramps, dock levelers or slightly uneven floors. Even a 2% grade doubles the traction force compared to flat ground.</li>
+      <li><strong>Using motor peak power as continuous.</strong> Peak power is for short bursts (10–30 seconds). Size the motor so your continuous operating point stays within the rated power.</li>
+      <li><strong>Forgetting drivetrain losses.</strong> Gearbox efficiency is typically 85–92% per stage. A two-stage reducer with 85% efficiency per stage gives only 72% overall — always divide by the system efficiency.</li>
+      <li><strong>Over-sizing the motor.</strong> A motor running at 20% of its rated load is inefficient and wastes space and cost. Target 60–80% of rated load for continuous operation.</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>What power rating do I need for an AGV carrying 1,000 kg?</h3>
+        <p>For a 1,000 kg payload AGV on flat ground at 1 m/s with 200mm wheels, you typically need around 200-400W per drive motor. If your AGV must climb gradients (e.g. 5%), add approximately 490W per degree of incline per ton of gross vehicle weight. A dual-motor 400W configuration is a common starting point for this payload class.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I calculate the required wheel torque for an AGV?</h3>
+        <p>Wheel torque (N.m) = Total Traction Force (N) x Wheel Radius (m). Total traction force includes rolling resistance (mass x g x rolling coefficient), gradient force (mass x g x sin(angle)), and acceleration force (mass x desired acceleration). For a 1,500 kg gross weight AGV with 200mm wheels on flat concrete, expect roughly 15-25 N.m per wheel.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Should I use an L-type or R-type geared motor for AGVs?</h3>
+        <p>R-type (inline coaxial) geared motors are preferred for compact AGV wheel modules because the motor axis aligns with the wheel shaft, saving lateral space. L-type (right-angle) motors are better when vertical space is limited but lateral space is available — common in powered trolleys and machinery movers. Both types are available in 120W-750W for AGV applications.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What gear ratio is recommended for AGV drive motors?</h3>
+        <p>Most AGVs operate at 0.5-2.0 m/s, which translates to 30-200 RPM at the wheel depending on wheel diameter. With motor speeds of 2,000-3,000 RPM, gear ratios of 10:1 to 50:1 are typical. Higher ratios (30:1-50:1) suit heavy-payload AGVs requiring more torque, while lower ratios (10:1-20:1) work for faster, lighter AGVs.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do AGV motors need electromagnetic brakes?</h3>
+        <p>Yes, for most industrial AGVs electromagnetic brakes are essential. Spring-applied, power-off brakes provide fail-safe stopping if power is lost — critical for safety in factory environments. Our 24V electromagnetic brakes deliver 2-40 N.m holding torque and engage automatically on power loss. They are required if the AGV handles slopes or operates near personnel.</p>
+      </div>
+    </div>
+
+    <div class="article-cta">
+      <h2>Need Help Sizing a Motor for Your AGV?</h2>
+      <p>Send us your payload, speed and wheel diameter — our engineers will calculate the torque requirements and recommend a matched motor + gearbox + controller configuration within 24 hours.</p>
+      <div class="article-cta-actions">
+        <a href="/drive-selection/" class="btn btn-primary btn-lg">Get a Drive Recommendation &rarr;</a>
+        <a href="/contact/" class="btn btn-outline-dark">Contact Engineering &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; max-width: 800px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+
+.article-content { max-width: 780px; margin: 0 auto; }
+.article-lead { font-size: 18px; line-height: 1.8; color: var(--brand-text); margin-bottom: 40px; border-left: 3px solid var(--brand-accent); padding-left: 20px; }
+
+.article-content h2 { font-size: 26px; margin-top: 48px; margin-bottom: 16px; color: var(--brand-text); }
+.article-content h3 { font-size: 20px; margin-top: 28px; margin-bottom: 10px; color: var(--brand-text); }
+.article-content p { font-size: 16px; line-height: 1.8; color: var(--brand-text-light); margin-bottom: 16px; }
+.article-content ul { margin-bottom: 20px; padding-left: 24px; }
+.article-content li { font-size: 16px; line-height: 1.8; color: var(--brand-text-light); margin-bottom: 8px; }
+.article-content li strong { color: var(--brand-text); }
+
+.article-img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 32px 0;
+  border: 1px solid var(--brand-border);
+}
+
+.spec-table-wrap { overflow-x: auto; margin: 24px 0 32px; }
+.spec-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.spec-table th { background: var(--brand-dark); color: white; padding: 12px 16px; text-align: left; font-weight: 600; white-space: nowrap; }
+.spec-table td { padding: 12px 16px; border-bottom: 1px solid var(--brand-border); color: var(--brand-text-light); }
+.spec-table tr:nth-child(even) td { background: var(--brand-surface); }
+
+.faq-list { margin-top: 24px; }
+.faq-item { border: 1px solid var(--brand-border); border-radius: 10px; padding: 24px 28px; margin-bottom: 16px; background: var(--brand-surface); }
+.faq-item h3 { font-size: 17px; margin-bottom: 10px; color: var(--brand-text); margin-top: 0; }
+.faq-item p { font-size: 15px; line-height: 1.7; color: var(--brand-text-light); margin-bottom: 0; }
+
+.article-cta {
+  margin-top: 56px;
+  padding: 40px;
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  text-align: center;
+}
+.article-cta h2 { font-size: 24px; margin-top: 0; margin-bottom: 12px; }
+.article-cta p { font-size: 16px; color: var(--brand-text-light); margin-bottom: 24px; }
+.article-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-lg { padding: 18px 36px; font-size: 16px; }
+.btn-outline-dark { background: transparent; color: var(--brand-text); border: 2px solid var(--brand-border); padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.2s; }
+.btn-outline-dark:hover { border-color: var(--brand-accent); color: var(--brand-accent); }
+
+@media (max-width: 768px) {
+  .hero-inner h1 { font-size: 28px; }
+  .article-content h2 { font-size: 22px; }
+  .article-cta { padding: 28px 20px; }
+  .article-cta-actions { flex-direction: column; align-items: center; }
+}
+</style>

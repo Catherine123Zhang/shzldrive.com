@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { driveSelectionPage } from '../../../i18n/content/secondary-pages';
+import type { Locale } from '../../../i18n/translations';
+
+const locale: Locale = 'pt';
+const p = driveSelectionPage[locale];
+const alternates = [
+  { locale: 'en', path: '/drive-selection/' },
+  { locale: 'es', path: '/es/drive-selection/' },
+  { locale: 'pt', path: '/pt/drive-selection/' },
+  { locale: 'fr', path: '/fr/drive-selection/' },
+  { locale: 'ar', path: '/ar/drive-selection/' },
+  { locale: 'ru', path: '/ru/drive-selection/' },
+  { locale: 'vi', path: '/vi/drive-selection/' },
+  { locale: 'id', path: '/id/drive-selection/' },
+];
+---
+
+<BaseLayout
+  title={p.title}
+  description={p.description}
+  locale="pt"
+  alternates={alternates}
+>
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/pt/">{p.breadcrumbHome}</a> &rarr; {p.breadcrumbEng} &rarr; {p.breadcrumbDrive}</p>
+    <h1>{p.h1}</h1>
+    <p class="hero-sub">{p.heroSub}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container form-layout">
+    <div class="form-main">
+      <form action="https://api.web3forms.com/submit" method="POST" class="drive-form">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+        <input type="hidden" name="subject" value="Shenghe Drive — Drive Selection Request" />
+        <input type="hidden" name="from_name" value="Shenghe Drive Website" />
+
+        <div class="form-section">
+          <h3>{p.sectionApp}</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="equipment">{p.labelEquipment} *</label>
+              <select name="equipment_type" id="equipment" required>
+                <option value="">{p.optionSelect}</option>
+                <option value="Powered machinery mover">{p.optionMover}</option>
+                <option value="Transfer cart">{p.optionCart}</option>
+                <option value="Heavy-duty AGV">{p.optionAgv}</option>
+                <option value="PV cleaning robot">{p.optionPv}</option>
+                <option value="Tracked carrier">{p.optionTracked}</option>
+                <option value="Conveyor / gate">{p.optionConveyor}</option>
+                <option value="Other">{p.optionOther}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="payload">{p.labelPayload}</label>
+              <input type="text" name="payload" id="payload" placeholder={p.placeholderPayload} />
+            </div>
+            <div class="form-group">
+              <label for="voltage">{p.labelVoltage}</label>
+              <input type="text" name="voltage" id="voltage" placeholder={p.placeholderVoltage} />
+            </div>
+            <div class="form-group">
+              <label for="ip">{p.labelIp}</label>
+              <input type="text" name="ip_rating" id="ip" placeholder={p.placeholderIp} />
+            </div>
+            <div class="form-group full-width">
+              <label for="details">{p.labelDetails}</label>
+              <textarea name="details" id="details" rows="3" placeholder={p.placeholderDetails}></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>{p.sectionContact}</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">{p.labelName} *</label>
+              <input type="text" name="name" id="name" required placeholder="Your name" />
+            </div>
+            <div class="form-group">
+              <label for="email">{p.labelEmail} *</label>
+              <input type="email" name="email" id="email" required placeholder="your@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="company">{p.labelCompany}</label>
+              <input type="text" name="company" id="company" placeholder="Company name" />
+            </div>
+            <div class="form-group">
+              <label for="phone">{p.labelPhone}</label>
+              <input type="text" name="phone" id="phone" placeholder="+1 234 567 8900" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary btn-lg">{p.btnSubmit} &rarr;</button>
+          <p class="form-note">{p.formNote}</p>
+        </div>
+      </form>
+    </div>
+
+    <aside class="form-sidebar">
+      <div class="sidebar-card">
+        <h4>{p.sidebarReceiveTitle}</h4>
+        <ul>
+          {p.sidebarReceiveItems.map((item: string) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <h4>{p.sidebarTalkTitle}</h4>
+        <p>WhatsApp: <a href="https://wa.me/8618268661068">+86 182 6866 1068</a></p>
+        <p>Email: <a href="mailto:sales@nbshzl-motor.com">sales@nbshzl-motor.com</a></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+
+.form-layout { display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: start; }
+.form-section { margin-bottom: 36px; }
+.form-section h3 { font-size: 18px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--brand-accent); display: inline-block; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.full-width { grid-column: 1 / -1; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--brand-text); }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 10px 14px; border: 1px solid var(--brand-border); border-radius: 6px;
+  font-size: 14px; font-family: inherit; background: white; transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brand-accent); outline: none; }
+.form-submit { text-align: center; padding-top: 16px; }
+.form-note { font-size: 13px; color: var(--brand-text-light); margin-top: 12px; }
+
+.sidebar-card { background: var(--brand-surface); border: 1px solid var(--brand-border); border-radius: 10px; padding: 24px; margin-bottom: 20px; }
+.sidebar-card h4 { font-size: 16px; margin-bottom: 12px; }
+.sidebar-card ul { list-style: none; }
+.sidebar-card li { font-size: 14px; padding: 4px 0; color: var(--brand-text); }
+.sidebar-card li::before { content: '\2713 '; color: var(--brand-accent); font-weight: 700; }
+.sidebar-card p { font-size: 14px; margin-bottom: 4px; }
+.sidebar-card a { color: var(--brand-accent); }
+
+@media (max-width: 768px) {
+  .form-layout { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+</style>

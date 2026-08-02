@@ -1,0 +1,418 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does custom OEM motor development take from start to production?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typical timeline: 1-2 weeks for specification review and feasibility assessment, 2-4 weeks for prototype manufacturing, 1-2 weeks for prototype testing and iteration, then 4-8 weeks for first production batch. Total from initial inquiry to first volume shipment is typically 8-16 weeks, depending on the level of customization. Simple modifications (shaft, winding, connector) can be as fast as 4-6 weeks total. Completely new motor designs requiring new tooling may take 12-20 weeks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the minimum order quantity for custom OEM motors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MOQ depends on the customization level. Minor modifications (shaft length, winding voltage, wire length, connector): MOQ 50-100 units, no tooling cost. Moderate customizations (custom mounting flange, modified end cap): MOQ 100-200 units, tooling cost $500-2,000. Major customizations (new stator/rotor design, custom housing): MOQ 200-500 units, tooling cost $3,000-10,000. Prototype quantities of 3-5 units are available for evaluation before committing to MOQ."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What information do I need to provide for a custom motor inquiry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Essential information: rated voltage (DC), required output torque and speed (or power), duty cycle (continuous/intermittent), operating environment (temperature range, IP rating needed), mechanical interface (shaft diameter, mounting dimensions), and target quantity/annual volume. Helpful but optional: mechanical drawing of the mounting interface, existing motor being replaced (model and manufacturer), controller communication protocol, and target unit price."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you customize the motor controller firmware as well?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Our in-house firmware engineers can customize the motor controller for your specific application. Common customizations include: CAN bus message format and protocol (CANopen, J1939, custom), speed/torque profiles and acceleration ramps, I/O mapping and fault handling logic, dual motor synchronization for differential steering, and integration with your higher-level control system (PLC, vehicle controller). Firmware customization is typically included at no extra cost for orders above 200 controllers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide NDA protection and exclusive supply agreements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We routinely sign NDAs (Non-Disclosure Agreements) to protect our OEM customers' proprietary specifications and designs. For customers with significant volume commitments (1,000+ units/year), we offer exclusive supply agreements where the specific motor configuration developed for your product will not be sold to other customers. All custom tooling paid by the customer remains their property."
+      }
+    }
+  ]
+});
+
+const articleSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Custom OEM Motor Development: Process & Timeline",
+  "description": "How to work with a motor manufacturer on custom OEM development — from initial specification through prototyping, testing and volume production.",
+  "author": {
+    "@type": "Organization",
+    "name": "Ningbo Shenghe Zhilian Motor Co., Ltd."
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shenghe Zhilian Drive",
+    "url": "https://shzldrive.com"
+  },
+  "datePublished": "2026-06-15",
+  "dateModified": "2026-08-01"
+});
+---
+
+<BaseLayout
+  title="Custom OEM Motor Development: Process & Timeline"
+  description="How to work with a Chinese BLDC motor manufacturer on custom OEM development. Covers the complete process from initial specification through prototyping, testing and volume production, with realistic timelines and costs."
+  canonical="https://shzldrive.com/blog/custom-oem-motor-development/"
+>
+
+<script type="application/ld+json" set:html={faqSchema} />
+<script type="application/ld+json" set:html={articleSchema} />
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/blog/">Resources</a> &rarr; Custom OEM Motor Development</p>
+    <h1>Custom OEM Motor Development: Process & Timeline</h1>
+    <p class="hero-sub">
+      A behind-the-scenes look at how custom BLDC motors go from initial specification to volume production.
+    </p>
+  </div>
+</section>
+
+<article class="section">
+  <div class="container article-content">
+
+    <p class="article-lead">
+      Off-the-shelf motors solve 70% of applications. For the other 30% — where your equipment has a unique mechanical interface, a specific torque-speed profile, or special environmental requirements — a custom OEM motor is the right approach. As a manufacturer that develops 15-20 new custom motor configurations per year, this article explains our development process so you know exactly what to expect.
+    </p>
+
+    <h2>When Does Custom Make Sense?</h2>
+
+    <p>
+      Custom OEM development is worth the investment when:
+    </p>
+
+    <ul>
+      <li><strong>Mechanical integration:</strong> Your equipment has a specific mounting interface, shaft diameter or overall length constraint that no standard motor fits. This is the most common reason — roughly 60% of our custom projects.</li>
+      <li><strong>Unique torque-speed profile:</strong> You need a specific combination of torque, speed and voltage that is not covered by standard windings. For example, a 48V motor delivering 15 N.m at exactly 80 RPM for a specialized conveyor application.</li>
+      <li><strong>Environmental requirements:</strong> IP67 sealing, food-grade materials, extreme temperature range (-40C to +70C), or explosive atmosphere (ATEX) compliance.</li>
+      <li><strong>Volume justification:</strong> Your annual volume is 200+ units, making it economical to amortize tooling costs across the production run.</li>
+      <li><strong>Competitive differentiation:</strong> A custom-designed motor gives your product a performance or integration advantage that competitors using off-the-shelf motors cannot match.</li>
+    </ul>
+
+    <img src="/assets/images/products/customized-1.jpg" alt="Custom OEM BLDC motor development samples" class="article-img" loading="lazy" />
+
+    <h2>The 5-Phase Development Process</h2>
+
+    <h3>Phase 1: Specification Review (Week 1-2)</h3>
+
+    <p>
+      Everything starts with your application requirements. Our engineering team reviews:
+    </p>
+
+    <ul>
+      <li><strong>Performance requirements:</strong> Rated torque, rated speed, peak torque, voltage, duty cycle</li>
+      <li><strong>Mechanical interface:</strong> Mounting dimensions, shaft specifications, overall envelope constraints</li>
+      <li><strong>Environmental conditions:</strong> Operating temperature range, IP rating, vibration/shock levels</li>
+      <li><strong>Electrical interface:</strong> Connector type, wire length, communication protocol (CAN, RS485, analog)</li>
+      <li><strong>Certifications needed:</strong> CE, UL, RoHS, etc.</li>
+      <li><strong>Volume and timeline:</strong> Annual forecast, target first delivery date, target unit price</li>
+    </ul>
+
+    <p>
+      Based on this review, we provide a feasibility assessment within 3-5 business days, including:
+    </p>
+
+    <ul>
+      <li>Proposed motor configuration (base platform, modifications needed)</li>
+      <li>Preliminary performance predictions (torque-speed curve, efficiency map)</li>
+      <li>Tooling requirements and one-time costs (if any)</li>
+      <li>Estimated unit pricing at stated volume</li>
+      <li>Development timeline</li>
+    </ul>
+
+    <h3>Phase 2: Design and Simulation (Week 2-3)</h3>
+
+    <p>
+      Once the specification is agreed, our R&D team begins detailed design:
+    </p>
+
+    <ul>
+      <li><strong>Electromagnetic simulation:</strong> FEA (Finite Element Analysis) of the stator-rotor magnetic circuit to optimize winding turns, magnet thickness and air gap for your target torque-speed curve</li>
+      <li><strong>Thermal simulation:</strong> Verify that the motor stays within insulation class limits at your duty cycle and ambient temperature</li>
+      <li><strong>Mechanical design:</strong> 3D CAD modeling of any custom housing, flange, shaft or bracket components</li>
+      <li><strong>Controller matching:</strong> Select or modify the controller hardware and firmware to match the motor's electrical characteristics</li>
+    </ul>
+
+    <p>
+      We share the 3D model (STEP file) and preliminary datasheet for your review before proceeding to prototype manufacturing.
+    </p>
+
+    <img src="/assets/images/products/customized-2.jpg" alt="Custom motor mechanical design and engineering" class="article-img" loading="lazy" />
+
+    <h3>Phase 3: Prototype Manufacturing (Week 3-6)</h3>
+
+    <p>
+      Prototype manufacturing typically produces 3-5 units:
+    </p>
+
+    <ul>
+      <li><strong>Stator winding:</strong> Custom winding pattern executed on our CNC winding machines. Turn count, wire gauge and winding configuration (star/delta) per the design specification.</li>
+      <li><strong>Rotor assembly:</strong> Magnet bonding and magnetization on the rotor core. If a new magnet geometry is required, magnet tooling takes 1-2 additional weeks.</li>
+      <li><strong>Housing machining:</strong> Custom flanges, end caps or brackets are CNC machined from aluminum or steel billets. For prototypes, we machine from billet rather than casting — faster turnaround, same dimensions.</li>
+      <li><strong>Assembly and basic testing:</strong> Motor assembled, run at no-load to verify rotation direction, noise level and Hall sensor signals. Any obvious issues caught here before formal testing.</li>
+    </ul>
+
+    <h3>Phase 4: Testing and Validation (Week 6-8)</h3>
+
+    <p>
+      Every custom motor prototype undergoes a comprehensive test sequence on our dynamometer test bench:
+    </p>
+
+    <div class="spec-table-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Test</th>
+            <th>What It Measures</th>
+            <th>Pass Criteria</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>No-Load Test</td>
+            <td>No-load current, speed at rated voltage</td>
+            <td>Current &lt; 15% of rated; speed within +/- 5%</td>
+          </tr>
+          <tr>
+            <td>Full-Load Test</td>
+            <td>Torque, speed, current, efficiency at rated load</td>
+            <td>Torque within +/- 5%; efficiency per spec</td>
+          </tr>
+          <tr>
+            <td>Torque-Speed Curve</td>
+            <td>Performance across full operating range</td>
+            <td>Matches simulation within 8%</td>
+          </tr>
+          <tr>
+            <td>Temperature Rise</td>
+            <td>Winding temperature at rated load for 2 hours</td>
+            <td>Below insulation class limit (130C/155C)</td>
+          </tr>
+          <tr>
+            <td>Insulation Resistance</td>
+            <td>Hipot test at 1,500V AC for 1 minute</td>
+            <td>No breakdown, leakage &lt; 5mA</td>
+          </tr>
+          <tr>
+            <td>Vibration & Noise</td>
+            <td>Vibration (mm/s) and noise (dBA) at rated speed</td>
+            <td>&lt; 2.0 mm/s vibration; &lt; 55 dBA noise</td>
+          </tr>
+          <tr>
+            <td>Back-EMF Waveform</td>
+            <td>Waveform shape and Ke consistency</td>
+            <td>Clean trapezoidal; Ke within +/- 3% across units</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Test results are documented in a formal test report and sent to you along with the prototype units. If performance does not meet specification, we iterate on the design — typically one iteration is sufficient, occasionally two.
+    </p>
+
+    <img src="/assets/images/products/bl-104-4.jpg" alt="Motor testing and quality inspection" class="article-img" loading="lazy" />
+
+    <h3>Phase 5: Production and Quality Control (Week 8-16)</h3>
+
+    <p>
+      Once you approve the prototype, production manufacturing begins:
+    </p>
+
+    <ul>
+      <li><strong>Tooling (if needed):</strong> Custom casting molds, stamping dies or injection molds are manufactured. This is a one-time investment — typical costs range from $500 for a simple flange modification to $8,000 for a completely new housing casting mold.</li>
+      <li><strong>Production winding:</strong> Stator winding on our automated CNC winding line. Consistency is controlled by the CNC program — every motor gets the same turn count, fill factor and winding pattern.</li>
+      <li><strong>Batch testing:</strong> 100% of production motors are tested for no-load current, insulation resistance and Hall sensor function. Additionally, 10% undergo full dynamometer testing to verify torque and efficiency.</li>
+      <li><strong>Packaging and labeling:</strong> Custom labels with your part number, our part number and full traceability marking. Each motor is individually boxed with a test certificate.</li>
+    </ul>
+
+    <h2>Customization Levels and Cost Impact</h2>
+
+    <p>
+      Not all customizations are equal in complexity and cost. Here is a realistic breakdown:
+    </p>
+
+    <div class="spec-table-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Customization Level</th>
+            <th>Examples</th>
+            <th>Tooling Cost</th>
+            <th>Price Impact</th>
+            <th>MOQ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Minor</td>
+            <td>Shaft length, wire length, connector, winding voltage</td>
+            <td>$0</td>
+            <td>0-5%</td>
+            <td>50 units</td>
+          </tr>
+          <tr>
+            <td>Moderate</td>
+            <td>Custom flange, modified end cap, special shaft (keyed, D-cut), IP65 sealing</td>
+            <td>$500-2,000</td>
+            <td>5-15%</td>
+            <td>100-200 units</td>
+          </tr>
+          <tr>
+            <td>Major</td>
+            <td>New housing, custom rotor/stator, special magnets, new controller board</td>
+            <td>$3,000-10,000</td>
+            <td>15-30%</td>
+            <td>200-500 units</td>
+          </tr>
+          <tr>
+            <td>Completely New</td>
+            <td>Ground-up motor design for unique application</td>
+            <td>$8,000-25,000</td>
+            <td>Project-based</td>
+            <td>500+ units</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      <strong>Important:</strong> Tooling costs are one-time. For production volumes of 500+ units, tooling cost per unit becomes negligible. All tooling paid by the customer remains their property and can be transferred if needed.
+    </p>
+
+    <h2>What We Need From You</h2>
+
+    <p>
+      To start a custom motor project efficiently, prepare the following:
+    </p>
+
+    <ul>
+      <li><strong>Mechanical drawing</strong> of the mounting interface (even a sketch with key dimensions helps)</li>
+      <li><strong>Performance requirements</strong> — torque (N.m), speed (RPM), voltage (V DC), duty cycle</li>
+      <li><strong>Environmental conditions</strong> — ambient temperature, IP rating, indoor/outdoor</li>
+      <li><strong>Volume forecast</strong> — prototype quantity + annual production estimate</li>
+      <li><strong>Timeline</strong> — when do you need prototypes? When does production start?</li>
+      <li><strong>Existing motor</strong> being replaced (if applicable) — manufacturer, model, datasheet</li>
+    </ul>
+
+    <p>
+      The more complete your initial specification, the faster we can provide a feasibility assessment and accurate quotation. Incomplete specifications lead to multiple rounds of clarification — this is the single biggest cause of project delays.
+    </p>
+
+    <img src="/assets/images/products/customized-3.jpg" alt="Range of custom OEM motors manufactured at Shenghe Zhilian" class="article-img" loading="lazy" />
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>How long does custom OEM motor development take?</h3>
+        <p>Typical total timeline is 8-16 weeks from initial inquiry to first volume shipment. Simple modifications (shaft, winding, connector) can be as fast as 4-6 weeks. Completely new motor designs requiring new tooling may take 12-20 weeks. Prototype delivery is usually within 3-6 weeks.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the minimum order quantity for custom OEM motors?</h3>
+        <p>MOQ depends on customization level. Minor modifications: 50-100 units, no tooling cost. Moderate customizations: 100-200 units with $500-2,000 tooling. Major customizations: 200-500 units with $3,000-10,000 tooling. Prototype quantities of 3-5 units are available for evaluation.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What information do I need to provide for a custom motor inquiry?</h3>
+        <p>Essential: rated voltage (DC), required output torque and speed, duty cycle, operating environment, mechanical interface dimensions, and target quantity. Helpful: mechanical drawing, existing motor being replaced, controller protocol, and target unit price.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can you customize the motor controller firmware?</h3>
+        <p>Yes. Common customizations include CAN bus protocol (CANopen, J1939, custom), speed/torque profiles, I/O mapping, dual motor synchronization, and integration with your PLC or vehicle controller. Firmware customization is typically included at no extra cost for orders above 200 controllers.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you provide NDA protection and exclusive supply agreements?</h3>
+        <p>Yes. We routinely sign NDAs to protect proprietary specifications. For customers with 1,000+ units/year, we offer exclusive supply agreements. All custom tooling paid by the customer remains their property.</p>
+      </div>
+    </div>
+
+    <div class="article-cta">
+      <h2>Start Your Custom Motor Project</h2>
+      <p>Share your requirements and we will provide a feasibility assessment, preliminary quotation and development timeline within one week.</p>
+      <div class="article-cta-actions">
+        <a href="/drive-selection/" class="btn btn-primary btn-lg">Submit Your Specification &rarr;</a>
+        <a href="/contact/" class="btn btn-outline-dark">Contact Engineering &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; max-width: 800px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+
+.article-content { max-width: 780px; margin: 0 auto; }
+.article-lead { font-size: 18px; line-height: 1.8; color: var(--brand-text); margin-bottom: 40px; border-left: 3px solid var(--brand-accent); padding-left: 20px; }
+
+.article-content h2 { font-size: 26px; margin-top: 48px; margin-bottom: 16px; color: var(--brand-text); }
+.article-content h3 { font-size: 20px; margin-top: 28px; margin-bottom: 10px; color: var(--brand-text); }
+.article-content p { font-size: 16px; line-height: 1.8; color: var(--brand-text-light); margin-bottom: 16px; }
+.article-content ul { margin-bottom: 20px; padding-left: 24px; }
+.article-content li { font-size: 16px; line-height: 1.8; color: var(--brand-text-light); margin-bottom: 8px; }
+.article-content li strong { color: var(--brand-text); }
+
+.article-img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 32px 0;
+  border: 1px solid var(--brand-border);
+}
+
+.spec-table-wrap { overflow-x: auto; margin: 24px 0 32px; }
+.spec-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.spec-table th { background: var(--brand-dark); color: white; padding: 12px 16px; text-align: left; font-weight: 600; white-space: nowrap; }
+.spec-table td { padding: 12px 16px; border-bottom: 1px solid var(--brand-border); color: var(--brand-text-light); }
+.spec-table tr:nth-child(even) td { background: var(--brand-surface); }
+
+.faq-list { margin-top: 24px; }
+.faq-item { border: 1px solid var(--brand-border); border-radius: 10px; padding: 24px 28px; margin-bottom: 16px; background: var(--brand-surface); }
+.faq-item h3 { font-size: 17px; margin-bottom: 10px; color: var(--brand-text); margin-top: 0; }
+.faq-item p { font-size: 15px; line-height: 1.7; color: var(--brand-text-light); margin-bottom: 0; }
+
+.article-cta {
+  margin-top: 56px;
+  padding: 40px;
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  text-align: center;
+}
+.article-cta h2 { font-size: 24px; margin-top: 0; margin-bottom: 12px; }
+.article-cta p { font-size: 16px; color: var(--brand-text-light); margin-bottom: 24px; }
+.article-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-lg { padding: 18px 36px; font-size: 16px; }
+.btn-outline-dark { background: transparent; color: var(--brand-text); border: 2px solid var(--brand-border); padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.2s; }
+.btn-outline-dark:hover { border-color: var(--brand-accent); color: var(--brand-accent); }
+
+@media (max-width: 768px) {
+  .hero-inner h1 { font-size: 28px; }
+  .article-content h2 { font-size: 22px; }
+  .article-cta { padding: 28px 20px; }
+  .article-cta-actions { flex-direction: column; align-items: center; }
+}
+</style>

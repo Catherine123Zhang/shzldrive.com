@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const categories = [
   {
     name: 'L-Type Geared Motors',
+    slug: 'l-type-geared-motors',
     specs: '60–120mm flange, 30–2000W',
     description: 'Right-angle geared BLDC motors with worm or helical gear reduction. Compact L-shaped profile for space-constrained drive wheels and transport trolleys.',
     features: ['Worm & helical gear options', 'High gear ratios up to 200:1', 'Integrated electromagnetic brake', 'IP54 / IP65 protection'],
@@ -11,6 +12,7 @@ const categories = [
   },
   {
     name: 'R-Type Geared Motors',
+    slug: 'r-type-geared-motors',
     specs: '90–104mm flange, 120–750W',
     description: 'Inline (coaxial) geared BLDC motors for applications requiring a straight shaft output. Ideal for conveyor drives, rotary platforms and compact AGV wheel modules.',
     features: ['Coaxial gear reduction', 'Low noise helical gears', 'Compact inline profile', 'Optional encoder feedback'],
@@ -18,6 +20,7 @@ const categories = [
   },
   {
     name: 'Cylindrical BLDC Motors',
+    slug: 'cylindrical-bldc-motors',
     specs: '60–130mm diameter, 30–2000W',
     description: 'Standard cylindrical brushless DC motors without integrated gearbox. Pair with external gear reducers or use direct-drive for fan, pump and spindle applications.',
     features: ['Hall sensor commutation', '12V–220V winding options', 'High efficiency > 85%', 'Long life > 20,000 hours'],
@@ -25,6 +28,7 @@ const categories = [
   },
   {
     name: 'High-Power Motors',
+    slug: 'high-power-motors',
     specs: '750–3000W, 48–72V',
     description: 'High-torque BLDC motors for heavy-duty machinery movers, large AGVs and industrial transport equipment. Dual-motor configurations available for 40–60+ ton payloads.',
     features: ['Up to 3kW continuous', '48V / 72V systems', 'Forced air or liquid cooling', 'Heavy-duty bearing design'],
@@ -32,6 +36,7 @@ const categories = [
   },
   {
     name: 'Planetary Gear Motors',
+    slug: 'planetary-gear-motors',
     specs: '42–90mm, 15–750W',
     description: 'Precision planetary gearbox integrated with BLDC motors. High torque density in a compact package for robotics, automated guided vehicles and precision positioning.',
     features: ['Planetary gear reduction', 'Low backlash options', 'High torque density', 'Quiet operation'],
@@ -39,6 +44,7 @@ const categories = [
   },
   {
     name: 'Controllers & Drivers',
+    slug: 'controllers-drivers',
     specs: '12–72V, up to 80A',
     description: 'BLDC motor controllers with FOC and trapezoidal drive modes. Standalone drivers and integrated controller boards for single and dual motor systems.',
     features: ['FOC / trapezoidal modes', 'CAN / RS485 / analog control', 'Regenerative braking', 'Dual motor synchronization'],
@@ -46,6 +52,7 @@ const categories = [
   },
   {
     name: 'Accessories',
+    slug: 'accessories',
     specs: 'Brakes, Encoders, Connectors',
     description: 'Electromagnetic brakes, incremental encoders, IP-rated connectors and wiring harnesses. Complete your drive system with matched accessories from a single source.',
     features: ['Spring-applied fail-safe brakes', '1000-line incremental encoders', 'IP67 circular connectors', 'Pre-wired harness kits'],
@@ -56,7 +63,7 @@ const categories = [
 
 <BaseLayout
   title="BLDC Motor Products — 15W to 3000W Drive Systems"
-  description="Browse SHENGHE DRIVE BLDC motor product categories: L-type and R-type geared motors, cylindrical motors, high-power drives, planetary gear motors, controllers and accessories. 15W–3000W, 12–220V."
+  description="Browse 盛合智联 Drive BLDC motor product categories: L-type and R-type geared motors, cylindrical motors, high-power drives, planetary gear motors, controllers and accessories. 15W–3000W, 12–220V."
   canonical="https://www.nbshzl-motor.com/products/"
 >
 
@@ -75,7 +82,7 @@ const categories = [
   <div class="container">
     <div class="product-grid">
       {categories.map((cat) => (
-        <div class="product-card">
+        <a href={`/products/${cat.slug}/`} class="product-card">
           <div class="product-card-img">
             <img src={cat.image} alt={cat.name} loading="lazy" />
           </div>
@@ -88,9 +95,12 @@ const categories = [
             <ul class="product-features">
               {cat.features.map((f) => <li>{f}</li>)}
             </ul>
-            <a href="/drive-selection/" class="product-cta">Get a Recommendation &rarr;</a>
+            <div class="product-card-actions">
+              <span class="product-cta">View Details &rarr;</span>
+              <span class="product-quote-cta">Get a Quote</span>
+            </div>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </div>
@@ -121,7 +131,13 @@ const categories = [
   <div class="container cta-inner">
     <h2>Not Sure Which Motor You Need?</h2>
     <p>Tell us your application requirements. Our engineers will recommend the right motor, gearbox and controller combination.</p>
-    <a href="/drive-selection/" class="btn btn-primary btn-lg">Get a Drive Recommendation &rarr;</a>
+    <div class="cta-multi">
+      <a href="/drive-selection/" class="btn btn-primary btn-lg">Get a Drive Recommendation &rarr;</a>
+      <a href="https://wa.me/8618268661068?text=Hi%2C%20I%20need%20help%20choosing%20a%20BLDC%20motor." class="btn btn-wa-lg" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+    </div>
   </div>
 </section>
 
@@ -147,16 +163,22 @@ const categories = [
   display: flex;
   flex-direction: column;
   transition: all 0.2s;
+  text-decoration: none;
+  color: var(--brand-text);
 }
 .product-card-img {
-  height: 200px;
+  height: 220px;
   overflow: hidden;
-  background: #e9ecef;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
 }
 .product-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 .product-card-body {
   padding: 24px;
@@ -202,13 +224,24 @@ const categories = [
   color: var(--brand-accent);
   font-weight: 600;
 }
+.product-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .product-cta {
   color: var(--brand-accent);
   font-weight: 600;
   font-size: 14px;
-  text-decoration: none;
 }
-.product-cta:hover { text-decoration: underline; }
+.product-quote-cta {
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  background: var(--brand-accent);
+  padding: 6px 14px;
+  border-radius: 4px;
+}
 
 /* Power Range Bar */
 .power-range-section { background: var(--brand-surface); }
@@ -243,7 +276,13 @@ const categories = [
 .cta-section { background: var(--brand-primary); color: white; text-align: center; }
 .cta-inner h2 { font-size: 32px; margin-bottom: 12px; }
 .cta-inner p { color: rgba(255,255,255,0.7); margin-bottom: 32px; font-size: 17px; }
+.cta-multi { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .btn-lg { padding: 18px 36px; font-size: 16px; }
+.btn-wa-lg {
+  background: #25D366; color: white; display: inline-flex; align-items: center; gap: 8px;
+  padding: 18px 32px; border-radius: 6px; font-weight: 600; font-size: 16px; text-decoration: none;
+}
+.btn-wa-lg:hover { background: #1ebe57; }
 
 @media (max-width: 768px) {
   .product-grid { grid-template-columns: 1fr; }

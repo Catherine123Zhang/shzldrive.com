@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="About SHENGHE DRIVE — Ningbo BLDC Motor Manufacturer"
+  title="About 盛合智联 Drive — Ningbo BLDC Motor Manufacturer"
   description="Ningbo Shenghe Zhilian Motor Co., Ltd. — 15+ years manufacturing BLDC drive systems for heavy-duty mobile equipment. ISO 9001, CE/LVD, RoHS certified. 50+ employees."
   canonical="https://www.nbshzl-motor.com/about/"
 >
@@ -11,7 +11,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <section class="hero-inner">
   <div class="container">
     <p class="breadcrumb"><a href="/">Home</a> &rarr; About</p>
-    <h1>About SHENGHE DRIVE</h1>
+    <h1>About 盛合智联 Drive</h1>
     <p class="hero-sub">
       The drive behind China's leading powered machinery movers.
     </p>
@@ -24,7 +24,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="about-text">
       <h2>Ningbo Shenghe Zhilian Motor Co., Ltd.</h2>
       <p class="about-lead">
-        SHENGHE DRIVE is a Ningbo-based manufacturer specializing in complete BLDC (brushless DC) drive
+        盛合智联 Drive is a Ningbo-based manufacturer specializing in complete BLDC (brushless DC) drive
         systems — motor, gearbox, brake, controller and encoder — for heavy-duty mobile equipment and
         industrial automation.
       </p>
@@ -35,7 +35,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
       <p>
         Our drive systems are widely adopted by leading powered machinery mover manufacturers in China.
-        Through our OEM partners, SHENGHE DRIVE motors are already operating in factories, warehouses
+        Through our OEM partners, 盛合智联 Drive motors are already operating in factories, warehouses
         and solar farms across 20+ countries worldwide.
       </p>
     </div>
@@ -56,6 +56,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <span class="stat-num">3kW</span>
         <span class="stat-label">Max Drive Power</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Factory Video -->
+<section class="section factory-video-section">
+  <div class="container">
+    <h2 class="section-title">See Our Factory in Action</h2>
+    <div class="video-wrap">
+      <video controls preload="metadata" poster="/assets/images/factory/workshop-floor.jpg" class="factory-video">
+        <source src="/assets/video/factory-hero-loop.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
 </section>
@@ -166,6 +179,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <p>Whether you're designing new equipment or looking for a reliable motor supplier, we'd like to hear about your application.</p>
     <div class="cta-actions">
       <a href="/drive-selection/" class="btn btn-primary btn-lg">Discuss Your Application &rarr;</a>
+      <a href="https://wa.me/8618268661068?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20motor%20project." class="btn btn-wa-lg" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp: +86 182 6866 1068
+      </a>
       <a href="/contact/" class="btn btn-outline">Contact Us</a>
     </div>
   </div>
@@ -279,6 +296,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 .cta-inner p { color: rgba(255,255,255,0.7); margin-bottom: 32px; font-size: 17px; }
 .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .btn-lg { padding: 18px 36px; font-size: 16px; }
+
+/* Factory Video */
+.factory-video-section { background: var(--brand-dark); }
+.factory-video-section .section-title { color: white; }
+.video-wrap { max-width: 800px; margin: 0 auto; }
+.factory-video { width: 100%; border-radius: 12px; }
+
+/* CTA QR */
+.btn-wa-lg {
+  background: #25D366; color: white; display: inline-flex; align-items: center; gap: 8px;
+  padding: 18px 32px; border-radius: 6px; font-weight: 600; font-size: 16px; text-decoration: none;
+}
+.btn-wa-lg:hover { background: #1ebe57; }
+.cta-qr-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; }
+.cta-qr-img { width: 80px; height: 80px; object-fit: contain; border-radius: 6px; border: 2px solid rgba(255,255,255,0.2); }
+.cta-qr-text { font-size: 13px; color: rgba(255,255,255,0.5); }
 
 /* Factory Gallery */
 .gallery-grid {

@@ -1,0 +1,349 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many wires does a BLDC motor have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard 3-phase BLDC motor has 3 power wires (phases U, V, W — typically colored red, yellow, blue) plus 5 Hall sensor wires (VCC 5V, GND, Hall A, Hall B, Hall C). That is 8 wires total for a basic configuration. If an encoder is added, there are 4-6 additional wires (A, B, Z channels plus power). With an electromagnetic brake, add 2 more wires (24V DC). A fully equipped motor with Hall sensors, encoder and brake may have 14-16 wires."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Hall sensors in a BLDC motor and why are they important?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hall sensors are small magnetic field detectors mounted on the stator at 120-degree electrical intervals. They detect the rotor magnet position and send signals to the controller, which uses this information to energize the correct stator winding at the correct time (commutation). Without Hall sensors, the controller cannot determine rotor position at startup — the motor may not start or may start in the wrong direction. Sensorless BLDC control is possible at higher speeds using back-EMF detection, but Hall sensors are required for reliable low-speed operation and startup under load."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between a BLDC motor and a brushed DC motor in construction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In a brushed DC motor, the windings are on the rotor (armature) and commutation is mechanical via carbon brushes and a commutator ring. In a BLDC motor, the windings are on the stator (stationary part) and permanent magnets are on the rotor. Commutation is electronic via the controller. This eliminates brush wear, sparking, and electrical noise. BLDC motors have no wearing parts except bearings, giving them 5-10x longer service life (20,000+ hours vs 2,000-5,000 hours for brushed motors)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I connect a BLDC motor to a controller?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Connect the 3 motor phase wires (U, V, W) to the controller's 3 motor output terminals. Connect the 5 Hall sensor wires to the controller's Hall input connector (match VCC to 5V, GND to GND, and Hall A/B/C to the corresponding inputs). If the motor runs in the wrong direction, swap any two of the three phase wires AND swap the corresponding two Hall sensor signal wires. Ensure the controller voltage and current ratings match the motor specifications — using a 24V controller with a 48V motor will not work and may damage the controller."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the winding configuration (star vs delta) mean for motor performance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Star (Y) winding connects one end of each phase together at a neutral point. Delta winding connects phases end-to-start in a triangle. Star winding gives higher torque at low speed and is easier to control — it is standard for most BLDC motors under 1kW. Delta winding gives higher speed and power density but lower starting torque. Most BLDC motors from Chinese manufacturers, including ours, use star winding unless specifically requested otherwise."
+      }
+    }
+  ]
+});
+
+const articleSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "BLDC Motor Diagrams Explained: Wiring & Construction",
+  "description": "Visual guide to brushless DC motor construction, wiring diagrams, Hall sensor connections and controller integration for common configurations.",
+  "author": {
+    "@type": "Organization",
+    "name": "Ningbo Shenghe Zhilian Motor Co., Ltd."
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shenghe Zhilian Drive",
+    "url": "https://shzldrive.com"
+  },
+  "datePublished": "2026-06-20",
+  "dateModified": "2026-08-01"
+});
+---
+
+<BaseLayout
+  title="BLDC Motor Diagrams Explained: Wiring & Construction"
+  description="Visual guide to brushless DC motor construction, wiring diagrams, Hall sensor connections and controller integration. Covers 3-phase BLDC wiring, star vs delta, and common connection mistakes."
+  canonical="https://shzldrive.com/blog/bldc-motor-diagram-guide/"
+>
+
+<script type="application/ld+json" set:html={faqSchema} />
+<script type="application/ld+json" set:html={articleSchema} />
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/blog/">Resources</a> &rarr; BLDC Motor Diagrams</p>
+    <h1>BLDC Motor Diagrams Explained: Wiring & Construction</h1>
+    <p class="hero-sub">
+      Understanding how brushless DC motors are built, wired and connected to controllers — with practical diagrams and troubleshooting tips.
+    </p>
+  </div>
+</section>
+
+<article class="section">
+  <div class="container article-content">
+
+    <p class="article-lead">
+      A BLDC motor looks simple from the outside — a cylindrical housing with a shaft on one end and wires on the other. Inside, however, is a precisely engineered system of permanent magnets, copper windings, Hall effect sensors and bearings working together. Understanding the internal construction and wiring helps you select the right motor, connect it correctly, and troubleshoot problems when they arise. This guide uses our standard motor range as examples.
+    </p>
+
+    <h2>BLDC Motor Internal Construction</h2>
+
+    <p>
+      Every brushless DC motor consists of four major components:
+    </p>
+
+    <h3>1. Stator (Stationary Winding Assembly)</h3>
+    <p>
+      The stator is the fixed part of the motor. It consists of a laminated silicon steel core with slots, wound with copper wire to form electromagnetic coils. In a 3-phase BLDC motor, there are three sets of coils arranged at 120-degree electrical intervals. When current flows through a coil pair, it creates a magnetic field that attracts or repels the rotor magnets, producing rotation.
+    </p>
+    <p>
+      Stator quality is defined by the silicon steel grade (higher grades like 35WW300 have lower core losses), the copper fill factor (how tightly the wire fills the slots — our motors achieve 55-65%), and the winding insulation class (Class B at 130C or Class F at 155C).
+    </p>
+
+    <img src="/assets/images/products/bldc-motor-controller-kit.png" alt="BLDC motor and controller kit showing motor construction" class="article-img" loading="lazy" />
+
+    <h3>2. Rotor (Permanent Magnet Assembly)</h3>
+    <p>
+      The rotor carries NdFeB (neodymium iron boron) permanent magnets bonded or mechanically fixed to a steel core on the motor shaft. The number of magnet poles determines the motor's speed-voltage constant (Ke) and torque constant (Kt). Common configurations:
+    </p>
+    <ul>
+      <li><strong>4-pole:</strong> Higher speed, lower torque per amp. Typical for small motors (42-60mm).</li>
+      <li><strong>8-pole:</strong> Balanced speed and torque. Standard for medium motors (80-104mm).</li>
+      <li><strong>10-pole:</strong> Lower speed, higher torque density. Common for large motors (120-130mm).</li>
+    </ul>
+    <p>
+      The magnet arrangement can be surface-mounted (SPM) or interior (IPM). Our standard motors use surface-mounted NdFeB magnets with N42SH grade, providing good torque density and thermal stability up to 150C.
+    </p>
+
+    <h3>3. Hall Effect Sensors</h3>
+    <p>
+      Three Hall effect sensors are mounted on the stator PCB at 120-degree electrical intervals. They detect the rotor magnet position and output digital signals (high/low) that tell the controller which phase pair to energize next. The Hall sensor commutation sequence has 6 steps per electrical cycle, producing the characteristic trapezoidal current waveform that gives BLDC motors their name.
+    </p>
+    <p>
+      Hall sensors operate on 5V DC (some controllers provide 12V — check compatibility). They output 3 digital signals: Hall A, Hall B and Hall C. The 6-step commutation sequence is:
+    </p>
+
+    <div class="spec-table-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Hall A</th>
+            <th>Hall B</th>
+            <th>Hall C</th>
+            <th>Phase Energized</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>1</td><td>0</td><td>1</td><td>U+, V-</td></tr>
+          <tr><td>2</td><td>1</td><td>0</td><td>0</td><td>U+, W-</td></tr>
+          <tr><td>3</td><td>1</td><td>1</td><td>0</td><td>V+, W-</td></tr>
+          <tr><td>4</td><td>0</td><td>1</td><td>0</td><td>V+, U-</td></tr>
+          <tr><td>5</td><td>0</td><td>1</td><td>1</td><td>W+, U-</td></tr>
+          <tr><td>6</td><td>0</td><td>0</td><td>1</td><td>W+, V-</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>4. Bearings and Housing</h3>
+    <p>
+      The shaft rotates on two ball bearings — one at the drive end (DE) and one at the non-drive end (NDE). Our standard motors use 6200-series or 6300-series deep groove ball bearings (C&U or HRB brand) with grease lubrication rated for 20,000+ hours at rated speed. Premium options include NSK or SKF bearings for extreme-reliability applications.
+    </p>
+    <p>
+      The housing is machined aluminum alloy (6061 or similar) for motors up to 104mm, and cast aluminum or steel for 120mm+ frames. IP54 sealing is achieved with rubber O-rings at the shaft exit and end cap joints. IP65 adds a lip seal on the shaft and additional gaskets.
+    </p>
+
+    <img src="/assets/images/products/bl-120-3.jpg" alt="120mm BLDC motor showing housing and shaft detail" class="article-img" loading="lazy" />
+
+    <h2>Wiring Diagram: Motor to Controller</h2>
+
+    <p>
+      Connecting a BLDC motor to its controller requires two sets of connections: power (3 phase wires) and signal (Hall sensor wires).
+    </p>
+
+    <h3>Power Connections (3 Wires)</h3>
+    <p>
+      The three motor phase wires — typically color-coded red (U), yellow (V), blue (W) — connect to the controller's three motor output terminals. These carry the main motor current (rated current ranges from 2A for a 60W motor to 80A for a 3kW motor at 48V).
+    </p>
+    <p>
+      <strong>Wire gauge matters.</strong> For motors up to 500W at 48V, 18 AWG (0.75mm<sup>2</sup>) is sufficient. For 500W-1,500W, use 14 AWG (2.5mm<sup>2</sup>). For 1,500W-3,000W, use 10 AWG (6mm<sup>2</sup>) or larger. Undersized wire causes voltage drop and heat, reducing motor performance.
+    </p>
+
+    <h3>Hall Sensor Connections (5 Wires)</h3>
+    <p>
+      The 5-wire Hall sensor cable connects to the controller's Hall input:
+    </p>
+    <ul>
+      <li><strong>Red:</strong> VCC (+5V power supply from controller)</li>
+      <li><strong>Black:</strong> GND (ground reference)</li>
+      <li><strong>Green:</strong> Hall A signal</li>
+      <li><strong>White:</strong> Hall B signal</li>
+      <li><strong>Yellow:</strong> Hall C signal</li>
+    </ul>
+    <p>
+      <em>Note: Wire colors may vary between manufacturers. Always verify with the motor's datasheet or pinout diagram. Our motors include a labeled wiring diagram with every shipment.</em>
+    </p>
+
+    <h3>Optional: Encoder Connections (4-6 Wires)</h3>
+    <p>
+      If the motor includes an incremental encoder (1,000 PPR standard), the encoder cable has:
+    </p>
+    <ul>
+      <li><strong>VCC:</strong> +5V (shared with Hall sensors or separate)</li>
+      <li><strong>GND:</strong> Ground</li>
+      <li><strong>A / A-:</strong> Channel A (and inverted, for differential output)</li>
+      <li><strong>B / B-:</strong> Channel B (and inverted)</li>
+      <li><strong>Z / Z-:</strong> Index pulse (one pulse per revolution)</li>
+    </ul>
+
+    <img src="/assets/images/products/bldc-controller-48v.jpg" alt="48V BLDC motor controller for Hall sensor and encoder input" class="article-img" loading="lazy" />
+
+    <h2>Star vs Delta Winding Configuration</h2>
+
+    <p>
+      BLDC motors can be wound in two configurations, each affecting performance:
+    </p>
+
+    <h3>Star (Y) Connection</h3>
+    <p>
+      One end of each phase winding connects together at a common neutral point. The phase voltage is 1/sqrt(3) of the line voltage (about 58%). Star winding provides:
+    </p>
+    <ul>
+      <li>Higher torque at low speed</li>
+      <li>Lower starting current</li>
+      <li>Easier sensorless startup</li>
+      <li>Standard for most BLDC motors under 1kW</li>
+    </ul>
+
+    <h3>Delta Connection</h3>
+    <p>
+      Phase windings connect end-to-start in a triangle — no neutral point. Each phase sees the full line voltage. Delta provides:
+    </p>
+    <ul>
+      <li>Higher speed capability (approximately 1.73x the star-connected speed at the same voltage)</li>
+      <li>Higher power output from the same motor frame</li>
+      <li>Higher starting current — requires a controller with higher current rating</li>
+      <li>Used for high-speed or high-power-density applications</li>
+    </ul>
+
+    <p>
+      <strong>Our standard:</strong> All Shenghe Zhilian BLDC motors ship with star (Y) winding unless delta is specifically requested. For AGV, machinery mover and transport applications, star winding is almost always the correct choice because low-speed torque and smooth startup are more important than maximum speed.
+    </p>
+
+    <h2>Common Wiring Mistakes and Troubleshooting</h2>
+
+    <p>
+      From our technical support experience, these are the most frequent connection errors:
+    </p>
+
+    <ul>
+      <li><strong>Motor spins in the wrong direction:</strong> Swap any two phase wires (e.g., U and V) AND swap the corresponding Hall sensor wires (Hall A and Hall B). Both must be swapped together — swapping only the phase wires without the Hall wires will cause erratic operation.</li>
+      <li><strong>Motor vibrates but does not rotate:</strong> Hall sensor wiring is incorrect. Verify VCC is 5V (not 12V or 24V — this will burn out the Hall sensors), and check that Hall A/B/C are connected to the correct controller inputs.</li>
+      <li><strong>Motor runs but with cogging/jerking:</strong> One Hall sensor may be faulty, or the commutation sequence is wrong. Measure each Hall output with an oscilloscope while slowly rotating the shaft by hand — all three should produce clean square waves with 120-degree phase shift.</li>
+      <li><strong>Motor overheats at low load:</strong> Check for voltage mismatch. Running a 24V motor on 48V will double the current draw and generate excessive heat. Always verify the motor's voltage rating matches the controller output voltage.</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>How many wires does a BLDC motor have?</h3>
+        <p>A standard 3-phase BLDC motor has 3 power wires (phases U, V, W) plus 5 Hall sensor wires (VCC 5V, GND, Hall A, Hall B, Hall C) — 8 wires total for a basic configuration. Adding an encoder adds 4-6 wires, and an electromagnetic brake adds 2 more. A fully equipped motor may have 14-16 wires.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What are Hall sensors in a BLDC motor and why are they important?</h3>
+        <p>Hall sensors are small magnetic field detectors mounted on the stator at 120-degree electrical intervals. They detect rotor position and tell the controller which phase to energize next. Without them, the motor cannot start reliably under load. Sensorless control works at higher speeds but Hall sensors are required for reliable low-speed operation and loaded startup.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the difference between a BLDC motor and a brushed DC motor?</h3>
+        <p>In a brushed motor, windings are on the rotor and commutation is mechanical via carbon brushes. In a BLDC motor, windings are on the stator and magnets are on the rotor — commutation is electronic. BLDC motors have no wearing parts except bearings, giving 5-10x longer service life (20,000+ hours vs 2,000-5,000 hours).</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I connect a BLDC motor to a controller?</h3>
+        <p>Connect the 3 phase wires (U, V, W) to the controller's motor outputs. Connect the 5 Hall sensor wires to the Hall input (VCC to 5V, GND to GND, Hall A/B/C to corresponding inputs). If the motor runs in the wrong direction, swap any two phase wires AND the corresponding two Hall wires together.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What does star vs delta winding mean for performance?</h3>
+        <p>Star (Y) winding gives higher torque at low speed and lower starting current — standard for most BLDC motors under 1kW. Delta winding gives higher speed and power density but lower starting torque and higher current draw. Most industrial BLDC motors use star winding unless specifically requested otherwise.</p>
+      </div>
+    </div>
+
+    <div class="article-cta">
+      <h2>Need Wiring Support or a Custom Configuration?</h2>
+      <p>Our engineers provide wiring diagrams, connection guidance and controller configuration support for every motor we ship. Tell us about your application and we will help you get the right setup.</p>
+      <div class="article-cta-actions">
+        <a href="/drive-selection/" class="btn btn-primary btn-lg">Get Technical Support &rarr;</a>
+        <a href="/contact/" class="btn btn-outline-dark">Contact Engineering &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; max-width: 800px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+
+.article-content { max-width: 780px; margin: 0 auto; }
+.article-lead { font-size: 18px; line-height: 1.8; color: var(--brand-text); margin-bottom: 40px; border-left: 3px solid var(--brand-accent); padding-left: 20px; }
+
+.article-content h2 { font-size: 26px; margin-top: 48px; margin-bottom: 16px; color: var(--brand-text); }
+.article-content h3 { font-size: 20px; margin-top: 28px; margin-bottom: 10px; color: var(--brand-text); }
+.article-content p { font-size: 16px; line-height: 1.8; color: var(--brand-text-light); margin-bottom: 16px; }
+.article-content ul { margin-bottom: 20px; padding-left: 24px; }
+.article-content li { font-size: 16px; line-height: 1.8; color: var(--brand-text-light); margin-bottom: 8px; }
+.article-content li strong { color: var(--brand-text); }
+
+.article-img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 32px 0;
+  border: 1px solid var(--brand-border);
+}
+
+.spec-table-wrap { overflow-x: auto; margin: 24px 0 32px; }
+.spec-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.spec-table th { background: var(--brand-dark); color: white; padding: 12px 16px; text-align: left; font-weight: 600; white-space: nowrap; }
+.spec-table td { padding: 12px 16px; border-bottom: 1px solid var(--brand-border); color: var(--brand-text-light); }
+.spec-table tr:nth-child(even) td { background: var(--brand-surface); }
+
+.faq-list { margin-top: 24px; }
+.faq-item { border: 1px solid var(--brand-border); border-radius: 10px; padding: 24px 28px; margin-bottom: 16px; background: var(--brand-surface); }
+.faq-item h3 { font-size: 17px; margin-bottom: 10px; color: var(--brand-text); margin-top: 0; }
+.faq-item p { font-size: 15px; line-height: 1.7; color: var(--brand-text-light); margin-bottom: 0; }
+
+.article-cta {
+  margin-top: 56px;
+  padding: 40px;
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  text-align: center;
+}
+.article-cta h2 { font-size: 24px; margin-top: 0; margin-bottom: 12px; }
+.article-cta p { font-size: 16px; color: var(--brand-text-light); margin-bottom: 24px; }
+.article-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-lg { padding: 18px 36px; font-size: 16px; }
+.btn-outline-dark { background: transparent; color: var(--brand-text); border: 2px solid var(--brand-border); padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.2s; }
+.btn-outline-dark:hover { border-color: var(--brand-accent); color: var(--brand-accent); }
+
+@media (max-width: 768px) {
+  .hero-inner h1 { font-size: 28px; }
+  .article-content h2 { font-size: 22px; }
+  .article-cta { padding: 28px 20px; }
+  .article-cta-actions { flex-direction: column; align-items: center; }
+}
+</style>

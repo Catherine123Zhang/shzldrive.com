@@ -24,133 +24,62 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="form-main">
       <form action="https://api.web3forms.com/submit" method="POST" class="drive-form">
         <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
-        <input type="hidden" name="subject" value="SHENGHE DRIVE — Drive Selection Request" />
-        <input type="hidden" name="from_name" value="SHENGHE DRIVE Website" />
+        <input type="hidden" name="subject" value="盛合智联 Drive — Drive Selection Request" />
+        <input type="hidden" name="from_name" value="盛合智联 Drive Website" />
 
         <div class="form-section">
-          <h3>Equipment Specifications</h3>
+          <h3>Your Application</h3>
           <div class="form-grid">
             <div class="form-group">
-              <label for="payload">Payload / Load Capacity *</label>
-              <select name="payload" id="payload" required>
-                <option value="">Select payload range</option>
-                <option value="1-5 tons">1–5 tons</option>
-                <option value="5-10 tons">5–10 tons</option>
-                <option value="10-20 tons">10–20 tons</option>
-                <option value="20-40 tons">20–40 tons</option>
-                <option value="40-60 tons">40–60 tons</option>
-                <option value="60+ tons">60+ tons</option>
-                <option value="Other">Other (specify below)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="wheel">Wheel Diameter (mm)</label>
-              <input type="text" name="wheel_diameter" id="wheel" placeholder="e.g. 200mm" />
-            </div>
-            <div class="form-group">
-              <label for="speed">Target Travel Speed</label>
-              <input type="text" name="target_speed" id="speed" placeholder="e.g. 20m/min or 0.3m/s" />
-            </div>
-            <div class="form-group">
-              <label for="gradient">Max Gradient / Slope</label>
-              <input type="text" name="gradient" id="gradient" placeholder="e.g. 3° or 5%" />
-            </div>
-            <div class="form-group">
-              <label for="voltage">Battery Voltage *</label>
-              <select name="voltage" id="voltage" required>
-                <option value="">Select voltage</option>
-                <option value="24V">24V</option>
-                <option value="36V">36V</option>
-                <option value="48V">48V</option>
-                <option value="72V">72V</option>
+              <label for="equipment">Equipment Type *</label>
+              <select name="equipment_type" id="equipment" required>
+                <option value="">Select</option>
+                <option value="Powered machinery mover">Machinery mover</option>
+                <option value="Transfer cart">Transfer cart</option>
+                <option value="Heavy-duty AGV">AGV</option>
+                <option value="PV cleaning robot">PV cleaning robot</option>
+                <option value="Tracked carrier">Tracked carrier</option>
+                <option value="Conveyor / gate">Conveyor / gate</option>
                 <option value="Other">Other</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="motors">Number of Drive Motors</label>
-              <select name="motor_count" id="motors">
-                <option value="">Select</option>
-                <option value="1">1 motor</option>
-                <option value="2">2 motors (dual drive)</option>
-                <option value="4">4 motors</option>
-                <option value="Not sure">Not sure — recommend</option>
-              </select>
+              <label for="payload">Load Capacity</label>
+              <input type="text" name="payload" id="payload" placeholder="e.g. 20 tons" />
             </div>
             <div class="form-group">
-              <label for="hours">Daily Operating Hours</label>
-              <input type="text" name="daily_hours" id="hours" placeholder="e.g. 8 hours" />
+              <label for="voltage">Voltage</label>
+              <input type="text" name="voltage" id="voltage" placeholder="e.g. 48V" />
             </div>
             <div class="form-group">
-              <label for="ip">Protection / IP Rating</label>
-              <select name="ip_rating" id="ip">
-                <option value="">Select</option>
-                <option value="IP40">IP40 (indoor standard)</option>
-                <option value="IP54">IP54 (dust/splash)</option>
-                <option value="IP65">IP65 (waterproof)</option>
-                <option value="IP67">IP67 (submersible)</option>
-              </select>
+              <label for="ip">IP Rating</label>
+              <input type="text" name="ip_rating" id="ip" placeholder="e.g. IP65" />
+            </div>
+            <div class="form-group full-width">
+              <label for="details">Other Requirements</label>
+              <textarea name="details" id="details" rows="3" placeholder="Wheel diameter, speed, motor power, annual volume, or any other specs..."></textarea>
             </div>
           </div>
         </div>
 
         <div class="form-section">
-          <h3>Equipment Type</h3>
-          <div class="form-grid">
-            <div class="form-group full-width">
-              <label for="equipment">What type of equipment? *</label>
-              <select name="equipment_type" id="equipment" required>
-                <option value="">Select equipment type</option>
-                <option value="Powered machinery mover">Powered machinery mover</option>
-                <option value="Transport trolley / transfer cart">Transport trolley / transfer cart</option>
-                <option value="Heavy-duty AGV">Heavy-duty AGV</option>
-                <option value="Tracked carrier">Tracked carrier</option>
-                <option value="Die/mold transfer cart">Die / mold transfer cart</option>
-                <option value="PV cleaning robot">PV cleaning robot</option>
-                <option value="Mobile robot">Mobile robot</option>
-                <option value="Conveyor system">Conveyor system</option>
-                <option value="Other">Other (describe below)</option>
-              </select>
-            </div>
-            <div class="form-group full-width">
-              <label for="details">Additional Details</label>
-              <textarea name="details" id="details" rows="4" placeholder="Working environment, special requirements, existing motor specs to replace, annual volume, etc."></textarea>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-section">
-          <h3>Your Contact Information</h3>
+          <h3>Contact</h3>
           <div class="form-grid">
             <div class="form-group">
-              <label for="name">Your Name *</label>
-              <input type="text" name="name" id="name" required placeholder="Full name" />
-            </div>
-            <div class="form-group">
-              <label for="company">Company *</label>
-              <input type="text" name="company" id="company" required placeholder="Company name" />
+              <label for="name">Name *</label>
+              <input type="text" name="name" id="name" required placeholder="Your name" />
             </div>
             <div class="form-group">
               <label for="email">Email *</label>
               <input type="email" name="email" id="email" required placeholder="your@company.com" />
             </div>
             <div class="form-group">
-              <label for="phone">Phone / WhatsApp</label>
+              <label for="company">Company</label>
+              <input type="text" name="company" id="company" placeholder="Company name" />
+            </div>
+            <div class="form-group">
+              <label for="phone">WhatsApp / Phone</label>
               <input type="text" name="phone" id="phone" placeholder="+1 234 567 8900" />
-            </div>
-            <div class="form-group">
-              <label for="country">Country *</label>
-              <input type="text" name="country" id="country" required placeholder="e.g. Germany" />
-            </div>
-            <div class="form-group">
-              <label for="volume">Estimated Annual Volume</label>
-              <select name="volume" id="volume">
-                <option value="">Select</option>
-                <option value="Prototype / sample">Prototype / sample</option>
-                <option value="10-50 units/year">10–50 units/year</option>
-                <option value="50-200 units/year">50–200 units/year</option>
-                <option value="200-1000 units/year">200–1,000 units/year</option>
-                <option value="1000+ units/year">1,000+ units/year</option>
-              </select>
             </div>
           </div>
         </div>

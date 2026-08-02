@@ -9,6 +9,7 @@
     "deploy": "astro build && wrangler pages deploy dist"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "astro": "latest"
   }
 }

@@ -1,0 +1,418 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a BLDC motor cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BLDC motor prices range from $15-30 for small 30-60W motors (60mm frame) to $80-200 for medium 200-500W motors (90-104mm frame) and $150-400+ for high-power 750W-3kW motors (120-130mm frame). These are unit prices at MOQ (50-100 units). Adding a gearbox typically adds $20-80, a controller $30-100, and an electromagnetic brake $15-40. Volume pricing at 500+ units can be 15-25% lower."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are some BLDC motors much cheaper than others at the same power rating?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Price differences at the same rated power usually reflect differences in: magnet grade (N35 vs N45SH costs 2-3x more per kg), bearing quality (generic vs NSK/SKF adds $3-8 per motor), insulation class (Class B vs Class F), IP rating (IP44 vs IP65 adds $5-15 for sealing), and manufacturing tolerances. A 'cheap' 500W motor may use lower-grade magnets that degrade faster at high temperatures, low-cost bearings with 5,000-hour life instead of 20,000 hours, and loose tolerances that cause more vibration and noise."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does customization increase the price significantly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Minor customizations (shaft length, connector type, wire length, winding for different voltage) add 0-10% to the standard price with no additional tooling cost. Moderate customizations (custom mounting flange, modified housing dimensions) may require tooling costing $500-2,000 as a one-time fee. Major customizations (completely new rotor/stator design) require $3,000-10,000 in tooling and NRE, typically amortized over the first production run."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does order volume affect BLDC motor pricing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Volume is the single biggest price lever. Typical price scaling: 1-10 units (sample/prototype): list price or +10-20% premium. 50-100 units (MOQ): standard price. 200-500 units: 5-10% discount. 500-1,000 units: 10-15% discount. 1,000+ units: 15-25% discount, plus potential for dedicated tooling and further customization at no extra cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it cheaper to buy a motor and controller separately or as an integrated system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Buying a matched motor + controller system from a single manufacturer is typically 5-10% cheaper than purchasing separately, and eliminates integration risk. A mismatched controller can damage the motor or deliver poor performance. When you buy a complete drive system (motor + gearbox + controller + brake), the manufacturer pre-tests the entire assembly — saving your engineering team hours of integration work and reducing the risk of field failures."
+      }
+    }
+  ]
+});
+
+const articleSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "BLDC Motor Price Guide: What Affects Cost?",
+  "description": "Understanding the factors that determine BLDC motor pricing — power rating, gearbox type, IP rating, order volume and customization level.",
+  "author": {
+    "@type": "Organization",
+    "name": "Ningbo Shenghe Zhilian Motor Co., Ltd."
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shenghe Zhilian Drive",
+    "url": "https://shzldrive.com"
+  },
+  "datePublished": "2026-06-28",
+  "dateModified": "2026-08-01"
+});
+---
+
+<BaseLayout
+  title="BLDC Motor Price Guide: What Affects Cost?"
+  description="Understanding the factors that determine BLDC motor pricing — power rating, gearbox type, IP rating, order volume, magnet grade and customization. Price ranges and cost optimization tips from a Chinese manufacturer."
+  canonical="https://shzldrive.com/blog/bldc-motor-price-guide/"
+>
+
+<script type="application/ld+json" set:html={faqSchema} />
+<script type="application/ld+json" set:html={articleSchema} />
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/blog/">Resources</a> &rarr; BLDC Motor Price Guide</p>
+    <h1>BLDC Motor Price Guide: What Affects Cost?</h1>
+    <p class="hero-sub">
+      A transparent look at what drives BLDC motor pricing — and how to optimize cost without sacrificing quality.
+    </p>
+  </div>
+</section>
+
+<article class="section">
+  <div class="container article-content">
+
+    <p class="article-lead">
+      "How much does a BLDC motor cost?" is the most common first question we receive from new customers. The honest answer is: it depends on at least six factors, and understanding them will help you get the best value for your application. This guide provides actual price ranges and explains what is behind the numbers — from a manufacturer who builds these motors every day.
+    </p>
+
+    <h2>Price Ranges by Power Rating</h2>
+
+    <p>
+      Here are realistic price ranges for BLDC motors at standard MOQ (50-100 units), FOB Ningbo, as of 2026. These are for the motor only — gearbox, controller and brake are additional.
+    </p>
+
+    <div class="spec-table-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Power Range</th>
+            <th>Frame Size</th>
+            <th>Motor Only (USD)</th>
+            <th>With Gearbox (USD)</th>
+            <th>Complete System* (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>15-60W</td>
+            <td>42-60mm</td>
+            <td>$15-30</td>
+            <td>$35-60</td>
+            <td>$65-120</td>
+          </tr>
+          <tr>
+            <td>80-200W</td>
+            <td>60-80mm</td>
+            <td>$25-50</td>
+            <td>$50-90</td>
+            <td>$90-170</td>
+          </tr>
+          <tr>
+            <td>200-500W</td>
+            <td>90-104mm</td>
+            <td>$50-120</td>
+            <td>$80-180</td>
+            <td>$140-300</td>
+          </tr>
+          <tr>
+            <td>500-1,000W</td>
+            <td>104-120mm</td>
+            <td>$80-180</td>
+            <td>$120-280</td>
+            <td>$200-450</td>
+          </tr>
+          <tr>
+            <td>1,000-2,000W</td>
+            <td>120-130mm</td>
+            <td>$120-250</td>
+            <td>$180-380</td>
+            <td>$300-600</td>
+          </tr>
+          <tr>
+            <td>2,000-3,000W</td>
+            <td>130mm</td>
+            <td>$200-400</td>
+            <td>$300-550</td>
+            <td>$450-850</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-note">* Complete system = motor + gearbox + controller + electromagnetic brake + encoder. Prices at MOQ 50-100 units.</p>
+
+    <img src="/assets/images/products/hero-motor-set.jpg" alt="BLDC motor and controller complete drive system" class="article-img" loading="lazy" />
+
+    <h2>The 6 Factors That Determine Motor Price</h2>
+
+    <h3>1. Power Rating and Frame Size</h3>
+    <p>
+      Power is the primary cost driver. A larger motor requires more copper wire for the stator winding, more NdFeB magnet material for the rotor, a larger housing, and bigger bearings. The relationship is roughly linear: a 1,000W motor costs approximately 2x a 500W motor of the same type and quality grade.
+    </p>
+    <p>
+      Frame size matters independently of power. A higher-power motor squeezed into a compact frame (e.g., 500W in a 90mm frame instead of 104mm) requires higher-grade magnets and better thermal design, which increases cost.
+    </p>
+
+    <h3>2. Magnet Grade</h3>
+    <p>
+      NdFeB (neodymium) magnets are the single most expensive raw material in a BLDC motor, typically accounting for 25-35% of the motor's bill of materials. Magnet grade affects both performance and cost:
+    </p>
+
+    <div class="spec-table-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Magnet Grade</th>
+            <th>Relative Cost</th>
+            <th>Max Temp</th>
+            <th>Typical Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>N35</td>
+            <td>1.0x (baseline)</td>
+            <td>80C</td>
+            <td>Low-cost consumer products</td>
+          </tr>
+          <tr>
+            <td>N42</td>
+            <td>1.2x</td>
+            <td>80C</td>
+            <td>Standard industrial motors</td>
+          </tr>
+          <tr>
+            <td>N42SH</td>
+            <td>1.6x</td>
+            <td>150C</td>
+            <td>High-reliability industrial drives</td>
+          </tr>
+          <tr>
+            <td>N45SH</td>
+            <td>1.9x</td>
+            <td>150C</td>
+            <td>Premium motors, high ambient temperature</td>
+          </tr>
+          <tr>
+            <td>N48SH</td>
+            <td>2.3x</td>
+            <td>150C</td>
+            <td>Aerospace, medical, demanding specs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Our standard industrial motors use N42SH magnets — a good balance of performance, thermal stability and cost. For applications in enclosed, high-temperature environments, we recommend upgrading to N45SH.
+    </p>
+
+    <h3>3. Gearbox Type</h3>
+    <p>
+      The gearbox often costs as much as or more than the motor itself. The three main types have very different cost profiles:
+    </p>
+    <ul>
+      <li><strong>Worm gear (L-type):</strong> Lowest cost ($20-60 depending on size). Simple construction with self-locking capability. Trade-off: lower efficiency (40-85%).</li>
+      <li><strong>Helical gear (R-type):</strong> Mid-range cost ($30-80). Higher efficiency (92-96%), lower noise. Preferred for AGVs and indoor equipment.</li>
+      <li><strong>Planetary gear:</strong> Highest cost ($40-120). Highest torque density, most compact, lowest noise. Premium choice for robotics and precision applications.</li>
+    </ul>
+
+    <img src="/assets/images/products/bldc-planetary-gear-motor-series.jpg" alt="Planetary gear BLDC motor series comparison" class="article-img" loading="lazy" />
+
+    <h3>4. IP Rating and Sealing</h3>
+    <p>
+      Environmental protection significantly affects cost:
+    </p>
+    <ul>
+      <li><strong>IP44:</strong> Baseline — splash-proof. Standard for indoor, clean environments.</li>
+      <li><strong>IP54:</strong> +$3-8 — Dust-protected, splash-proof from all directions. Our standard for industrial applications.</li>
+      <li><strong>IP65:</strong> +$8-15 — Dust-tight, water jet proof. Required for outdoor equipment, washdown environments.</li>
+      <li><strong>IP67:</strong> +$15-30 — Submersible (temporary). Specialized applications only.</li>
+    </ul>
+
+    <h3>5. Controller and Electronics</h3>
+    <p>
+      Controller cost varies widely based on current rating, communication interfaces and control algorithm:
+    </p>
+    <ul>
+      <li><strong>Basic trapezoidal driver (20A):</strong> $15-30. Simple speed control, analog input.</li>
+      <li><strong>FOC controller (40A):</strong> $30-60. Smooth, quiet operation, better efficiency. CAN bus or RS485.</li>
+      <li><strong>High-current dual-channel (80-150A):</strong> $80-150. For dual-motor AGVs with differential steering, regenerative braking.</li>
+    </ul>
+
+    <h3>6. Order Volume</h3>
+    <p>
+      Volume is the single most effective lever for reducing per-unit cost. Here is how pricing typically scales:
+    </p>
+
+    <div class="spec-table-wrap">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Order Quantity</th>
+            <th>Relative Price</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1-10 units</td>
+            <td>110-120% of MOQ price</td>
+            <td>Sample/prototype pricing</td>
+          </tr>
+          <tr>
+            <td>50-100 units (MOQ)</td>
+            <td>100% (baseline)</td>
+            <td>Standard pricing</td>
+          </tr>
+          <tr>
+            <td>200-500 units</td>
+            <td>90-95%</td>
+            <td>Batch production efficiency</td>
+          </tr>
+          <tr>
+            <td>500-1,000 units</td>
+            <td>85-90%</td>
+            <td>Material purchasing leverage</td>
+          </tr>
+          <tr>
+            <td>1,000+ units</td>
+            <td>75-85%</td>
+            <td>Dedicated production run, free tooling</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <img src="/assets/images/products/bl-90-1.jpg" alt="90mm cylindrical BLDC motor" class="article-img" loading="lazy" />
+
+    <h2>How to Optimize Cost Without Sacrificing Quality</h2>
+
+    <p>
+      After 15 years of working with OEM customers, here are the most effective cost optimization strategies we recommend:
+    </p>
+
+    <ul>
+      <li><strong>Right-size the motor.</strong> An oversized motor wastes material cost. Target 60-80% of rated load for continuous operation — this balances cost, efficiency and thermal margin.</li>
+      <li><strong>Use standard frame sizes.</strong> Custom housing dimensions require tooling investment. Adapting your mechanical interface to fit a standard motor frame (60, 80, 90, 104 or 120mm) avoids $500-2,000 in one-time tooling costs.</li>
+      <li><strong>Buy the complete system from one manufacturer.</strong> Motor + gearbox + controller + brake from a single source is 5-10% cheaper than purchasing separately, eliminates compatibility risk, and simplifies your supply chain.</li>
+      <li><strong>Consolidate your motor variants.</strong> If your product line uses 3 different motors, see if 2 can be served by the same motor with different firmware settings on the controller. Fewer SKUs = higher volume per part = lower unit cost.</li>
+      <li><strong>Plan for volume.</strong> Even if your first order is 50 units, discuss your annual forecast. Manufacturers price more aggressively when they see a growth trajectory. A confirmed 500-unit annual commitment will get better pricing than a series of 50-unit spot orders.</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>How much does a BLDC motor cost?</h3>
+        <p>BLDC motor prices range from $15-30 for small 30-60W motors (60mm frame) to $80-200 for medium 200-500W motors (90-104mm frame) and $150-400+ for high-power 750W-3kW motors (120-130mm frame). These are unit prices at MOQ (50-100 units). Adding a gearbox typically adds $20-80, a controller $30-100, and a brake $15-40.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why are some BLDC motors much cheaper than others at the same power rating?</h3>
+        <p>Price differences at the same rated power usually reflect differences in magnet grade (N35 vs N45SH costs 2-3x more), bearing quality (generic vs NSK/SKF adds $3-8), insulation class, IP rating, and manufacturing tolerances. A "cheap" motor may degrade faster at high temperatures and have shorter bearing life.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does customization increase the price significantly?</h3>
+        <p>Minor customizations (shaft length, connector type, wire length, voltage) add 0-10% with no tooling cost. Moderate customizations (custom flange, modified housing) may require $500-2,000 tooling. Major customizations (new rotor/stator design) require $3,000-10,000 in tooling and NRE.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does order volume affect BLDC motor pricing?</h3>
+        <p>Volume is the biggest price lever. At 200-500 units: 5-10% discount. At 500-1,000 units: 10-15% discount. At 1,000+ units: 15-25% discount, plus potential for free tooling and additional customization.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is it cheaper to buy a motor and controller separately or as a system?</h3>
+        <p>Buying a matched motor + controller system from a single manufacturer is typically 5-10% cheaper than purchasing separately, and eliminates integration risk. A mismatched controller can damage the motor or deliver poor performance.</p>
+      </div>
+    </div>
+
+    <div class="article-cta">
+      <h2>Get a Detailed Quote for Your Application</h2>
+      <p>Share your specifications — power, voltage, gear type, IP rating and estimated annual volume — and we will provide itemized pricing within 48 hours.</p>
+      <div class="article-cta-actions">
+        <a href="/drive-selection/" class="btn btn-primary btn-lg">Request Pricing &rarr;</a>
+        <a href="/contact/" class="btn btn-outline-dark">Contact Sales &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; max-width: 800px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 600px; }
+
+.article-content { max-width: 780px; margin: 0 auto; }
+.article-lead { font-size: 18px; line-height: 1.8; color: var(--brand-text); margin-bottom: 40px; border-left: 3px solid var(--brand-accent); padding-left: 20px; }
+
+.article-content h2 { font-size: 26px; margin-top: 48px; margin-bottom: 16px; color: var(--brand-text); }
+.article-content h3 { font-size: 20px; margin-top: 28px; margin-bottom: 10px; color: var(--brand-text); }
+.article-content p { font-size: 16px; line-height: 1.8; color: var(--brand-text-light); margin-bottom: 16px; }
+.article-content ul { margin-bottom: 20px; padding-left: 24px; }
+.article-content li { font-size: 16px; line-height: 1.8; color: var(--brand-text-light); margin-bottom: 8px; }
+.article-content li strong { color: var(--brand-text); }
+.table-note { font-size: 13px; color: var(--brand-text-light); font-style: italic; margin-top: -20px; }
+
+.article-img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 32px 0;
+  border: 1px solid var(--brand-border);
+}
+
+.spec-table-wrap { overflow-x: auto; margin: 24px 0 32px; }
+.spec-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.spec-table th { background: var(--brand-dark); color: white; padding: 12px 16px; text-align: left; font-weight: 600; white-space: nowrap; }
+.spec-table td { padding: 12px 16px; border-bottom: 1px solid var(--brand-border); color: var(--brand-text-light); }
+.spec-table tr:nth-child(even) td { background: var(--brand-surface); }
+
+.faq-list { margin-top: 24px; }
+.faq-item { border: 1px solid var(--brand-border); border-radius: 10px; padding: 24px 28px; margin-bottom: 16px; background: var(--brand-surface); }
+.faq-item h3 { font-size: 17px; margin-bottom: 10px; color: var(--brand-text); margin-top: 0; }
+.faq-item p { font-size: 15px; line-height: 1.7; color: var(--brand-text-light); margin-bottom: 0; }
+
+.article-cta {
+  margin-top: 56px;
+  padding: 40px;
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  text-align: center;
+}
+.article-cta h2 { font-size: 24px; margin-top: 0; margin-bottom: 12px; }
+.article-cta p { font-size: 16px; color: var(--brand-text-light); margin-bottom: 24px; }
+.article-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-lg { padding: 18px 36px; font-size: 16px; }
+.btn-outline-dark { background: transparent; color: var(--brand-text); border: 2px solid var(--brand-border); padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.2s; }
+.btn-outline-dark:hover { border-color: var(--brand-accent); color: var(--brand-accent); }
+
+@media (max-width: 768px) {
+  .hero-inner h1 { font-size: 28px; }
+  .article-content h2 { font-size: 22px; }
+  .article-cta { padding: 28px 20px; }
+  .article-cta-actions { flex-direction: column; align-items: center; }
+}
+</style>

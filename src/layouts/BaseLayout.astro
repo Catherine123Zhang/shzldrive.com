@@ -3,21 +3,95 @@ interface Props {
   title: string;
   description?: string;
   canonical?: string;
+  locale?: string;
+  alternates?: { locale: string; path: string }[];
 }
 
-const { title, description, canonical } = Astro.props;
-const siteUrl = 'https://www.nbshzl-motor.com';
+const { title, description, canonical, locale = 'en', alternates = [] } = Astro.props;
+const siteUrl = 'https://shzldrive.com';
+const currentPath = Astro.url.pathname;
+const canonicalUrl = canonical || `${siteUrl}${currentPath}`;
+const isRtl = locale === 'ar';
+
+// Organization Schema (全站)
+const orgSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ningbo Shenghe Zhilian Motor Co., Ltd.",
+  "alternateName": ["盛合智联", "Shenghe Zhilian Drive", "SHZL Drive"],
+  "url": siteUrl,
+  "logo": `${siteUrl}/assets/images/brand/logo.png`,
+  "description": "Manufacturer of BLDC motor, gearbox and controller drive systems for heavy-duty mobile equipment, AGVs, and industrial automation. 15W–3,000W.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ningbo",
+    "addressRegion": "Zhejiang",
+    "addressCountry": "CN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+86-182-6866-1068",
+    "contactType": "sales",
+    "availableLanguage": ["English", "Chinese"]
+  },
+  "sameAs": [],
+  "foundingDate": "2010",
+  "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 50, "maxValue": 100 },
+  "iso6523Code": "ISO 9001",
+  "hasCredential": [
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "ISO 9001" },
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "CE/LVD" },
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "RoHS" }
+  ]
+});
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={locale} dir={isRtl ? 'rtl' : 'ltr'}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} | SHENGHE DRIVE</title>
+  <title>{title} | Shenghe Zhilian Drive</title>
   <meta name="description" content={description || 'Proven BLDC drive systems for heavy-duty mobile equipment — powering China-made machinery movers worldwide.'} />
-  <link rel="canonical" href={canonical || siteUrl} />
+  <link rel="canonical" href={canonicalUrl} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  {/* hreflang tags */}
+  <link rel="alternate" hreflang="en" href={`${siteUrl}${currentPath.replace(/^\/(es|pt|fr|ar|ru|vi|id)\//, '/')}`} />
+  {alternates.map(alt => (
+    <link rel="alternate" hreflang={alt.locale} href={`${siteUrl}${alt.path}`} />
+  ))}
+  <link rel="alternate" hreflang="x-default" href={`${siteUrl}${currentPath.replace(/^\/(es|pt|fr|ar|ru|vi|id)\//, '/')}`} />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Shenghe Zhilian Drive" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description || ''} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:locale" content={locale} />
+  <meta property="og:image" content={`${siteUrl}/assets/images/og/default.jpg`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description || ''} />
+  <meta name="twitter:image" content={`${siteUrl}/assets/images/og/default.jpg`} />
+
+  {/* Schema.org */}
+  <script type="application/ld+json" set:html={orgSchema} />
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0GQ52JLRX"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-N0GQ52JLRX');
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style is:global>
     @import '../styles/global.css';
@@ -27,7 +101,7 @@ const siteUrl = 'https://www.nbshzl-motor.com';
   <header class="site-header">
     <div class="container header-inner">
       <a href="/" class="logo">
-        <img src="/assets/images/brand/logo.png" alt="SHENGHE DRIVE — BLDC Motor Manufacturer" class="logo-img" />
+        <img src="/assets/images/brand/logo.png" alt="盛合智联 Drive — BLDC Motor Manufacturer" class="logo-img" />
       </a>
       <nav class="main-nav">
         <a href="/heavy-duty-drives/">Heavy-Duty Mobility</a>
@@ -37,7 +111,13 @@ const siteUrl = 'https://www.nbshzl-motor.com';
         <a href="/blog/">Resources</a>
         <a href="/about/">About</a>
       </nav>
-      <a href="/drive-selection/" class="btn btn-primary header-cta">Get a Drive Recommendation</a>
+      <div class="header-actions">
+        <a href="https://wa.me/8618268661068?text=Hi%2C%20I%27m%20interested%20in%20your%20BLDC%20motors." class="btn btn-wa header-cta" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="/drive-selection/" class="btn btn-primary header-cta">Get a Quote</a>
+      </div>
     </div>
   </header>
 
@@ -48,9 +128,17 @@ const siteUrl = 'https://www.nbshzl-motor.com';
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <strong>SHENGHE DRIVE</strong>
+        <strong>盛合智联 Drive</strong>
         <p>Ningbo Shenghe Zhilian Motor Co., Ltd.</p>
-        <p>Ningbo, Zhejiang, China</p>
+        <p>宁波盛合智联电机有限公司</p>
+        <p style="margin-top: 12px;">Ningbo, Zhejiang, China</p>
+        <div class="footer-contact-info">
+          <a href="https://wa.me/8618268661068" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            +86 182 6866 1068
+          </a>
+          <a href="mailto:sales@nbshzl-motor.com">sales@nbshzl-motor.com</a>
+        </div>
       </div>
       <div class="footer-links">
         <div>
@@ -72,14 +160,25 @@ const siteUrl = 'https://www.nbshzl-motor.com';
           <a href="/contact/">Contact</a>
         </div>
       </div>
+      <div class="footer-qr">
+        <p class="footer-qr-label">Scan to Chat on WeChat</p>
+        <img src="/assets/images/wechat-qr.jpg" alt="WeChat QR Code — 盛合智联 Drive" class="footer-qr-img" />
+        <p class="footer-qr-hint">WeChat: 18268661068</p>
+      </div>
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>&copy; 2026 SHENGHE DRIVE. All rights reserved.</p>
+        <p>&copy; 2026 盛合智联 Drive. All rights reserved.</p>
         <div class="footer-certs">ISO 9001 · CE/LVD · RoHS</div>
       </div>
     </div>
   </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/8618268661068?text=Hi%2C%20I%27m%20interested%20in%20your%20BLDC%20motors.%20Can%20you%20help%20me%20with%20a%20quote%3F" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="whatsapp-float-text">Chat with Us</span>
+  </a>
 
   <style>
     .site-header {
@@ -93,7 +192,7 @@ const siteUrl = 'https://www.nbshzl-motor.com';
     .header-inner {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 24px;
     }
     .logo {
       text-decoration: none;
@@ -118,7 +217,16 @@ const siteUrl = 'https://www.nbshzl-motor.com';
       white-space: nowrap;
     }
     .main-nav a:hover { color: var(--brand-accent); }
+    .header-actions { display: flex; gap: 10px; flex-shrink: 0; }
     .header-cta { font-size: 13px; padding: 10px 20px; white-space: nowrap; }
+    .btn-wa {
+      background: #25D366;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-wa:hover { background: #1ebe57; }
 
     .site-footer {
       background: var(--brand-dark);
@@ -127,14 +235,31 @@ const siteUrl = 'https://www.nbshzl-motor.com';
     }
     .footer-inner {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 48px;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr 160px;
+      gap: 40px;
       padding-bottom: 48px;
     }
-    .footer-brand strong { color: white; font-size: 18px; display: block; margin-bottom: 12px; }
+    .footer-brand strong { color: white; font-size: 18px; display: block; margin-bottom: 8px; }
+    .footer-brand p { font-size: 13px; margin-bottom: 2px; }
+    .footer-contact-info { margin-top: 16px; }
+    .footer-contact-info a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .footer-contact-info a:hover { color: #25D366; }
+    .footer-contact-info svg { flex-shrink: 0; }
     .footer-links h4 { color: white; font-size: 14px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
     .footer-links a { display: block; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; margin-bottom: 8px; }
     .footer-links a:hover { color: white; }
+    .footer-qr { text-align: center; }
+    .footer-qr-label { color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .footer-qr-img { width: 120px; height: 120px; object-fit: contain; border-radius: 8px; border: 2px solid rgba(255,255,255,0.15); }
+    .footer-qr-hint { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 6px; }
     .footer-bottom {
       border-top: 1px solid rgba(255,255,255,0.1);
       padding: 20px 0;
@@ -142,11 +267,49 @@ const siteUrl = 'https://www.nbshzl-motor.com';
     .footer-bottom .container { display: flex; justify-content: space-between; font-size: 13px; }
     .footer-certs { color: rgba(255,255,255,0.4); }
 
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+      width: auto;
+      border-radius: 30px;
+      padding: 0 20px;
+      gap: 8px;
+    }
+    .whatsapp-float-text {
+      display: none;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .whatsapp-float:hover .whatsapp-float-text { display: inline; }
+
     @media (max-width: 768px) {
       .header-inner { flex-wrap: wrap; }
       .main-nav { order: 3; width: 100%; overflow-x: auto; }
-      .header-cta { order: 2; }
+      .header-actions { order: 2; }
       .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-qr { grid-column: 1 / -1; }
+      .whatsapp-float { bottom: 16px; right: 16px; width: 56px; height: 56px; }
+      .whatsapp-float:hover { width: 56px; border-radius: 50%; padding: 0; }
+      .whatsapp-float:hover .whatsapp-float-text { display: none; }
     }
   </style>
 </body>

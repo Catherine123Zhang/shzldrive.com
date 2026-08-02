@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { replacementMotorPage } from '../../../i18n/content/secondary-pages';
+import type { Locale } from '../../../i18n/translations';
+
+const locale: Locale = 'es';
+const p = replacementMotorPage[locale];
+const alternates = [
+  { locale: 'en', path: '/replacement-motor/' },
+  { locale: 'es', path: '/es/replacement-motor/' },
+  { locale: 'pt', path: '/pt/replacement-motor/' },
+  { locale: 'fr', path: '/fr/replacement-motor/' },
+  { locale: 'ar', path: '/ar/replacement-motor/' },
+  { locale: 'ru', path: '/ru/replacement-motor/' },
+  { locale: 'vi', path: '/vi/replacement-motor/' },
+  { locale: 'id', path: '/id/replacement-motor/' },
+];
+---
+
+<BaseLayout
+  title={p.title}
+  description={p.description}
+  locale="es"
+  alternates={alternates}
+>
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/es/">{p.breadcrumbHome}</a> &rarr; {p.breadcrumbEng} &rarr; {p.breadcrumbReplacement}</p>
+    <h1>{p.h1}</h1>
+    <p class="hero-sub">{p.heroSub}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container form-layout">
+    <div class="form-main">
+      <form action="https://api.web3forms.com/submit" method="POST" class="drive-form" enctype="multipart/form-data">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+        <input type="hidden" name="subject" value="Shenghe Drive — Replacement Motor Request" />
+
+        <div class="form-section">
+          <h3>{p.sectionMotorInfo}</h3>
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>{p.labelPhoto}</label>
+              <div class="upload-area">
+                <p>📷 {p.photoHint}</p>
+                <input type="file" name="motor_photo" accept="image/*,.pdf" />
+              </div>
+            </div>
+            <div class="form-group"><label for="mv">{p.labelVoltage}</label><input type="text" name="motor_voltage" id="mv" placeholder="e.g. 48V" /></div>
+            <div class="form-group"><label for="mp">{p.labelPower}</label><input type="text" name="motor_power" id="mp" placeholder="e.g. 1.5kW" /></div>
+            <div class="form-group"><label for="ms">{p.labelSpeed}</label><input type="text" name="motor_speed" id="ms" placeholder="e.g. 3000 RPM" /></div>
+            <div class="form-group"><label for="md">{p.labelDiameter}</label><input type="text" name="motor_diameter" id="md" placeholder="e.g. 120mm" /></div>
+            <div class="form-group"><label for="mb">{p.labelBrand}</label><input type="text" name="motor_brand" id="mb" placeholder="e.g. SHENGHE BL120" /></div>
+            <div class="form-group"><label for="mi">{p.labelMounting}</label><input type="text" name="motor_mounting" id="mi" placeholder="e.g. flange mount" /></div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>{p.sectionEquipInfo}</h3>
+          <div class="form-grid">
+            <div class="form-group"><label for="et">{p.labelEquipType}</label><input type="text" name="equipment" id="et" /></div>
+            <div class="form-group"><label for="em">{p.labelEquipMfr}</label><input type="text" name="equip_mfr" id="em" /></div>
+            <div class="form-group full-width"><label for="ef">{p.labelFailure}</label><textarea name="failure_desc" id="ef" rows="3" placeholder={p.placeholderFailure}></textarea></div>
+            <div class="form-group"><label for="eq">{p.labelQty}</label><input type="text" name="qty" id="eq" /></div>
+            <div class="form-group"><label for="eu">{p.labelUrgency}</label>
+              <select name="urgency" id="eu">
+                <option value="Standard">{p.optionStandard}</option>
+                <option value="Urgent">{p.optionUrgent}</option>
+                <option value="Planning">{p.optionPlanning}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>{p.sectionYourContact}</h3>
+          <div class="form-grid">
+            <div class="form-group"><label for="rn">{p.labelName} *</label><input type="text" name="name" id="rn" required /></div>
+            <div class="form-group"><label for="rc">{p.labelCompany}</label><input type="text" name="company" id="rc" /></div>
+            <div class="form-group"><label for="re">{p.labelEmail} *</label><input type="email" name="email" id="re" required /></div>
+            <div class="form-group"><label for="rp">{p.labelPhone}</label><input type="text" name="phone" id="rp" /></div>
+            <div class="form-group"><label for="ry">{p.labelCountry} *</label><input type="text" name="country" id="ry" required /></div>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary btn-lg">{p.btnSubmit} &rarr;</button>
+          <p class="form-note">{p.formNote}</p>
+        </div>
+      </form>
+    </div>
+
+    <aside class="form-sidebar">
+      <div class="sidebar-card">
+        <h4>{p.sidebarCommonTitle}</h4>
+        <ul>
+          <li>BL60 / BL80 / BL90 / BL104 / BL120 series</li>
+          <li>L-type & R-type geared motors</li>
+          <li>Controllers & brake modules</li>
+          <li>Complete drive assemblies</li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <h4>{p.sidebarModelTitle}</h4>
+        <p>{p.sidebarModelDesc}</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.hero-inner { background: var(--brand-dark); color: white; padding: 48px 0 56px; }
+.breadcrumb { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+.hero-inner h1 { font-size: 36px; margin-bottom: 16px; }
+.hero-sub { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 640px; }
+.form-layout { display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start; }
+.form-section { margin-bottom: 32px; }
+.form-section h3 { font-size: 18px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--brand-accent); display: inline-block; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.full-width { grid-column: 1 / -1; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 14px; border: 1px solid var(--brand-border); border-radius: 6px; font-size: 14px; font-family: inherit; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brand-accent); outline: none; }
+.upload-area { border: 2px dashed var(--brand-border); border-radius: 8px; padding: 20px; text-align: center; background: var(--brand-surface); }
+.upload-area p { font-size: 14px; color: var(--brand-text-light); margin-bottom: 12px; }
+.form-submit { text-align: center; padding-top: 16px; }
+.form-note { font-size: 13px; color: var(--brand-text-light); margin-top: 10px; }
+.btn-lg { padding: 16px 32px; font-size: 16px; }
+.sidebar-card { background: var(--brand-surface); border: 1px solid var(--brand-border); border-radius: 10px; padding: 24px; margin-bottom: 16px; }
+.sidebar-card h4 { font-size: 15px; margin-bottom: 10px; }
+.sidebar-card ul { list-style: none; }
+.sidebar-card li { font-size: 13px; padding: 3px 0; }
+.sidebar-card li::before { content: '→ '; color: var(--brand-accent); }
+.sidebar-card p { font-size: 13px; color: var(--brand-text-light); line-height: 1.5; }
+@media (max-width: 768px) { .form-layout { grid-template-columns: 1fr; } .form-grid { grid-template-columns: 1fr; } }
+</style>

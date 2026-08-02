@@ -1,0 +1,37 @@
+# shzldrive.com — Shenghe Zhilian Drive
+User-agent: *
+Allow: /
+Disallow: /_astro/
+
+# AI crawlers — allow all (GEO optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://shzldrive.com/sitemap-index.xml
