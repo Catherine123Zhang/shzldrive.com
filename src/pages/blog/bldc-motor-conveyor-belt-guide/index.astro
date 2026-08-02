@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What size BLDC motor do I need for a conveyor belt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Motor size depends on belt speed, load weight, and belt width. For a light-duty conveyor (up to 50kg load, 0.5m/s, 300mm belt): 90-120W. For medium-duty (up to 200kg, 0.8m/s, 500mm belt): 200-400W. For heavy-duty (up to 500kg, 1.2m/s, 800mm belt): 750-1500W. Always add a 30-50% safety margin for startup torque and friction."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why use BLDC motors instead of AC motors for conveyors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BLDC motors offer precise speed control without a VFD (variable frequency drive), higher efficiency (90-95% vs 80-88% for AC induction), compact size for the same power output, and 20,000+ hour maintenance-free operation. For conveyor applications requiring variable speed, frequent start-stop, or battery power, BLDC is the superior choice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What gear ratio should I use for a conveyor drive motor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gear ratio = Motor RPM / Required Drum RPM. For a conveyor running at 0.5 m/s with a 100mm drive roller: drum RPM = (0.5 × 60) / (π × 0.1) = 95.5 RPM. If your BLDC motor runs at 3000 RPM, you need a gear ratio of approximately 30:1. Our standard worm gear and planetary gear reducers cover ratios from 5:1 to 100:1."
+      }
+    }
+  ]
+});
+
+const articleSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "BLDC Motor for Conveyor Belt Systems: Selection & Sizing Guide",
+  "datePublished": "2026-08-02",
+  "dateModified": "2026-08-02",
+  "author": { "@type": "Organization", "name": "Shenghe Intelligent Drive" },
+  "publisher": { "@type": "Organization", "name": "Shenghe Intelligent Drive", "url": "https://shzldrive.com" }
+});
+---
+
+<BaseLayout
+  title="BLDC Motor for Conveyor Belt Systems: Selection & Sizing Guide"
+  description="How to select and size BLDC geared motors for conveyor belt applications. Covers power calculation, gear ratio selection, speed control, and integration with PLC systems."
+>
+  <script type="application/ld+json" set:html={faqSchema} />
+  <script type="application/ld+json" set:html={articleSchema} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold text-zinc-900 mb-6">BLDC Motor for Conveyor Belt Systems: Selection & Sizing Guide</h1>
+    <p class="text-zinc-500 mb-8">Published August 2, 2026 · 8 min read</p>
+
+    <p class="text-lg text-zinc-700 mb-6">Conveyor belt systems are one of the largest application segments for BLDC geared motors in manufacturing, logistics, and food processing. Selecting the right motor-reducer combination determines system reliability, energy cost, and maintenance frequency for the lifetime of the installation.</p>
+
+    <h2 class="text-2xl font-semibold text-zinc-900 mt-10 mb-4">Why BLDC for Conveyors?</h2>
+    <p class="text-zinc-700 mb-4">Traditional conveyor drives use AC induction motors with variable frequency drives (VFDs). This combination works but has limitations: VFDs add cost and complexity, AC motors are less efficient at partial loads, and the motor+VFD package is physically larger than an equivalent BLDC drive.</p>
+    <p class="text-zinc-700 mb-4">BLDC geared motors solve these problems. The controller is integrated or compact, efficiency stays above 90% across the operating range, and the motor-gearbox unit is 30-50% smaller than an equivalent AC+VFD setup. For conveyor applications that need variable speed, frequent start-stop cycles, or battery/solar power, BLDC is the natural choice.</p>
+
+    <h2 class="text-2xl font-semibold text-zinc-900 mt-10 mb-4">Power Calculation</h2>
+    <p class="text-zinc-700 mb-4">The fundamental formula for conveyor motor power:</p>
+    <div class="bg-zinc-100 rounded-lg p-4 my-4 font-mono text-sm">P (W) = (F × v) / η</div>
+    <p class="text-zinc-700 mb-4">Where F is total belt tension force (N), v is belt speed (m/s), and η is overall drive efficiency (typically 0.7-0.85 for geared motor + belt transmission).</p>
+    <p class="text-zinc-700 mb-4">Total belt tension includes: material load (mass × g × friction coefficient), belt weight (belt mass per meter × length × g × friction), incline force if applicable (total mass × g × sin(angle)), and acceleration force for start-stop conveyors.</p>
+
+    <div class="overflow-x-auto my-6">
+      <table class="w-full text-sm border border-zinc-200 rounded-lg">
+        <thead class="bg-zinc-100"><tr><th class="px-4 py-2 text-left">Application</th><th class="px-4 py-2">Load (kg)</th><th class="px-4 py-2">Speed (m/s)</th><th class="px-4 py-2">Recommended Motor</th></tr></thead>
+        <tbody>
+          <tr class="border-t"><td class="px-4 py-2">Parcel sorting</td><td class="px-4 py-2 text-center">10-30</td><td class="px-4 py-2 text-center">1.5-2.5</td><td class="px-4 py-2 text-center">120-200W</td></tr>
+          <tr class="border-t bg-zinc-50"><td class="px-4 py-2">Food processing line</td><td class="px-4 py-2 text-center">20-100</td><td class="px-4 py-2 text-center">0.3-0.8</td><td class="px-4 py-2 text-center">90-200W</td></tr>
+          <tr class="border-t"><td class="px-4 py-2">Warehouse logistics</td><td class="px-4 py-2 text-center">50-300</td><td class="px-4 py-2 text-center">0.5-1.5</td><td class="px-4 py-2 text-center">200-750W</td></tr>
+          <tr class="border-t bg-zinc-50"><td class="px-4 py-2">Mining/aggregate</td><td class="px-4 py-2 text-center">200-1000</td><td class="px-4 py-2 text-center">0.5-1.2</td><td class="px-4 py-2 text-center">750-2000W</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="text-2xl font-semibold text-zinc-900 mt-10 mb-4">Gear Ratio Selection</h2>
+    <p class="text-zinc-700 mb-4">The gear ratio converts high motor RPM to the lower RPM needed at the conveyor drive roller:</p>
+    <div class="bg-zinc-100 rounded-lg p-4 my-4 font-mono text-sm">Gear Ratio = Motor RPM / Drum RPM<br/>Drum RPM = (Belt Speed × 60) / (π × Drum Diameter)</div>
+    <p class="text-zinc-700 mb-4">Our standard geared motor range covers ratios from 5:1 to 100:1 in both worm gear (L-type, right-angle) and planetary gear (inline) configurations. Worm gear reducers are self-locking — ideal for incline conveyors that must not back-drive when power is cut.</p>
+
+    <h2 class="text-2xl font-semibold text-zinc-900 mt-10 mb-4">Speed Control Integration</h2>
+    <p class="text-zinc-700 mb-4">BLDC conveyor motors accept speed commands via: 0-10V analog signal (simplest), PWM signal (common in embedded systems), RS-485/Modbus (industrial standard), or CANopen (high-end automation). All Shenghe drive controllers support at least analog + RS-485. For conveyor systems integrated into PLC-controlled production lines, Modbus RTU over RS-485 is the most common interface.</p>
+
+    <h2 class="text-2xl font-semibold text-zinc-900 mt-10 mb-4">Mounting and Integration</h2>
+    <p class="text-zinc-700 mb-4">Our conveyor-rated geared motors ship with standard IEC flange or foot mounting. For direct drum drive applications, we offer hollow-shaft output versions that slide directly onto the conveyor drive roller shaft — eliminating the need for couplings, chains, or belts between the motor and the roller.</p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-8">
+      <p class="text-blue-900 font-semibold mb-2">Ready to spec a conveyor drive?</p>
+      <p class="text-blue-800">Browse our <a href="/products" class="underline">geared motor catalog</a> or <a href="/contact" class="underline">contact our engineering team</a> with your conveyor parameters (load, speed, belt width, incline) for a free motor-reducer recommendation.</p>
+    </div>
+  </article>
+</BaseLayout>
