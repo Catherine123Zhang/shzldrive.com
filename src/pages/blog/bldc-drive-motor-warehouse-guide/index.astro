@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What BLDC motor do I need for a warehouse AGV?","acceptedAnswer":{"@type":"Answer","text":"Warehouse AGVs carrying 500-2000 kg typically use dual 200-750W BLDC gear motors. For pallet truck-style AGVs (2000 kg), dual 500W motors with 30:1 planetary gear provide 1.0-1.5 m/s travel speed and 5% gradient climbing. For smaller goods-to-person robots (50-300 kg), 100-200W motors are sufficient."}},
+    {"@type":"Question","name":"How do I choose between L-type and R-type drive motors?","acceptedAnswer":{"@type":"Answer","text":"R-type (coaxial/inline) motors align the motor shaft with the wheel shaft, giving the most compact wheel module — ideal for tight AGV chassis where height is limited. L-type (right-angle) motors position the motor perpendicular to the wheel, saving vertical space but requiring more lateral clearance. For forklift AGVs and pallet trucks, L-type is common. For flat mobile robots, R-type is preferred."}},
+    {"@type":"Question","name":"What IP rating for warehouse drive motors?","acceptedAnswer":{"@type":"Answer","text":"IP54 minimum for standard indoor warehouses. IP65 for cold storage, food processing, and pharmaceutical warehouses with regular washdown. Cold storage applications also require low-temperature grease (rated to -30°C) and heaters on motor windings to prevent condensation."}},
+    {"@type":"Question","name":"How long do BLDC drive motors last in warehouse AGVs?","acceptedAnswer":{"@type":"Answer","text":"BLDC drive motors typically last 20,000-30,000 operating hours in AGV applications, equivalent to 5-8 years of 16h/day operation. The primary wear item is the gearbox bearings, not the motor itself. Planetary gearboxes should be inspected every 10,000 hours. Compared to brushed DC motors (3000-5000 hour brush life), BLDC motors reduce maintenance downtime by 80%."}},
+    {"@type":"Question","name":"Can I use the same motor for drive and steering?","acceptedAnswer":{"@type":"Answer","text":"Drive and steering motors have different requirements. Drive motors need high torque at low-to-medium speed (0.5-2.0 m/s). Steering motors need precise positioning (±0.5°) at very low speed. Shenghe Zhilian offers matched drive-and-steer motor pairs designed to integrate into standard AGV wheel modules with compatible controllers."}}
+  ]
+});
+
+const articleSchema = JSON.stringify({
+  "@context":"https://schema.org","@type":"Article",
+  "headline":"BLDC Drive Motor for Warehouse AGVs & AMRs",
+  "author":{"@type":"Organization","name":"Shenghe Zhilian Engineering"},
+  "publisher":{"@type":"Organization","name":"Shenghe Zhilian Drive","url":"https://shzldrive.com"},
+  "datePublished":"2026-08-04","dateModified":"2026-08-04"
+});
+---
+
+<BaseLayout
+  title="BLDC Drive Motor for Warehouse AGVs & AMRs — Selection Guide"
+  description="BLDC drive motor selection for warehouse AGVs and AMRs: motor sizing for pallet trucks, goods-to-person robots, and forklift AGVs. Covers L-type vs R-type, gear ratio, IP rating, and cold storage requirements."
+  canonical="https://shzldrive.com/blog/bldc-drive-motor-warehouse-guide/"
+>
+
+<script type="application/ld+json" set:html={faqSchema} />
+<script type="application/ld+json" set:html={articleSchema} />
+
+<section class="hero-inner">
+  <div class="container">
+    <p class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/blog/">Resources</a> &rarr; Warehouse AGV Drive Motor</p>
+    <h1>BLDC Drive Motor for Warehouse AGVs &amp; AMRs</h1>
+    <p class="hero-sub">How to select the right BLDC gear motor for automated warehouse vehicles — from goods-to-person robots to heavy pallet truck AGVs.</p>
+  </div>
+</section>
+
+<article class="section">
+  <div class="container content-narrow">
+    <p>Warehouse automation is the fastest-growing segment for BLDC drive motors. By 2027, the global warehouse robot market is projected to exceed $10 billion, with each robot requiring 2-4 precision drive motors. This guide helps AGV/AMR manufacturers select the right motor for their warehouse application.</p>
+
+    <h2>Warehouse AGV Types and Motor Requirements</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>AGV Type</th><th>Payload</th><th>Speed</th><th>Motor Power (per wheel)</th><th>Gear Ratio</th></tr></thead>
+        <tbody>
+          <tr><td>Goods-to-person (shelf robot)</td><td>50-300 kg</td><td>1.0-2.0 m/s</td><td>100-200W</td><td>10:1-20:1</td></tr>
+          <tr><td>Pallet truck AGV</td><td>1,000-2,000 kg</td><td>0.5-1.5 m/s</td><td>300-750W</td><td>20:1-40:1</td></tr>
+          <tr><td>Forklift AGV</td><td>1,000-3,000 kg</td><td>0.5-1.2 m/s</td><td>500-1,500W</td><td>30:1-50:1</td></tr>
+          <tr><td>Sorting robot (small)</td><td>5-30 kg</td><td>2.0-3.5 m/s</td><td>50-150W</td><td>8:1-15:1</td></tr>
+          <tr><td>Tugger/tow vehicle</td><td>500-5,000 kg (towed)</td><td>0.5-1.5 m/s</td><td>200-750W</td><td>20:1-40:1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>L-Type vs R-Type: Choosing the Right Form Factor</h2>
+    <p><strong>R-type (coaxial):</strong> Motor axis aligns with wheel shaft. Lowest profile, most compact wheel module. Preferred for flat mobile robots (goods-to-person, sorting) where chassis height is critical. Available in 120-750W at Shenghe Zhilian.</p>
+    <p><strong>L-type (right-angle):</strong> Motor perpendicular to wheel shaft. More lateral space needed but shorter axial length. Preferred for pallet trucks and forklift AGVs where the motor sits above or beside the wheel. Available in 120-1,500W.</p>
+    <p>Both types use <a href="/blog/bldc-motor-sizing-agv/">BLDC motors with planetary gear reducers</a> for high efficiency (92-97%) and backdrivability (important for safety — the robot can be pushed by hand when power is off).</p>
+
+    <h2>Battery Life Optimization</h2>
+    <p>In warehouse operations, AGVs run 16-20 hours per day with fast-charging breaks. Motor efficiency directly impacts battery size, charging frequency, and operating cost.</p>
+    <p>A warehouse AGV with dual 400W drive motors running at average 60% load for 16 hours:</p>
+    <p><strong>BLDC (91% efficiency):</strong> 2 × 400 × 0.6 / 0.91 × 16 = 8,439 Wh/day = 8.4 kWh battery. <strong>Brushed DC (70% efficiency):</strong> 2 × 400 × 0.6 / 0.70 × 16 = 10,971 Wh/day = 11.0 kWh battery.</p>
+    <p>The BLDC system needs a <strong>23% smaller battery</strong> — saving $500-1,500 in battery cost per robot, reducing weight by 5-8 kg, and extending time between charges by 30-40 minutes.</p>
+
+    <h2>Cold Storage and Special Environments</h2>
+    <p><strong>Cold storage (-25°C to -30°C):</strong> Standard motor grease solidifies below -20°C, causing high starting torque and premature bearing failure. Cold storage AGV motors require: synthetic low-temperature grease (rated to -40°C), winding heaters to prevent condensation during warm-up, and IP65 sealing to prevent ice formation on internal components.</p>
+    <p><strong>Cleanroom (pharmaceutical/electronics):</strong> Motors must be fully enclosed (IP65+) with smooth, wipeable surfaces. No exposed fasteners or crevices that trap particles. Outgassing certification may be required for semiconductor cleanrooms.</p>
+    <p><strong>Food-grade warehouses:</strong> IP65 with food-safe lubricant. Stainless steel mounting hardware. Motors must be compatible with regular washdown cleaning.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details open><summary><strong>What motor for a warehouse AGV?</strong></summary><p>Dual 200-750W BLDC gear motors for pallet truck AGVs (500-2000 kg). 100-200W for goods-to-person robots (50-300 kg). See the <a href="/blog/bldc-motor-sizing-agv/">AGV motor sizing guide</a> for calculation formulas.</p></details>
+    <details><summary><strong>L-type or R-type drive motors?</strong></summary><p>R-type (coaxial) for flat mobile robots — most compact. L-type (right-angle) for pallet trucks and forklifts — saves vertical space.</p></details>
+    <details><summary><strong>IP rating for warehouse AGVs?</strong></summary><p>IP54 (standard warehouse), IP65 (cold storage, food, pharma). Cold storage also needs low-temp grease and winding heaters.</p></details>
+    <details><summary><strong>How long do AGV drive motors last?</strong></summary><p>20,000-30,000 hours (5-8 years at 16h/day). 80% less maintenance than brushed DC motors.</p></details>
+    <details><summary><strong>Same motor for drive and steering?</strong></summary><p>No — different requirements. We offer matched drive-and-steer motor pairs for standard AGV wheel modules.</p></details>
+
+    <div class="cta-block">
+      <h3>Need Drive Motors for Your Warehouse AGV?</h3>
+      <p>We supply matched BLDC drive and steering motor sets for AGV/AMR manufacturers. Tell us your payload, speed, and wheel size — we recommend the optimal configuration.</p>
+      <a href="/contact/" class="btn btn-primary">Request a Quote</a>
+    </div>
+  </div>
+</article>
+
+</BaseLayout>
